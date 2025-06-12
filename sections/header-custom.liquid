@@ -1,0 +1,217 @@
+<style>
+  .header-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: {{ section.settings.background_color }};
+    flex-wrap: wrap;
+  }
+
+  .header-logo img {
+    max-height: 48px;
+  }
+
+  .header-nav {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .header-nav a {
+    text-decoration: none;
+    font-weight: 500;
+    color: {{ section.settings.nav_link_color }};
+    font-size: 14px;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .appointment-btn {
+    padding: 10px 18px;
+    background-color: {{ section.settings.button_color }};
+    color: {{ section.settings.button_text_color }};
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: {{ section.settings.icon_color }};
+  }
+
+  @media (max-width: 767px) {
+    .header-custom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .header-nav {
+      margin-top: 12px;
+      gap: 12px;
+    }
+    .header-actions {
+      margin-top: 12px;
+      gap: 12px;
+    }
+    .appointment-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+<header class="header-custom">
+  <div class="header-logo">
+    {% if section.settings.logo != blank %}
+      <a href="{{ routes.root_url }}">
+        <img src="{{ section.settings.logo | image_url: width: 300 }}" alt="Logo" />
+      </a>
+    {% else %}
+      <a href="{{ routes.root_url }}">{{ shop.name }}</a>
+    {% endif %}
+  </div>
+
+  <nav class="header-nav">
+    {% for block in section.blocks %}
+      {% if block.type == 'nav_item' %}
+        <a href="{{ block.settings.link }}">{{ block.settings.label }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  <div class="header-actions">
+    <a href="{{ section.settings.appointment_button_link }}" class="appointment-btn">{{ section.settings.appointment_button_label }}</a>
+    <a href="{{ routes.account_url }}" class="icon-button" aria-label="Account">
+      {% render 'icon-account' %}
+    </a>
+    <a href="{{ routes.search_url }}" class="icon-button" aria-label="Search">
+      {% render 'icon-search' %}
+    </a>
+    <a href="{{ routes.cart_url }}" class="icon-button" aria-label="Cart">
+      {% render 'icon-cart' %}
+    </a>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header Custom",
+  "tag": "section",
+  "class": "section-header-custom",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#dddddd"
+    },
+    {
+      "type": "color",
+      "id": "nav_link_color",
+      "label": "Navigation Link Color",
+      "default": "#333333"
+    },
+    {
+      "type": "text",
+      "id": "appointment_button_label",
+      "label": "Appointment Button Label",
+      "default": "Book an Appointment"
+    },
+    {
+      "type": "url",
+      "id": "appointment_button_link",
+      "label": "Appointment Button Link",
+      "default": "/"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Appointment Button Background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Appointment Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#1a1a1a"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_item",
+      "name": "Navigation Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Link Label",
+          "default": "Home"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL",
+          "default": "/"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Header Custom",
+      "blocks": [
+        {
+          "type": "nav_item",
+          "settings": {
+            "label": "Home",
+            "link": "/"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "label": "Collections",
+            "link": "/collections"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "label": "About",
+            "link": "/pages/about"
+          }
+        },
+        {
+          "type": "nav_item",
+          "settings": {
+            "label": "Contact",
+            "link": "/pages/contact"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

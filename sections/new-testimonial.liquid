@@ -1,0 +1,208 @@
+<div class="testimonial-carousel section-spacing">
+  <div class="page-width">
+    <div class="testimonial-inner">
+      <button class="testimonial-arrow left" onclick="prevSlide()">←</button>
+
+      <div class="testimonial-wrapper" id="testimonial-slider">
+        {% for block in section.blocks %}
+          <div class="testimonial-card"
+               style="background-color: {{ block.settings.background_color }}; color: {{ block.settings.text_color }};">
+            <div class="quote-icon">“</div>
+            {% if block.settings.quote %}
+              <p class="quote-text">{{ block.settings.quote }}</p>
+            {% endif %}
+            {% if block.settings.author %}
+              <p class="quote-author">– {{ block.settings.author }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <button class="testimonial-arrow right" onclick="nextSlide()">→</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const slider = document.getElementById('testimonial-slider');
+  let scrollAmount = 0;
+  let scrollStep = slider.offsetWidth / 1.2;
+  let autoSlideInterval;
+
+  function nextSlide() {
+    scrollAmount += scrollStep;
+    if (scrollAmount >= slider.scrollWidth) scrollAmount = 0;
+    slider.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+  }
+
+  function prevSlide() {
+    scrollAmount -= scrollStep;
+    if (scrollAmount < 0) scrollAmount = slider.scrollWidth;
+    slider.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      nextSlide();
+    }, 4000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  slider.addEventListener('mouseenter', stopAutoSlide);
+  slider.addEventListener('mouseleave', startAutoSlide);
+  startAutoSlide();
+</script>
+
+<style>
+  .testimonial-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .testimonial-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 2rem 0;
+    max-width: 100%;
+  }
+
+  .testimonial-card {
+    width: 320px;
+    border-radius: 1rem;
+    padding: 2rem;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+  }
+
+  .quote-icon {
+    font-size: 3rem;
+    line-height: 1;
+    font-weight: bold;
+    opacity: 0.3;
+    margin-bottom: 1rem;
+  }
+
+  .quote-text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .quote-author {
+    text-align: right;
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+
+  .testimonial-arrow {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease-in-out;
+    flex-shrink: 0;
+  }
+
+  .testimonial-arrow:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.05);
+  }
+
+  .testimonial-arrow.left {
+    order: -1;
+  }
+
+  .testimonial-arrow.right {
+    order: 1;
+  }
+
+  @media screen and (max-width: 768px) {
+    .testimonial-inner {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .testimonial-wrapper {
+      flex-direction: column;
+      overflow-x: hidden;
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      width: 100%;
+      max-width: 90vw;
+    }
+
+    .testimonial-arrow {
+      display: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Testimonial Carousel",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Testimonial Body",
+          "default": "Designed for the modern woman — our pieces move from day to night, from personal moments to public memories."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "Radhika"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Card Background Color",
+          "default": "#eaf4f0"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#1c1c1c"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Testimonial Carousel",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial" },
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %}

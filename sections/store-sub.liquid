@@ -1,0 +1,435 @@
+<div class="jewelry-showcase-section" style="padding: 60px 20px; background-color: {{ section.settings.background_color }};">
+  <div class="container" style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Section Title -->
+    {% if section.settings.title != blank %}
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    <div class="jewelry-showcase">
+      
+      <!-- Image Grid -->
+      <div class="image-grid">
+        {% assign image_count = 0 %}
+        {% for block in section.blocks %}
+          {% if block.type == 'showcase_image' and image_count < 5 %}
+            <div class="image-item image-{{ forloop.index }}" {{ block.shopify_attributes }}>
+              {% if block.settings.image %}
+                <img src="{{ block.settings.image | image_url: width: 600 }}" 
+                     alt="{{ block.settings.image.alt | default: 'Jewelry showcase image' }}" 
+                     class="showcase-image" 
+                     loading="lazy">
+              {% else %}
+                <div class="placeholder-image">Image {{ forloop.index }}</div>
+              {% endif %}
+            </div>
+            {% assign image_count = image_count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+        
+        <!-- Fill remaining slots with placeholders if needed -->
+        {% for i in (image_count..4) %}
+          <div class="image-item image-{{ forloop.index | plus: image_count }}">
+            <div class="placeholder-image">Image {{ forloop.index | plus: image_count }}</div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Content Section -->
+      <div class="content-section">
+        {% if section.settings.description != blank %}
+          <div class="description-box">
+            <p class="description-text">{{ section.settings.description }}</p>
+          </div>
+        {% endif %}
+
+        {% if section.settings.button_text != blank %}
+          <div class="button-wrapper">
+            <a href="{{ section.settings.button_link | default: '#' }}" 
+               class="btn btn-{{ section.settings.button_style }}">
+              {{ section.settings.button_text }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+.jewelry-showcase-section {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 50px;
+  color: #111;
+  line-height: 1.2;
+}
+
+.jewelry-showcase {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+  height: auto;
+}
+
+/* Image positioning to match the layout */
+.image-1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.image-2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.image-3 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.image-4 {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.image-5 {
+  grid-column: 2;
+  grid-row: 2 / 4;
+}
+
+.showcase-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.showcase-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 250px;
+  background-color: #f5f5f5;
+  border: 2px dashed #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #888;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Specific heights for different image positions */
+.image-1 .placeholder-image,
+.image-2 .placeholder-image {
+  height: 200px;
+}
+
+.image-3 .placeholder-image,
+.image-4 .placeholder-image {
+  height: 180px;
+}
+
+.image-5 .placeholder-image {
+  height: 400px;
+}
+
+.image-1 .showcase-image,
+.image-2 .showcase-image {
+  height: 200px;
+}
+
+.image-3 .showcase-image,
+.image-4 .showcase-image {
+  height: 180px;
+}
+
+.image-5 .showcase-image {
+  height: 400px;
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.description-box {
+  max-width: 600px;
+  text-align: center;
+}
+
+.description-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0;
+  font-style: italic;
+}
+
+.description-text::before,
+.description-text::after {
+  content: '"';
+  font-size: 1.3rem;
+  color: #888;
+}
+
+.button-wrapper {
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 32px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-solid {
+  background-color: #000;
+  color: white;
+  border-color: #000;
+}
+
+.btn-solid:hover {
+  background-color: #333;
+  border-color: #333;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #000;
+  border-color: #000;
+}
+
+.btn-outline:hover {
+  background-color: #000;
+  color: white;
+}
+
+.btn-link {
+  background-color: transparent;
+  color: #000;
+  border: none;
+  text-decoration: underline;
+  padding: 16px 0;
+}
+
+.btn-link:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Desktop layout adjustments */
+@media screen and (min-width: 1000px) {
+  .jewelry-showcase {
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .content-section {
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .description-box {
+    text-align: left;
+  }
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 999px) {
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+  
+  .image-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+  }
+  
+  .image-1,
+  .image-2,
+  .image-3,
+  .image-4,
+  .image-5 {
+    grid-column: 1;
+  }
+  
+  .image-1 { grid-row: 1; }
+  .image-2 { grid-row: 2; }
+  .image-3 { grid-row: 3; }
+  .image-4 { grid-row: 4; }
+  .image-5 { grid-row: 5; }
+  
+  .image-1 .showcase-image,
+  .image-2 .showcase-image,
+  .image-3 .showcase-image,
+  .image-4 .showcase-image,
+  .image-5 .showcase-image {
+    height: 250px;
+  }
+  
+  .image-1 .placeholder-image,
+  .image-2 .placeholder-image,
+  .image-3 .placeholder-image,
+  .image-4 .placeholder-image,
+  .image-5 .placeholder-image {
+    height: 250px;
+  }
+  
+  .jewelry-showcase-section {
+    padding: 40px 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .description-text {
+    font-size: 1rem;
+  }
+  
+  .btn {
+    padding: 14px 24px;
+    font-size: 0.9rem;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Jewelry Showcase",
+  "class": "shopify-section--jewelry-showcase",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Where Jewelry Comes To Life"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Nestled in the heart of Mehrauli at Ambawatta One, our flagship boutique blends modern elegance with timeless heritage. From curated showcases to private styling, every visit is designed to reflect the spirit of Izzari — personal, luxurious, unforgettable."
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Book a Private Appointment"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "outline",
+          "label": "Outline"
+        },
+        {
+          "value": "link",
+          "label": "Link"
+        }
+      ],
+      "default": "solid"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "showcase_image",
+      "name": "Showcase Image",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Upload your jewelry showcase images here"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Jewelry Showcase",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "showcase_image"
+        },
+        {
+          "type": "showcase_image"
+        },
+        {
+          "type": "showcase_image"
+        },
+        {
+          "type": "showcase_image"
+        },
+        {
+          "type": "showcase_image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,262 @@
+{% comment %}
+  Section: Fixed 4 Steps + 2 Editable Images
+{% endcomment %}
+
+<section class="info-with-images">
+  <div class="container">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="section-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <p class="section-subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    <div class="info-images-wrapper">
+      
+      <!-- LEFT SIDE: 4 Fixed Steps -->
+      <div class="info-column steps">
+        <div class="step-block">
+          <div class="step-circle">1</div>
+          <div class="step-content">
+            <h3>{{ section.settings.step1_title }}</h3>
+            <p>{{ section.settings.step1_desc }}</p>
+          </div>
+        </div>
+        <div class="step-line"></div>
+
+        <div class="step-block">
+          <div class="step-circle">2</div>
+          <div class="step-content">
+            <h3>{{ section.settings.step2_title }}</h3>
+            <p>{{ section.settings.step2_desc }}</p>
+          </div>
+        </div>
+        <div class="step-line"></div>
+
+        <div class="step-block">
+          <div class="step-circle">3</div>
+          <div class="step-content">
+            <h3>{{ section.settings.step3_title }}</h3>
+            <p>{{ section.settings.step3_desc }}</p>
+          </div>
+        </div>
+        <div class="step-line"></div>
+
+        <div class="step-block">
+          <div class="step-circle">4</div>
+          <div class="step-content">
+            <h3>{{ section.settings.step4_title }}</h3>
+            <p>{{ section.settings.step4_desc }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE: Two Editable Images -->
+      <div class="info-column images">
+        {% if section.settings.image1 %}
+          <img src="{{ section.settings.image1 | image_url: width: 1000 }}" alt="Top Image" class="image-top" />
+        {% endif %}
+        {% if section.settings.image2 %}
+          <img src="{{ section.settings.image2 | image_url: width: 1000 }}" alt="Bottom Image" class="image-bottom" />
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .info-with-images .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  .section-heading {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .section-subheading {
+    font-size: 1.125rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #666;
+  }
+
+  .info-images-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .info-column.steps {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .step-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .step-circle {
+    background-color: #E7F3EE;
+    color: #000;
+    width: 2.5rem;
+    height: 2.5rem;
+    min-width: 2.5rem;
+    border-radius: 50%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  .step-line {
+    height: 2rem;
+    width: 2px;
+    background-color: #ccc;
+    margin: 0 0 0 1.25rem;
+  }
+
+  .step-content h3 {
+    margin: 0 0 0.2rem 0;
+    font-size: 1.25rem;
+  }
+
+  .step-content p {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+  }
+
+  .info-column.images {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .image-top,
+  .image-bottom {
+    width: 100%;
+    max-height: 220px; /* 👈 This line reduces image size */
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .info-images-wrapper {
+      flex-direction: column;
+    }
+
+    .image-top,
+    .image-bottom {
+      max-height: none;
+      height: auto;
+    }
+
+    .step-block {
+      align-items: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "4 Steps + Images",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "How It Works"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Follow these simple steps"
+    },
+
+    {
+      "type": "text",
+      "id": "step1_title",
+      "label": "Step 1 Title",
+      "default": "Choose Your Plan"
+    },
+    {
+      "type": "text",
+      "id": "step1_desc",
+      "label": "Step 1 Description",
+      "default": "Pick the subscription that fits you best."
+    },
+
+    {
+      "type": "text",
+      "id": "step2_title",
+      "label": "Step 2 Title",
+      "default": "Create Your Profile"
+    },
+    {
+      "type": "text",
+      "id": "step2_desc",
+      "label": "Step 2 Description",
+      "default": "Provide your personal details and preferences."
+    },
+
+    {
+      "type": "text",
+      "id": "step3_title",
+      "label": "Step 3 Title",
+      "default": "Get Matched"
+    },
+    {
+      "type": "text",
+      "id": "step3_desc",
+      "label": "Step 3 Description",
+      "default": "Our system will connect you with the right coach."
+    },
+
+    {
+      "type": "text",
+      "id": "step4_title",
+      "label": "Step 4 Title",
+      "default": "Start Your Journey"
+    },
+    {
+      "type": "text",
+      "id": "step4_desc",
+      "label": "Step 4 Description",
+      "default": "Begin transforming with expert guidance."
+    },
+
+    {
+      "type": "image_picker",
+      "id": "image1",
+      "label": "Top Right Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image2",
+      "label": "Bottom Right Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "4 Steps with Images"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,306 @@
+<!doctype html>
+
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}">
+  <head>
+    <link rel="preload" href="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/DMSerifDisplay-Regular.woff2?v=1749480415" as="font" type="font/woff2" crossorigin>
+
+<style>
+@font-face {
+  font-family: 'DM Serif Display';
+  src: url('https://cdn.shopify.com/s/files/1/0692/7630/3593/files/DMSerifDisplay-Regular.woff2?v=1749480415') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'DM Serif Display', serif !important;
+}
+</style>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "The Izzari",
+  "url": "https://theizzari.com/",
+  "logo": "https://theizzari.com/cdn/shop/files/IZZARI_LOGO_1_160x_54ebab39-8c56-4f59-b565-07d647e8a55e.png?v=1714649666&width=160",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "9991700275",
+    "contactType": "technical support",
+    "areaServed": "IN",
+    "availableLanguage": ["en","Hindi"]
+  },
+  "sameAs": "https://www.instagram.com/izzarijewellery?igsh=cTN5MWE5czYzZmcy"
+}
+</script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7127S545TB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7127S545TB');
+</script>
+<script>
+  gtag('config', 'AW-16846092816/9l33CNjYmJkaEJD06-A-', {
+    'phone_conversion_number': '9991700275'
+  });
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16846092816"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-16846092816');
+</script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=5.0">
+
+    <title>{% if page_title == blank %}{{ shop.name }}{% else %}{{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif %}{% endif %}</title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 96 }}">
+      <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180 }}">
+    {%- endif -%}
+
+    {%- comment -%}Few prefetch to increase performance on commonly used third-parties{%- endcomment -%}
+    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+    {%- unless settings.heading_font.system? -%}
+      <link rel="preload" href="{{ settings.heading_font | font_url }}" as="font" type="font/woff2" crossorigin>
+    {%- endunless -%}
+
+    {%- unless settings.text_font.system? -%}
+      <link rel="preload" href="{{ settings.text_font | font_url }}" as="font" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+
+/*      
+@font-face {
+    font-family: 'Brilliant_Cut';
+    src: url('https://cdn.shopify.com/s/files/1/0692/7630/3593/files/Brilliant_Cut_Pro_Medium_3c82cfde-ba4f-44c6-bcb1-6c1b526d79f6.ttf?v=1714644801');
+    font-display: swap;
+}
+      @font-face {
+    font-family: 'Fancy_Cut';
+    src: url('https://cdn.shopify.com/s/files/1/0692/7630/3593/files/Fancy_Cut_Pro.ttf?v=1715408403');
+    font-display: swap;
+}
+      /* a.block.h6, summary.h6, a.link-faded-reverse h1,h2,h3,h4,h5,h6,p,span,div,p.h4,a.h6.tablinks,strong,body,p.h1,p.h6 {
+        font-family:Brilliant_Cut;
+      } */
+      summary.h6,a.h6.tablinks,a.block.h6,strong,body,button.button,p.h6,p.h1,h1.product-title.h3,sale-price,a.product-title.h6,a.header-sidebar__linklist-button.h6,button.header-sidebar__linklist-button.h6 {
+          font-family: DM Serif Display !important;
+      }
+      p,a.link{
+        font-family: DM Sans, sans-serif !important;
+      }*/
+      </style>
+    {%- render 'social-meta-tags' -%}
+    {%- render 'microdata-schema' -%}
+    {%- render 'css-variables' -%}
+    {%- render 'js-variables' -%}
+
+    {%- if request.page_type == 'gift_card' -%}
+      <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
+    {%- endif -%}
+
+    <script>
+      if (!(HTMLScriptElement.supports && HTMLScriptElement.supports('importmap'))) {
+        const importMapPolyfill = document.createElement('script');
+        importMapPolyfill.async = true;
+        importMapPolyfill.src = "{{ 'es-module-shims.min.js' | asset_url }}";
+
+        document.head.appendChild(importMapPolyfill);
+      }
+    </script>
+
+    <script type="importmap">
+      {%- comment -%}On Safari 16.3 and lower, a polyfill is used to load importmap{%- endcomment -%}
+      {
+        "imports": {
+          "vendor": "{{ 'vendor.min.js' | asset_url }}",
+          "theme": "{{ 'theme.js' | asset_url }}",
+          "photoswipe": "{{ 'photoswipe.min.js' | asset_url }}"
+        }
+      }
+    </script>
+
+    <script type="module" src="{{ 'vendor.min.js' | asset_url }}"></script>
+    <script type="module" src="{{ 'theme.js' | asset_url }}"></script>
+
+    {{ content_for_header }}
+
+    {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
+  </head>
+
+  {% liquid
+    assign features_class = ''
+
+    if settings.show_button_transition
+      assign features_class = features_class | append: 'features--button-transition '
+    endif
+
+    if settings.show_image_zoom_on_hover
+      assign features_class = features_class | append: 'features--zoom-image '
+    endif
+
+    if settings.show_page_transition
+      assign features_class = features_class | append: 'features--page-transition '
+    endif
+  %}
+
+  <body class="{{ features_class }} color-scheme color-scheme--{{ settings.default_color_scheme.id }}">
+
+
+    {%- render 'shadow-dom-templates' -%}
+
+    <loading-bar class="loading-bar" aria-hidden="true"></loading-bar>
+    <a href="#main" allow-hash-change class="skip-to-content sr-only">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+    <span id="header-scroll-tracker" style="position: absolute; width: 1px; height: 1px; top: var(--header-scroll-tracker-offset, 10px); left: 0;">
+      {%- comment -%}
+        This allows our theme to track when the user has scrolled a given amount of pixels, without relying on a global scroll listener. This helps
+        to improve performance and reduce reflows.
+      {%- endcomment -%}
+    </span>
+
+    {%- if request.page_type != 'password' -%}
+      {%- if template == 'page.landing-page' -%}
+        {%- sections 'header-group-2' -%}
+      {%- else -%}
+        {%- if template != 'page.thank-you' -%}
+          {%- sections 'header-group' -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- sections 'overlay-group' -%}
+    {%- endif -%}
+
+    <main id="main" class="anchor">
+      {{ content_for_layout }}
+
+      {%- comment -%}
+      IMPLEMENTATION NOTE: For best semantics, having the footer group outside the main would be slightly better, but
+        moving it inside the main allows to have all the sections (including sections inside the footer group) to be
+        consecutive, and hence having a cleaner margin collapsing management.
+      {%- endcomment -%}
+      {%- if request.page_type != 'password' -%}
+        {%- if template == 'page.landing-page' -%}
+          {%- sections 'footer-group-2' -%}
+        {%- else -%}
+          {%- if template != 'page.thank-you' -%}
+            {%- sections 'footer-group' -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+      <style>
+        span.text-with-icon.gap-4 {
+    font-size: 14px;
+}
+.dot-checkbox~label {
+  font-size:12px;
+  color: black;
+}
+        a.product-title.h6 {
+    font-size: 12px;
+}
+
+sale-price.h6.text-subdued,sale-price.h6.text-on-sale,compare-at-price.h6.text-subdued.line-through {
+    font-size: 12px;
+}
+       #sy-whatshelp {
+            right: 20px;
+            bottom: 30px;
+            position: fixed;
+            z-index: 9999;
+      display: flex;
+          align-items: center;
+      gap:0.35em
+        }
+        #sy-whatshelp a.sywh-open-services {
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+          padding:5px;
+            text-align: center;
+            box-shadow: 2px 2px 8px -3px #000;
+            border-radius: 100%;
+            -webkit-border-radius: 100%;
+            -moz-border-radius: 100%;
+            -ms-border-radius: 100%;
+            display: inline-block;
+          background:#ffffff;
+        }
+       #chat-btn-text{
+                    background:#ffffff;
+          box-shadow:0px 0px 4px 0px rgb(0 0 0 / 20%);
+          border-radius: 10px;
+          font-size:10px;
+          padding: 8px;
+        }
+        span.accordion__toggle.h6, span.text-with-icon.gap-4, h1.h1,on-sale-badge.badge.badge--on-sale {
+    font-family: 'DM Serif Display';
+}
+  </style>
+  <div id="sy-whatshelp">
+    <a href="https://api.whatsapp.com/send?phone=919991700275&text=Hey, Let’s chat about Izzari." target="_blank" data-html="true" data-placement="left" id="chat-btn-text">
+      Grab the deals now
+    </a>
+       <a href="https://api.whatsapp.com/send?phone=919991700275&text=Hey, Let’s chat about Izzari." target="_blank" class="sywh-open-services " data-html="true" data-placement="left">
+          <!-- <i class="fab fa-whatsapp"></i> -->
+            <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/izzari-whatsapplogo.webp?v=1737016009" alt="izzari-logo" style="position: relative;top: 10px;" loading="lazy" width=45 height=21>
+         </a>       
+</div>
+    </main>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the link element by its ID
+    const link = document.getElementById('dynamic-link');  // Use the correct ID here
+
+    // Check if the link element exists
+    if (link) {
+      console.log('Link element found!');  // Debugging line
+      // Check screen width and update the href accordingly
+      if (window.innerWidth <= 768) {
+        console.log('Mobile view detected!');  // Debugging line
+        link.href = '#form-container-ref';  // Replace with the link you want for mobile
+      } else {
+        console.log('Desktop view detected!');  // Debugging line
+        link.href = '#shopify-section-template--18757318082793__17382367085511a294';  // Default link for desktop
+      }
+    } else {
+      console.log('Link element not found!');  // Debugging line
+    }
+  });
+
+  // Optional: Re-run on resize if you want the link to adjust dynamically as well
+  window.addEventListener('resize', function() {
+    const link = document.getElementById('dynamic-link');  // Use the correct ID here
+    if (link) {
+      if (window.innerWidth <= 768) {
+        link.href = '#form-container-ref';  // Replace with the link you want for mobile
+      } else {
+        link.href = '#shopify-section-template--18757318082793__17382367085511a294';  // Default link for desktop
+      }
+    }
+  });
+</script>
+
+
+
+  </body>
+</html>

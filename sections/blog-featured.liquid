@@ -1,0 +1,356 @@
+<div class="blog-featured-section section-spacing">
+  <div class="page-width blog-featured-header">
+    <div class="blog-featured-left">
+      {% if section.settings.heading != blank %}
+        <h2 class="blog-featured-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="newsletter-form" name="contact">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="email" name="contact[email]" class="newsletter-input" placeholder="{{ section.settings.placeholder }}" required>
+        <button type="submit" class="newsletter-button">{{ section.settings.button_label }}</button>
+      </form>
+    </div>
+    <div class="blog-featured-right">
+      <p class="blog-featured-description">{{ section.settings.description }}</p>
+    </div>
+  </div>
+
+  <div class="page-width blog-featured-tabs">
+    <ul class="blog-filter-tabs">
+      {% for block in section.blocks %}
+        <li>
+          <a href="/blogs/{{ section.settings.blog_handle }}{% if block.settings.tag != 'all' %}/tagged/{{ block.settings.tag | handle }}{% endif %}"
+            class="{% if block.settings.tag == 'all' %}active{% endif %}">{{ block.settings.label }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="page-width blog-featured-grid">
+    {% paginate blog.articles by section.settings.articles_per_page %}
+      <div id="blog-ajax-wrap" data-current-page="1" data-total-pages="{{ paginate.pages }}">
+      <div class="grid" id="blog-article-container">
+        {% for article in blog.articles %}
+          <div class="blog-card">
+            <a href="{{ article.url }}">
+              {% if article.image %}
+                <img src="{{ article.image | img_url: '720x' }}" alt="{{ article.title }}">
+              {% endif %}
+              <h3 class="blog-title">{{ article.title }}</h3>
+              <p class="blog-excerpt">{{ article.excerpt | strip_html | truncate: 120 }}</p>
+              <span class="blog-read-more">{{ section.settings.read_more_label }} →</span>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+
+  {% if paginate.pages > 1 %}
+    <div class="load-more-wrap">
+      <button id="load-more-btn" class="newsletter-button">{{ section.settings.load_more_label }}</button>
+    </div>
+  {% endif %}
+</div>
+
+    {% endpaginate %}
+  </div>
+</div>
+
+<style>
+.blog-featured-section {
+  padding: 4rem 0;
+}
+.page-width {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media screen and (max-width: 768px) {
+  .blog-featured-section .page-width {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+.blog-featured-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.blog-featured-left {
+  flex: 1;
+  min-width: 300px;
+}
+.blog-featured-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.newsletter-form {
+  display: flex;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.newsletter-input {
+  flex: 1;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+.newsletter-button {
+  background-color: #000;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+.blog-featured-right {
+  flex: 1;
+  text-align: right;
+  min-width: 300px;
+}
+.blog-featured-description {
+  font-size: 1rem;
+  color: #333;
+}
+.blog-featured-tabs {
+  margin-top: 3rem;
+}
+.blog-filter-tabs {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  border-bottom: 1px solid #eee;
+}
+.blog-filter-tabs a {
+  text-decoration: none;
+  color: #000;
+  padding-bottom: 0.5rem;
+  font-weight: 500;
+}
+.blog-filter-tabs a.active {
+  border-bottom: 2px solid #000;
+}
+.blog-featured-grid .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.blog-card img {
+  width: 100%;
+  border-radius: 6px;
+}
+.blog-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+.blog-excerpt {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+.blog-read-more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.load-more-wrap {
+  margin-top: 2rem;
+  text-align: center;
+}
+.load-more-wrap .pagination a {
+  border: 1px solid #000;
+  padding: 0.6rem 1.5rem;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+}
+@media screen and (max-width: 768px) {
+  .blog-featured-right {
+    text-align: left;
+  }
+  .blog-filter-tabs {
+    flex-wrap: wrap;
+    row-gap: 1rem;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  const blogContainer = document.getElementById('blog-article-container');
+  const blogWrap = document.getElementById('blog-ajax-wrap');
+
+  if (!loadMoreBtn) return;
+
+  loadMoreBtn.addEventListener('click', function () {
+    let currentPage = parseInt(blogWrap.dataset.currentPage);
+    const totalPages = parseInt(blogWrap.dataset.totalPages);
+
+    if (currentPage >= totalPages) return;
+
+    const nextPage = currentPage + 1;
+
+    fetch(window.location.pathname + `?page=${nextPage}&section_id={{ section.id }}`)
+      .then(res => res.text())
+      .then(data => {
+        const parser = new DOMParser();
+        const htmlDoc = parser.parseFromString(data, 'text/html');
+
+        const newArticles = htmlDoc.querySelectorAll('#blog-article-container .blog-card');
+        newArticles.forEach(card => blogContainer.appendChild(card));
+
+        blogWrap.dataset.currentPage = nextPage;
+
+        if (nextPage >= totalPages) {
+          loadMoreBtn.style.display = 'none';
+        }
+      });
+  });
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "Blog Journal Layout",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Newsletter Heading",
+      "default": "The Izzari Journal"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Email placeholder",
+      "default": "E-Mail"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Subscribe Button Text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Newsletter Description",
+      "default": "Style. Stones. Stories. A space where jewelry meets culture, craft, and expression."
+    },
+    {
+      "type": "text",
+      "id": "blog_handle",
+      "label": "Blog handle (e.g. 'news')",
+      "default": "news"
+    },
+    {
+      "type": "range",
+      "id": "articles_per_page",
+      "label": "Articles per page",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "read_more_label",
+      "label": "Read More Label",
+      "default": "Read More"
+    },
+    {
+      "type": "text",
+      "id": "load_more_label",
+      "label": "Load More Button",
+      "default": "Load More"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tag",
+      "name": "Filter Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab Label",
+          "default": "View All"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag Slug (use 'all' for default)",
+          "default": "all"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Journal Layout",
+      "blocks": [
+        {
+          "type": "tag",
+          "settings": {
+            "label": "View All",
+            "tag": "all"
+          }
+        },
+        {
+          "type": "tag",
+          "settings": {
+            "label": "Styling",
+            "tag": "styling"
+          }
+        },
+        {
+          "type": "tag",
+          "settings": {
+            "label": "Craftsmanship",
+            "tag": "craftsmanship"
+          }
+        },
+        {
+          "type": "tag",
+          "settings": {
+            "label": "Gifting",
+            "tag": "gifting"
+          }
+        },
+        {
+          "type": "tag",
+          "settings": {
+            "label": "Bridal",
+            "tag": "bridal"
+          }
+        },
+        {
+          "type": "tag",
+          "settings": {
+            "label": "Behind The Scenes",
+            "tag": "behind-the-scenes"
+          }
+        },
+        {
+          "type": "tag",
+          "settings": {
+            "label": "Trends",
+            "tag": "trends"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

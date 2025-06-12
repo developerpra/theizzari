@@ -1,0 +1,145 @@
+<div class="newsletter-banner-section">
+  <div class="newsletter-banner-container">
+    {% if section.settings.heading != blank %}
+      <{{ section.settings.heading_size }} class="newsletter-banner-heading heading-size-{{ section.settings.heading_size }}">
+        {{ section.settings.heading }}
+      </{{ section.settings.heading_size }}>
+    {% endif %}
+
+    <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="newsletter-banner-form" name="contact">
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+      <input type="email" name="contact[email]" class="newsletter-banner-input" placeholder="{{ section.settings.placeholder }}" required>
+      <button type="submit" class="newsletter-banner-button">{{ section.settings.button_label }}</button>
+    </form>
+  </div>
+</div>
+
+<style>
+.newsletter-banner-section {
+  padding: 3rem 1rem;
+}
+
+.heading-size-h1 { font-size: 2.5rem; }
+.heading-size-h2 { font-size: 2rem; }
+.heading-size-h3 { font-size: 1.5rem; }
+.heading-size-h4 { font-size: 1.2rem; }
+
+.newsletter-banner-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.newsletter-banner-heading {
+  font-weight: 700;
+  flex: 1;
+  min-width: 280px;
+  margin: 0;
+}
+
+.newsletter-banner-heading.h1 { font-size: 2.5rem; }
+.newsletter-banner-heading.h2 { font-size: 2rem; }
+.newsletter-banner-heading.h3 { font-size: 1.5rem; }
+.newsletter-banner-heading.h4 { font-size: 1.2rem; }
+
+.newsletter-banner-form {
+  display: flex;
+  flex: 1;
+  max-width: 500px;
+  min-width: 280px;
+  gap: 0.5rem;
+}
+
+.newsletter-banner-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  border-radius: 0;
+}
+
+.newsletter-banner-button {
+  background-color: #234438;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .newsletter-banner-container {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+  }
+
+  .newsletter-banner-form {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0 24px;
+    width: 100%;
+  }
+
+  .newsletter-banner-input,
+  .newsletter-banner-button {
+    width: 100%;
+  }
+
+  .newsletter-banner-heading {
+    padding: 0 24px;
+    width: 100%;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Newsletter Banner",
+  "tag": "section",
+  "class": "newsletter-banner",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading Text",
+      "default": "Join our newsletter to keep up to date with us!"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "Extra Large (H1)" },
+        { "value": "h2", "label": "Large (H2)" },
+        { "value": "h3", "label": "Medium (H3)" },
+        { "value": "h4", "label": "Small (H4)" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Email Placeholder",
+      "default": "E-Mail"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Subscribe Button Text",
+      "default": "Subscribe"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Banner"
+    }
+  ]
+}
+{% endschema %}

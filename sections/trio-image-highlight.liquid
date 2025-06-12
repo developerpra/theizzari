@@ -1,0 +1,113 @@
+<div class="custom-image-text-section">
+  <div class="section-inner">
+    <h2 class="section-heading">Jewellery That Lives With You</h2>
+
+    <div class="image-wrapper">
+      <img src="{{ section.settings.image | image_url: width: 800 }}" alt="Story Image" loading="lazy">
+    </div>
+
+    <p class="section-subtext">Designed for the modern woman — our pieces move from day to night, from personal moments to public memories.</p>
+
+    <a href="{{ section.settings.button_link }}" class="section-button">{{ section.settings.button_text }}</a>
+  </div>
+</div>
+
+<style>
+.custom-image-text-section {
+  padding: 60px 20px;
+  background-color: #fff;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 32px;
+  color: #222;
+}
+
+.image-wrapper {
+  margin-bottom: 32px;
+}
+
+.image-wrapper img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.section-subtext {
+  font-size: 1rem;
+  color: #444;
+  max-width: 700px;
+  margin: 0 auto 24px auto;
+  line-height: 1.6;
+}
+
+.section-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #264B3B;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.section-button:hover {
+  background-color: #1a3f2b;
+}
+
+@media screen and (max-width: 640px) {
+  .section-heading {
+    font-size: 1.5rem;
+  }
+
+  .section-subtext {
+    font-size: 0.95rem;
+  }
+
+  .section-button {
+    font-size: 0.85rem;
+    padding: 10px 20px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Single Image Center Text",
+  "tag": "section",
+  "class": "section-centered-image-text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "READ OUR STORY"
+    }
+  ]
+}
+{% endschema %}

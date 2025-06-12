@@ -1,0 +1,308 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+MEGA MENU COMPONENT
+----------------------------------------------------------------------------------------------------------------------
+
+Render the mega-menu. The mega-menu is a kind of menu optimized for showing a large number of items into several
+columns.
+
+********************************************
+Supported variables
+********************************************
+
+* link: the link from which we need to render the mega-menu. The link must always be a second level link, but it can
+        also be empty (no links), which is the case if the merchant only want to show images, for instance.
+* block: the block containing all the information about the menu to render
+{%- endcomment -%}
+
+<style>
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+ width: 100%;
+    /* height: 300px; */
+    display: flex;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+      border-bottom: 1px solid;
+}
+ .active {
+      border-bottom: 1px solid;
+ }
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  border-top: 1px solid #ccc;
+  width: 100%;
+  border-left: none;
+  /* height: 200px; */
+  display: none;
+}
+
+/* Clear floats after the tab */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+  .mega-menu {
+    display: block;
+}
+  .mega-menu__linklist {
+    justify-content: center;
+  }
+  @media only screen and (max-width: 999px) {
+   .tabcontent {
+    display: none;
+}
+  }
+ 
+</style>
+
+
+<div class="mega-menu {% if block.settings.images_position == 'left' %}mega-menu--reverse{% endif %}" {{ block.shopify_attributes }}>
+  {%- if link.levels > 0 -%}
+    <ul class="mega-menu__linklist unstyled-list">
+      {%- for sub_link in link.links -%}
+        <li class="v-stack justify-items-start gap-5">
+          <a href="{{ sub_link.url }}" class="h6 {% comment %}{% if foorloop == 'jewellery' %}tablinks{% endif %}
+            {% if foorloop == 'eyewear' %}tablinks_eyewear{% endif %} {% endcomment %}tablinks
+            d_{{ sub_link.title }}" 
+            {% if foorloop == 'jewellery' %}onmouseover="openCity(event, '{{ sub_link.title }}')"{% endif %}
+             {% if foorloop == 'eyewear' %}onmouseover="openCity_eyewear(event, '{{ sub_link.title }}')"{% endif %}
+            >{{ sub_link.title }}</a>
+          {%- if sub_link.links.size > 0 -%}
+            <ul class="v-stack gap-2.5 unstyled-list">
+              {%- for sub_sub_link in sub_link.links -%}
+                <li>
+                  <a href="{{ sub_sub_link.url }}" class="link-faded">{{ sub_sub_link.title }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+
+  {%- capture mega_menu_content -%}
+    {%- render 'mega-menu-images', context: 'menu', block: block -%}
+  {%- endcapture -%}
+
+  {%- if mega_menu_content != blank -%}
+    <div class="mega-menu__promo">
+      {{- mega_menu_content -}}
+    </div>
+  {%- endif -%}
+
+
+  <style>
+    .submenu-list{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      margin-top:10px;
+    }
+    .megamenulist-item{
+      width:10%;
+      text-align:center;
+    }
+    .megamenulist-item img{
+      width:100%;
+    }
+  </style>
+  <div class="custom-megamenu">
+  {% if foorloop == 'jewellery' %}
+
+    <div id="collections" class="tabcontent" style="display:block;">
+      <div class="submenu-list">
+       <div class="megamenulist-item">
+        <a href="/collections/bracelet">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/Artboard_1.jpg?v=1742035548" loading="lazy">
+        </a>
+          <a href="">Bracelets</a>
+        </div>
+        
+         <div class="megamenulist-item">
+        <a href="/collections/earrings">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/Artboard_2.jpg?v=1742035548" loading="lazy">
+        </a>
+          <a href="">Earrings</a>
+        </div>
+        
+   <div class="megamenulist-item">
+        <a href="/collections/rings">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/Artboard_3.jpg?v=1742035548" loading="lazy">
+        </a>
+          <a href="">Rings</a>
+        </div>
+        
+   <div class="megamenulist-item">
+        <a href="/collections/necklaces">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/Artboard_4_c21f94c4-e2e5-48ae-8c54-dd35aa77df1e.jpg?v=1742035548" loading="lazy">
+        </a>
+          <a href="">Necklaces</a>
+        </div>
+
+      </div>
+</div>
+
+<div id="Bracelets" class="tabcontent">
+ <div class="submenu-list">
+        <div class="megamenulist-item">
+        <a href="/collections/bracelet">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/Artboard_1.jpg?v=1742035548" loading="lazy">
+        </a>
+          <a href="">Bracelets</a>
+        </div>
+  
+   {% comment %}
+        <div class="megamenulist-item">
+        <a href="">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/400_SIGNATURE_20WRAPPING.png?v=1715059859">
+        </a>
+          <a href="">heading-1</a>
+        </div>
+    {% endcomment %}
+      </div>
+</div>
+
+
+    <div id="Earrings" class="tabcontent">
+ <div class="submenu-list">
+        <div class="megamenulist-item">
+        <a href="/collections/earrings">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/Artboard_2.jpg?v=1742035548" loading="lazy">
+        </a>
+          <a href="">Earrings</a>
+        </div>
+      </div>
+    </div>
+
+       <div id="Rings" class="tabcontent">
+ <div class="submenu-list">
+        <div class="megamenulist-item">
+        <a href="/collections/rings">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/Artboard_3.jpg?v=1742035548" loading="lazy">
+        </a>
+          <a href="">Rings</a>
+        </div>
+      </div>
+       </div>
+
+          <div id="Necklaces" class="tabcontent">
+ <div class="submenu-list">
+        <div class="megamenulist-item">
+        <a href="/collections/necklaces">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/Artboard_4_c21f94c4-e2e5-48ae-8c54-dd35aa77df1e.jpg?v=1742035548" loading="lazy">
+        </a>
+          <a href="">Necklaces</a>
+        </div>
+      </div>
+</div>
+{% endif %}
+    {% comment %}
+    {% if foorloop == 'eyewear' %}
+     <div id="Sunglasses" class="tabcontent">
+ <div class="submenu-list">
+        <div class="megamenulist-item">
+        <a href="">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/400_FREE_20DELIVERY_20OPTIONS.png?v=1715059786">
+        </a>
+          <a href="">Sunglasses</a>
+        </div>
+        <div class="megamenulist-item">
+        <a href="">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/400_SIGNATURE_20WRAPPING.png?v=1715059859">
+        </a>
+          <a href="">heading-1</a>
+        </div>
+        <div class="megamenulist-item">
+        <a href="">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/02_THUMB_MOTHER_DAY_WATCHES.png?v=1715059935">
+        </a>
+          <a href="">heading-1</a>
+        </div>
+      </div>
+</div>
+      <div id="READING GLASSES" class="tabcontent">
+ <div class="submenu-list">
+     <div class="megamenulist-item">
+        <a href="">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/02_THUMB_MOTHER_DAY_WATCHES.png?v=1715059935">
+        </a>
+          <a href="">heading-1</a>
+        </div>
+        <div class="megamenulist-item">
+        <a href="">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/400_FREE_20DELIVERY_20OPTIONS.png?v=1715059786">
+        </a>
+          <a href="">Sunglasses</a>
+        </div>
+        <div class="megamenulist-item">
+        <a href="">
+          <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/400_SIGNATURE_20WRAPPING.png?v=1715059859">
+        </a>
+          <a href="">heading-1</a>
+        </div>
+      
+      </div>
+</div>
+{% endif %}
+{% endcomment %}
+    
+</div>
+</div>
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+  function openCity_eyewear(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>

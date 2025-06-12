@@ -1,0 +1,91 @@
+{% schema %}
+{
+  "name": "Brand Services",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand Services Section"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Brand Services"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "100% Certified Jewellery"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Enter service description here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Services",
+      "blocks": [
+        {
+          "type": "service",
+          "settings": {
+            "title": "100% Certified Jewellery",
+            "description": "Guaranteed authenticity and trust."
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "BIS Hallmarked Gold Jewellery",
+            "description": "Ensures the highest gold quality standards."
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Platinum Certified Jewellery",
+            "description": "Premium platinum with certification."
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Officially Authorized",
+            "description": "Ensuring premium quality and trust."
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Customer Support",
+            "description": "Get support from our boutique experts for your purchases."
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "title": "Secure Payments",
+            "description": "Easy & secure Payments."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

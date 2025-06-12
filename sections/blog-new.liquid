@@ -1,0 +1,167 @@
+<div class="blog-hero-wrap section-spacing">
+  <div class="page-width blog-header">
+    <div class="journal-left">
+      <h2 class="journal-heading">The Izzari Journal</h2>
+      <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="newsletter-form" name="contact">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="email" name="contact[email]" class="newsletter-input" placeholder="E-Mail" required>
+        <button type="submit" class="newsletter-button">Subscribe</button>
+      </form>
+    </div>
+    <div class="journal-right">
+      <p class="journal-description">
+        Style. Stones. Stories. A space where jewelry meets culture, craft, and expression.
+      </p>
+    </div>
+  </div>
+
+  <div class="page-width blog-tabs">
+    <ul class="blog-filter-tabs">
+      <li><a href="/blogs/news" class="active">View All</a></li>
+      <li><a href="/blogs/news/tagged/styling">Styling</a></li>
+      <li><a href="/blogs/news/tagged/craftsmanship">Craftsmanship</a></li>
+      <li><a href="/blogs/news/tagged/gifting">Gifting</a></li>
+      <li><a href="/blogs/news/tagged/bridal">Bridal</a></li>
+      <li><a href="/blogs/news/tagged/behind-the-scenes">Behind The Scenes</a></li>
+      <li><a href="/blogs/news/tagged/trends">Trends</a></li>
+    </ul>
+  </div>
+
+  <div class="page-width blog-grid">
+    {% paginate blog.articles by 4 %}
+      <div class="grid">
+        {% for article in blog.articles %}
+          <div class="blog-card">
+            <a href="{{ article.url }}">
+              {% if article.image %}
+                <img src="{{ article.image | img_url: '720x' }}" alt="{{ article.title }}">
+              {% endif %}
+              <h3 class="blog-title">{{ article.title }}</h3>
+              <p class="blog-excerpt">{{ article.excerpt | strip_html | truncate: 120 }}</p>
+              <span class="blog-read-more">Read More →</span>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        <div class="load-more-wrap">
+          {{ paginate | default_pagination: next: 'Load More' }}
+        </div>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+</div>
+
+<style>
+.blog-hero-wrap {
+  padding: 4rem 0;
+}
+.blog-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.journal-left {
+  flex: 1;
+  min-width: 300px;
+}
+.journal-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.newsletter-form {
+  display: flex;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.newsletter-input {
+  flex: 1;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+.newsletter-button {
+  background-color: #000;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+.journal-right {
+  flex: 1;
+  text-align: right;
+  min-width: 300px;
+}
+.blog-tabs {
+  margin-top: 3rem;
+}
+.blog-filter-tabs {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  border-bottom: 1px solid #eee;
+}
+.blog-filter-tabs a {
+  text-decoration: none;
+  color: #000;
+  padding-bottom: 0.5rem;
+  font-weight: 500;
+}
+.blog-filter-tabs a.active {
+  border-bottom: 2px solid #000;
+}
+.blog-grid .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.blog-card img {
+  width: 100%;
+  border-radius: 6px;
+}
+.blog-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+.blog-excerpt {
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+.blog-read-more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.load-more-wrap {
+  margin-top: 2rem;
+  text-align: center;
+}
+.load-more-wrap .pagination a {
+  border: 1px solid #000;
+  padding: 0.6rem 1.5rem;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+}
+@media screen and (max-width: 768px) {
+  .journal-right {
+    text-align: left;
+  }
+  .blog-filter-tabs {
+    flex-wrap: wrap;
+    row-gap: 1rem;
+  }
+}
+</style>

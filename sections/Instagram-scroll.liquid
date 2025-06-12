@@ -1,0 +1,165 @@
+<div class="instagram-posts-section" style="padding: 40px 0;">
+  <div class="width" style="max-width: 1200px; margin: 0 auto;">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="section-heading" style="margin-bottom: 32px; font-size: 32px; font-weight: 700; text-align: center;">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <div class="instagram-posts-container">
+      {% for block in section.blocks %}
+        <div class="instagram-post-card" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <a href="{{ block.settings.post_link }}" target="_blank" class="post-image-link">
+              <img src="{{ block.settings.image | img_url: '600x600' }}" alt="Instagram Post" loading="lazy">
+            </a>
+          {% endif %}
+
+          {% if block.settings.handle_name != blank %}
+            <div class="post-handle" style="font-weight: 600; font-size: 14px; margin: 10px 0 6px; color: #555;">
+              {{ block.settings.handle_name }}
+            </div>
+          {% endif %}
+
+          {% if block.settings.description != blank %}
+            <div class="post-description">
+              <p class="short-text">{{ block.settings.description | truncate: 100 }}</p>
+              <p class="full-text hidden">{{ block.settings.description }}</p>
+              <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.instagram-posts-container {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 10px 0;
+}
+
+.instagram-post-card {
+  flex: 0 0 auto;
+  width: 280px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.instagram-post-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.post-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 600;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.full-text.hidden {
+  display: none;
+}
+</style>
+
+<script>
+function toggleReadMore(button) {
+  const container = button.closest('.post-description');
+  const shortText = container.querySelector('.short-text');
+  const fullText = container.querySelector('.full-text');
+
+  if (fullText.classList.contains('hidden')) {
+    shortText.style.display = 'none';
+    fullText.classList.remove('hidden');
+    button.textContent = 'Show less';
+  } else {
+    shortText.style.display = '';
+    fullText.classList.add('hidden');
+    button.textContent = 'Read more';
+  }
+}
+</script>
+
+{% schema %}
+{
+  "name": "Instagram Posts",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Follow Us on Instagram"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Instagram Post",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Instagram Image"
+        },
+        {
+          "type": "text",
+          "id": "handle_name",
+          "label": "Instagram Handle (e.g. @brandname)"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Post Description"
+        },
+        {
+          "type": "url",
+          "id": "post_link",
+          "label": "Instagram Post URL"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Instagram Posts",
+      "category": "Social",
+      "blocks": [
+        {
+          "type": "post"
+        },
+        {
+          "type": "post"
+        },
+        {
+          "type": "post"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

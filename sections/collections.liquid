@@ -1,0 +1,175 @@
+{%- if section.blocks.size > 0 -%}
+  <style>
+    #shopify-section-{{ section.id }} {
+      --event-card-gap: 1.5rem;
+    }
+
+    .event-cards-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--event-card-gap);
+    }
+
+    .event-card {
+      border: 1px solid #ddd;
+      padding: 1.5rem;
+      border-radius: 12px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .event-highlight {
+      font-weight: bold;
+      color: #00000;
+    }
+
+    .event-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  </style>
+
+  <div class="section-spacing">
+    <div class="container">
+      <div class="section-title">Upcoming Events</div>
+
+      <div class="event-cards-wrapper">
+        {% for block in section.blocks %}
+          <div class="event-card" {{ block.shopify_attributes }}>
+            <h2>{{ block.settings.event_heading }}</h2>
+            <p>{{ block.settings.event_content }}</p>
+            <p>
+              <span class="event-highlight">{{ block.settings.event_month }}</span>
+              <span class="event-highlight">{{ block.settings.event_date }}</span> —
+              <span class="event-highlight">{{ block.settings.event_place }}</span>
+            </p>
+
+            <div class="event-image">
+              {%- if block.settings.event_image != blank -%}
+                {{ block.settings.event_image | image_url: width: block.settings.event_image.width | image_tag }}
+              {%- endif -%}
+            </div>
+
+            {%- if block.settings.button_link != blank and block.settings.button_text != blank -%}
+              <a href="{{ block.settings.button_link }}" class="button">{{ block.settings.button_text }}</a>
+            {%- endif -%}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Event Cards",
+  "class": "shopify-section--event-cards",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "event",
+      "name": "Event Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "event_heading",
+          "label": "Event Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "event_content",
+          "label": "Event Content"
+        },
+        {
+          "type": "text",
+          "id": "event_month",
+          "label": "Month"
+        },
+        {
+          "type": "text",
+          "id": "event_date",
+          "label": "Date"
+        },
+        {
+          "type": "text",
+          "id": "event_place",
+          "label": "Place"
+        },
+        {
+          "type": "image_picker",
+          "id": "event_image",
+          "label": "Event Image"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Join Us"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Event Cards",
+      "blocks": [
+        {
+          "type": "event",
+          "settings": {
+            "event_heading": "Spring Launch",
+            "event_content": "Celebrate with us at our new season launch event.",
+            "event_month": "March",
+            "event_date": "24",
+            "event_place": "Mumbai",
+            "event_image": "",
+            "button_text": "Join Us",
+            "button_link": "#"
+          }
+        },
+        {
+          "type": "event",
+          "settings": {
+            "event_heading": "Summer Pop-up",
+            "event_content": "Experience the collection in-person at our exclusive pop-up.",
+            "event_month": "June",
+            "event_date": "10",
+            "event_place": "Delhi",
+            "event_image": "",
+            "button_text": "Reserve Spot",
+            "button_link": "#"
+          }
+        },
+        {
+          "type": "event",
+          "settings": {
+            "event_heading": "Autumn Soirée",
+            "event_content": "Join us for a private showcase this fall.",
+            "event_month": "October",
+            "event_date": "5",
+            "event_place": "Bangalore",
+            "event_image": "",
+            "button_text": "Get Invite",
+            "button_link": "#"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

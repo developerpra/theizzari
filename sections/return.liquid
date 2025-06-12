@@ -1,0 +1,281 @@
+<div class="how-to-return-section" style="padding: 50px 20px; max-width: 960px; margin: 0 auto;">
+  {% if section.settings.heading != blank %}
+    <h2 class="section-heading">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="steps-container">
+    {% for block in section.blocks %}
+      <div class="step" {{ block.shopify_attributes }}>
+        <div class="step-number-circle">
+          <span>{{ forloop.index }}</span>
+        </div>
+        <div class="step-content">
+          <h3>{{ block.settings.step_title }}</h3>
+          <p>{{ block.settings.step_description }}</p>
+        </div>
+      </div>
+
+      {% unless forloop.last %}
+        <div class="step-arrow" aria-hidden="true">
+          <svg width="70" height="40" viewBox="0 0 70 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Arrow to next step">
+            <line x1="5" y1="20" x2="65" y2="20" stroke="#6c757d" stroke-width="2" stroke-dasharray="8 6"/>
+            <path d="M65 15 L70 20 L65 25" stroke="#6c757d" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+      {% endunless %}
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+.how-to-return-section {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222;
+}
+
+.section-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 48px;
+  color: #111;
+}
+
+.steps-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.step {
+  background-color: #E7F3EE;
+  border-radius: 16px;
+  padding: 30px 25px;
+  width: 100%;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 300px;
+  box-sizing: border-box;
+}
+
+.step-number-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #274C3B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-family: 'DM Sans', sans-serif;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 18px;
+  user-select: none;
+}
+
+.step-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #212529;
+  min-height: 48px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.step-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.step-arrow {
+  display: none; /* Hide arrows on grid layout */
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .how-to-return-section {
+    padding: 50px 0;
+  }
+  
+  .section-heading {
+    font-size: 2rem;
+    margin-bottom: 32px;
+    padding: 0 20px;
+  }
+
+  .steps-container {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 20px;
+    gap: 16px;
+    justify-content: flex-start;
+  }
+
+  .step {
+    flex: 0 0 280px;
+    min-width: 280px;
+    max-width: 280px;
+    scroll-snap-align: start;
+    margin-right: 0;
+  }
+
+  .step-arrow {
+    display: flex;
+    flex: 0 0 70px;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    min-width: 70px;
+  }
+
+  .step-arrow svg {
+    width: 50px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-heading {
+    font-size: 1.75rem;
+  }
+  
+  .step {
+    flex: 0 0 260px;
+    min-width: 260px;
+    max-width: 260px;
+    padding: 25px 20px;
+    min-height: 280px;
+  }
+  
+  .step-number-circle {
+    width: 56px;
+    height: 56px;
+    font-size: 1.75rem;
+  }
+  
+  .step-content h3 {
+    font-size: 1.1rem;
+    min-height: 44px;
+  }
+  
+  .step-content p {
+    font-size: 0.95rem;
+  }
+  
+  .step-arrow {
+    flex: 0 0 60px;
+    min-width: 60px;
+  }
+  
+  .step-arrow svg {
+    width: 40px;
+    height: 25px;
+  }
+}
+
+/* Scrollbar styling for webkit browsers */
+@media (max-width: 768px) {
+  .steps-container::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .steps-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+  }
+  
+  .steps-container::-webkit-scrollbar-thumb {
+    background: #274C3B;
+    border-radius: 2px;
+  }
+  
+  .steps-container::-webkit-scrollbar-thumb:hover {
+    background: #1a3329;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "How to Return",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "How to Return Your Product"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_title",
+          "label": "Step Title",
+          "default": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "step_description",
+          "label": "Step Description",
+          "default": "Describe the step here."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "How to Return",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "step_title": "Request a Return",
+            "step_description": "Contact our support team within 30 days to start the return process."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_title": "Prepare the Package",
+            "step_description": "Securely pack your item in original packaging along with receipt."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_title": "Ship the Item",
+            "step_description": "Send the package to the provided return address using a trackable method."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_title": "Get Your Refund",
+            "step_description": "Once we receive your item, we'll process your refund within 5 business days."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

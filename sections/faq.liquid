@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Section</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-bottom: 60px;
+            color: #2d3748;
+        }
+
+        .faq-item {
+            background: #264B3B;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 103, 65, 0.15);
+        }
+
+        .faq-question {
+            padding: 24px 28px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 400;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            font-weight: 300;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            background: white;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 300px;
+            padding: 28px;
+        }
+
+        .faq-answer-content {
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 16px;
+        }
+
+        .faq-answer-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer-content strong {
+            color: #2d3748;
+        }
+
+        @media (max-width: 768px) {
+            .faq-title {
+                font-size: 2.5rem;
+                margin-bottom: 40px;
+            }
+
+            .faq-question {
+                padding: 20px 24px;
+                font-size: 1rem;
+            }
+
+            .faq-answer.active {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .faq-title {
+                font-size: 2rem;
+            }
+
+            .faq-question {
+                padding: 18px 20px;
+            }
+
+            .faq-answer.active {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-container">
+        <h1 class="faq-title">FAQ</h1>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What if my jewelry arrives damaged?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We take great care in packaging all our jewelry pieces to ensure they arrive safely. However, if your jewelry arrives damaged, please contact us immediately within <strong>48 hours</strong> of delivery.</p>
+                        <p>We will arrange for a replacement or full refund at no additional cost to you. Please take photos of the damaged item and packaging to help us improve our shipping process.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I return gifts?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes, we accept returns on gift purchases within <strong>30 days</strong> of the original purchase date. The jewelry must be in its original condition and packaging.</p>
+                        <p>Gift recipients can exchange items for store credit or a different piece. For cash refunds, the original purchaser will need to process the return with their receipt or order confirmation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I track my order?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Once your order ships, you'll receive a confirmation email with your <strong>tracking number</strong> and a link to track your package in real-time.</p>
+                        <p>You can also track your order by logging into your account on our website and viewing your order history. Most orders are processed and shipped within 1-2 business days.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I care for my jewelry?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>To keep your jewelry looking its best, store pieces separately in soft pouches or lined jewelry boxes to prevent scratching. Avoid exposure to chemicals, perfumes, and lotions.</p>
+                        <p><strong>For gold jewelry:</strong> Clean gently with warm soapy water and a soft brush. <strong>For silver jewelry:</strong> Use a silver polishing cloth to maintain shine. <strong>For gemstones:</strong> Clean with a damp cloth and avoid ultrasonic cleaners unless specified as safe.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you offer international shipping?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes, we ship worldwide! International shipping costs vary by destination and will be calculated at checkout. Most international orders arrive within <strong>7-14 business days</strong>.</p>
+                        <p>Please note that international customers may be responsible for customs duties and taxes in their country. We recommend checking with your local customs office for specific requirements and potential fees.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.faq-answer').classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (isActive) {
+                        item.classList.remove('active');
+                        answer.classList.remove('active');
+                    } else {
+                        item.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

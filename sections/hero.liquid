@@ -1,0 +1,191 @@
+<style>
+  .video-section-custom {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  video-media {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  video-section-custom video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .video-text-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: {{ section.settings.text_color }};
+    text-shadow: 0 0 5px rgba(0,0,0,0.7);
+    max-width: 40%;
+    pointer-events: none;
+  }
+  .video-text-overlay p,
+  .video-text-overlay h1,
+  .video-text-overlay h2,
+  .video-text-overlay h3,
+  .video-text-overlay h4,
+  .video-text-overlay h5,
+  .video-text-overlay h6 {
+    margin: 0 0 0.5em 0;
+  }
+</style>
+
+<div class="content-over-media content-over-media--{{ section.settings.video_size }} video-section-custom">
+  {%- assign poster_image = section.settings.poster | default: section.settings.video.preview_image -%}
+
+  {%- capture poster -%}
+    {%- unless section.settings.autoplay -%}
+      {%- if poster_image != blank -%}
+        {{ poster_image | image_url: width: poster_image.width | image_tag: loading: 'lazy', sizes: '100vw', widths: '200,300,400,500,600,700,800,900,1000,1200' }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'h-full w-full placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' }}
+      {%- endif -%}
+    {%- endunless -%}
+  {%- endcapture -%}
+
+  {%- if section.settings.mobile_video != blank -%}
+    <video-media class="sm:hidden" style="--aspect-ratio: {{ section.settings.mobile_video.aspect_ratio }}">
+      {{ poster_image | image_url: width: poster_image.width | image_tag: loading: 'lazy', sizes: '100vw' }}
+      <video
+        playsinline
+        muted
+        preload="metadata"
+        loop
+        {% if section.settings.autoplay %} autoplay {% endif %}
+        controls="false"
+        style="width:100%; height:100%; object-fit: cover;"
+      >
+        <source src="{{ section.settings.mobile_video | file_url }}" type="video/mp4" />
+      </video>
+    </video-media>
+  {%- endif -%}
+
+  <video-media {% if section.settings.mobile_video != blank %}class="hidden sm:block"{% endif %} style="--aspect-ratio: {{ section.settings.video.aspect_ratio }}">
+    {{ poster }}
+    <video
+      playsinline
+      muted
+      preload="metadata"
+      loop
+      {% if section.settings.autoplay %} autoplay {% endif %}
+      controls="false"
+      style="width:100%; height:100%; object-fit: cover;"
+    >
+      <source src="{{ section.settings.video | file_url }}" type="video/mp4" />
+    </video>
+  </video-media>
+
+  {% if section.blocks.size > 0 %}
+    <div class="video-text-overlay">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'heading' %}
+            {% if block.settings.text != blank %}
+              <{{ block.settings.heading_tag }}>{{ block.settings.text }}</{{ block.settings.heading_tag }}>
+            {% endif %}
+          {% when 'richtext' %}
+            {% if block.settings.content != blank %}
+              <div>{{ block.settings.content }}</div>
+            {% endif %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Hero Video Section",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video (Desktop)"
+    },
+    {
+      "type": "video",
+      "id": "mobile_video",
+      "label": "Video (Mobile)"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "Poster Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay video",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "video_size",
+      "label": "Video size",
+      "default": "md",
+      "options": [
+        { "value": "auto", "label": "Original Ratio" },
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" },
+        { "value": "fill", "label": "Fit Screen" }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Heading text",
+          "default": "Your Heading Here"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Heading tag",
+          "default": "h2",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" },
+            { "value": "h5", "label": "H5" },
+            { "value": "h6", "label": "H6" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "name": "Body content",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Your body content here</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Video Section"
+    }
+  ]
+}
+{% endschema %}

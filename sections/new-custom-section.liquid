@@ -1,0 +1,192 @@
+{%- if section.settings.image != blank -%}
+  <style>
+    .img-with-txt {
+    display: flex;
+          gap: 25px;
+}
+    .left_content {
+    width: 60%;
+      display: flex;
+    align-items: center;
+        background:rgb(140 140 140 / 5%);
+}
+    .right_content {
+    width: 40%;
+      background:rgb(140 140 140 / 5%);
+      display: flex;
+    flex-direction: column;
+    justify-content: center;
+      padding: 15px;
+}
+    .left__txt {
+    width: 50%;
+      padding: 15px;
+}
+    .left_img {
+    width: 50%;
+}
+    .linkDiv {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+    @media only screen and (max-width: 600px) {
+      .img-with-txt {
+    flex-direction: column;
+}
+       .left_content,.left_img,.left__txt {
+    width: 100%;
+    }
+      .right_content{
+          width: 100%;
+      }
+      .left_content{
+        flex-direction: column;
+      }
+  </style>
+  {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
+
+  <div class="{% unless section.settings.remove_vertical_spacing %}section-spacing{% endunless %} color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }} {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
+    <div class="{% unless section.settings.remove_horizontal_spacing %}container{% endunless %}">
+      <div class="text-{{ section.settings.text_alignment }}">
+        <div class="img-with-txt">
+          <div class="left_content">
+            <div class="left_img">
+              <img src="{{ section.settings.image | img_url: 'master' }}">
+            </div>
+            <div class="left__txt">
+               <br>
+              {{ section.settings.lefttext }}
+               <br>
+              <div class="linkDiv">
+              <a href="{{ section.settings.leftlink }}" class="link">{{ section.settings.leftlinktext }}</a>
+              </div>
+               <br>
+            </div>
+          </div>
+          <div class="right_content">
+             <br>
+            {{ section.settings.righttext }}
+               <br>
+            <div class="linkDiv" >
+            <a href="{{ section.settings.rightlink1 }}" class="link">{{ section.settings.rightlinktext1 }}</a>
+             <a href="{{ section.settings.rightlink2 }}" class="link">{{ section.settings.rightlinktext2 }}</a>
+            </div>
+             <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "new-custom-section",
+  "class": "shopify-section--custom-liquid",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:global.colors.scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "separate_section_with_border",
+      "label": "t:global.section.separate_section_with_border",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_vertical_spacing",
+      "label": "t:global.spacing.remove_vertical_spacing",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_horizontal_spacing",
+      "label": "t:global.spacing.remove_horizontal_spacing",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "t:global.text.alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:global.position.left"
+        },
+        {
+          "value": "center",
+          "label": "t:global.position.center"
+        },
+        {
+          "value": "end",
+          "label": "t:global.position.right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "image"
+    },
+    {
+      "type": "richtext",
+      "id": "lefttext",
+      "label": "Left Text"
+    },
+    {
+      "type": "url",
+      "id": "leftlink",
+      "label": "Left Button Link"
+    },
+    {
+      "type": "text",
+      "id": "leftlinktext",
+      "label": "Left Button Text"
+    },
+    {
+      "type": "richtext",
+      "id": "righttext",
+      "label": "Left Text"
+    },
+    {
+      "type": "url",
+      "id": "rightlink1",
+      "label": "Right Button Link-1"
+    },
+    {
+      "type": "text",
+      "id": "rightlinktext1",
+      "label": "Right Button text-1"
+    },
+    {
+      "type": "url",
+      "id": "rightlink2",
+      "label": "Right Button Link-2"
+    },
+    {
+      "type": "text",
+      "id": "rightlinktext2",
+      "label": "Right Button Text-2"
+    }
+     
+  ],
+  "presets": [
+    {
+      "name": "new-custom-section"
+    }
+  ]
+}
+{% endschema %}
+
+
