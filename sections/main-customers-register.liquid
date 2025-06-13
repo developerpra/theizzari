@@ -1,30 +1,310 @@
-<h1>{{ 'customer.register.title' | t }}</h1>
+{%- style -%}
+  .auth-container {
+    display: flex;
+    min-height: 100vh;
+    background: #ffffff;
+  }
 
-{% form 'create_customer' %}
-  <label for="FirstName">{{ 'customer.register.name' | t }}</label>
-  <input id="FirstName" name="customer[first_name]" required>
+  .auth-form-section {
+    flex: 1;
+    max-width: 480px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-  <label for="Email">{{ 'customer.register.email' | t }}</label>
-  <input id="Email" name="customer[email]" type="email" required>
+  .auth-image-section {
+    flex: 1;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
 
-  <label for="Password">{{ 'customer.register.password' | t }}</label>
-  <input id="Password" name="customer[password]" type="password" required>
+  .auth-image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-  <label for="Confirm">{{ 'customer.register.confirm' | t }}</label>
-  <input id="Confirm" name="customer[confirm]" type="password" required>
+  .auth-logo {
+    margin-bottom: 40px;
+  }
 
-  <input id="Agree" name="agree" type="checkbox" required>
-  <label for="Agree">{{ 'customer.register.agree' | t }}</label>
+  .auth-logo img {
+    height: 32px;
+  }
 
-  <input type="submit" value="{{ 'customer.register.sign_up' | t }}">
-{% endform %}
+  .auth-header {
+    margin-bottom: 32px;
+  }
 
-<div>
-  <p>{{ 'customer.register.or' | t }}</p>
-  <a href="#google"><img src="google-icon.png" alt="Login with Google"></a>
-  <a href="#apple"><img src="apple-icon.png" alt="Login with Apple"></a>
+  .auth-header h1 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 8px;
+  }
+
+  .auth-header p {
+    color: #666;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.2s;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: #2d5a3d;
+    box-shadow: 0 0 0 2px rgba(45, 90, 61, 0.1);
+  }
+
+  .form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+  }
+
+  .form-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+  }
+
+  .form-checkbox label {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .auth-button {
+    background: #2d5a3d;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .auth-button:hover {
+    background: #234731;
+  }
+
+  .auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 24px 0;
+    color: #666;
+  }
+
+  .auth-divider::before,
+  .auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .auth-divider span {
+    padding: 0 16px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .social-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+
+  .social-button:hover {
+    border-color: #2d5a3d;
+  }
+
+  .social-button img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .auth-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .auth-footer a {
+    color: #2d5a3d;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .auth-footer a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .auth-container {
+      flex-direction: column;
+    }
+
+    .auth-form-section {
+      max-width: 100%;
+      padding: 32px 24px;
+    }
+
+    .auth-image-section {
+      display: none;
+    }
+  }
+{%- endstyle -%}
+
+<div class="auth-container">
+  <div class="auth-form-section">
+    <div class="auth-logo">
+      <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}">
+    </div>
+
+    <div class="auth-header">
+      <h1>{{ 'customer.register.title' | t }}</h1>
+      <p>{{ 'customer.register.subtitle' | t }}</p>
+    </div>
+
+    {% form 'create_customer', class: 'auth-form' %}
+      <div class="form-group">
+        <label for="FirstName">{{ 'customer.register.name' | t }}</label>
+        <input 
+          type="text" 
+          name="customer[first_name]" 
+          id="FirstName"
+          placeholder="John Doe"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="Email">{{ 'customer.register.email' | t }}</label>
+        <input 
+          type="email" 
+          name="customer[email]" 
+          id="Email"
+          placeholder="john@example.com"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="Password">{{ 'customer.register.password' | t }}</label>
+        <input 
+          type="password" 
+          name="customer[password]" 
+          id="Password"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="PasswordConfirm">{{ 'customer.register.confirm_password' | t }}</label>
+        <input 
+          type="password" 
+          name="customer[password_confirmation]" 
+          id="PasswordConfirm"
+          required
+        >
+      </div>
+
+      <div class="form-checkbox">
+        <input 
+          type="checkbox" 
+          id="terms" 
+          name="terms"
+          required
+        >
+        <label for="terms">{{ 'customer.register.agree_terms' | t }}</label>
+      </div>
+
+      <button type="submit" class="auth-button">
+        {{ 'customer.register.submit' | t }}
+      </button>
+    {% endform %}
+
+    <div class="auth-divider">
+      <span>{{ 'customer.register.or' | t }}</span>
+    </div>
+
+    <div class="social-buttons">
+      <a href="/auth/google" class="social-button">
+        <img src="{{ 'google.svg' | asset_url }}" alt="Google">
+      </a>
+      <a href="/auth/apple" class="social-button">
+        <img src="{{ 'apple.svg' | asset_url }}" alt="Apple">
+      </a>
+    </div>
+
+    <div class="auth-footer">
+      <p>
+        {{ 'customer.register.already_have_account' | t }}
+        <a href="{{ routes.account_login_url }}">{{ 'customer.register.sign_in' | t }}</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="auth-image-section">
+    <img src="{{ 'login-signup.jpg' | asset_url }}" alt="Jewelry">
+  </div>
 </div>
 
-<p>{{ 'customer.register.already' | t }}</p>
-<a href="/account/login">{{ 'customer.register.sign_in' | t }}</a>
+{% schema %}
+{
+  "name": "Register Page",
+  "tag": "section",
+  "class": "shopify-section-register",
+  "settings": []
+}
+{% endschema %}
   

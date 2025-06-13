@@ -1,26 +1,309 @@
-<h1>{{ 'customer.login.title' | t }}</h1>
-<p>{{ 'customer.login.subtitle' | t }}</p>
+{%- style -%}
+  .auth-container {
+    display: flex;
+    min-height: 100vh;
+    background: #ffffff;
+  }
 
-{% form 'customer_login' %}
-  <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
-  <input id="CustomerEmail" name="customer[email]" type="email" required placeholder="eg abc@abc.com" />
+  .auth-form-section {
+    flex: 1;
+    max-width: 480px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-  <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
-  <input id="CustomerPassword" name="customer[password]" type="password" required />
+  .auth-image-section {
+    flex: 1;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
 
-  <input id="RememberMe" name="remember" type="checkbox" />
-  <label for="RememberMe">{{ 'customer.login.remember_me' | t }}</label>
+  .auth-image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-  <a href="/account/recover">{{ 'customer.login.forgot' | t }}</a>
+  .auth-logo {
+    margin-bottom: 40px;
+  }
 
-  <input type="submit" value="{{ 'customer.login.sign_in' | t }}">
-{% endform %}
+  .auth-logo img {
+    height: 32px;
+  }
 
-<div>
-  <p>{{ 'customer.login.or' | t }}</p>
-  <a href="#google"><img src="google-icon.png" alt="Login with Google"></a>
-  <a href="#apple"><img src="apple-icon.png" alt="Login with Apple"></a>
+  .auth-header {
+    margin-bottom: 32px;
+  }
+
+  .auth-header h1 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 8px;
+  }
+
+  .auth-header p {
+    color: #666;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.2s;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: #2d5a3d;
+    box-shadow: 0 0 0 2px rgba(45, 90, 61, 0.1);
+  }
+
+  .form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+  }
+
+  .form-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+  }
+
+  .form-checkbox label {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .forgot-password {
+    text-align: right;
+    margin-top: -16px;
+  }
+
+  .forgot-password a {
+    color: #2d5a3d;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .forgot-password a:hover {
+    text-decoration: underline;
+  }
+
+  .auth-button {
+    background: #2d5a3d;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+
+  .auth-button:hover {
+    background: #234731;
+  }
+
+  .auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 24px 0;
+    color: #666;
+  }
+
+  .auth-divider::before,
+  .auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .auth-divider span {
+    padding: 0 16px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .social-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+
+  .social-button:hover {
+    border-color: #2d5a3d;
+  }
+
+  .social-button img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .auth-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .auth-footer a {
+    color: #2d5a3d;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .auth-footer a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .auth-container {
+      flex-direction: column;
+    }
+
+    .auth-form-section {
+      max-width: 100%;
+      padding: 32px 24px;
+    }
+
+    .auth-image-section {
+      display: none;
+    }
+  }
+{%- endstyle -%}
+
+<div class="auth-container">
+  <div class="auth-form-section">
+    <div class="auth-logo">
+      <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}">
+    </div>
+
+    <div class="auth-header">
+      <h1>{{ 'customer.login.title' | t }}</h1>
+      <p>{{ 'customer.login.subtitle' | t }}</p>
+    </div>
+
+    {% form 'customer_login', class: 'auth-form' %}
+      <div class="form-group">
+        <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+        <input 
+          type="email" 
+          name="customer[email]"
+          id="CustomerEmail"
+          placeholder="john@example.com"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
+        <input 
+          type="password" 
+          name="customer[password]"
+          id="CustomerPassword"
+          required
+        >
+      </div>
+
+      <div class="form-checkbox">
+        <input 
+          type="checkbox" 
+          id="RememberMe" 
+          name="remember_me"
+        >
+        <label for="RememberMe">{{ 'customer.login.remember_me' | t }}</label>
+      </div>
+
+      <div class="forgot-password">
+        <a href="{{ routes.recover_account_url }}">
+          {{ 'customer.login.forgot_password' | t }}
+        </a>
+      </div>
+
+      <button type="submit" class="auth-button">
+        {{ 'customer.login.sign_in' | t }}
+      </button>
+    {% endform %}
+
+    <div class="auth-divider">
+      <span>{{ 'customer.login.or' | t }}</span>
+    </div>
+
+    <div class="social-buttons">
+      <a href="/auth/google" class="social-button">
+        <img src="{{ 'google.svg' | asset_url }}" alt="Google">
+      </a>
+      <a href="/auth/apple" class="social-button">
+        <img src="{{ 'apple.svg' | asset_url }}" alt="Apple">
+      </a>
+    </div>
+
+    <div class="auth-footer">
+      <p>
+        {{ 'customer.login.new_customer' | t }}
+        <a href="{{ routes.account_register_url }}">{{ 'customer.login.create_account' | t }}</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="auth-image-section">
+    <img src="{{ 'login-signup.jpg' | asset_url }}" alt="Jewelry">
+  </div>
 </div>
 
-<p>{{ 'customer.login.no_account' | t }}</p>
-<a href="/account/register">{{ 'customer.login.sign_up' | t }}</a>
+{% schema %}
+{
+  "name": "Login Page",
+  "tag": "section",
+  "class": "shopify-section-login",
+  "settings": []
+}
+{% endschema %}
