@@ -119,21 +119,54 @@ Supported variables
     document.addEventListener('DOMContentLoaded', function() {
       const compareButton = document.querySelector('.compare-button');
       if (compareButton) {
+        // Check if product is already in compare list
+        const productHandle = compareButton.dataset.productHandle;
+        const compareList = JSON.parse(localStorage.getItem('compare') || '[]');
+        if (compareList.includes(productHandle)) {
+          compareButton.classList.add('active');
+        }
+        
         compareButton.addEventListener('click', function() {
-          const productId = this.dataset.productId;
-          const compareList = JSON.parse(localStorage.getItem('compareList') || '[]');
+          const compareList = JSON.parse(localStorage.getItem('compare') || '[]');
           
-          if (!compareList.includes(productId)) {
-            compareList.push(productId);
-            localStorage.setItem('compareList', JSON.stringify(compareList));
+          if (!compareList.includes(productHandle)) {
+            if (compareList.length >= 4) {
+              alert('You can compare up to 4 products at a time');
+              return;
+            }
+            compareList.push(productHandle);
+            localStorage.setItem('compare', JSON.stringify(compareList));
             this.classList.add('active');
+            updateCompareWidget();
             alert('Product added to compare list');
           } else {
-            alert('Product already in compare list');
+            // Remove from compare
+            const index = compareList.indexOf(productHandle);
+            compareList.splice(index, 1);
+            localStorage.setItem('compare', JSON.stringify(compareList));
+            this.classList.remove('active');
+            updateCompareWidget();
+            alert('Product removed from compare list');
           }
         });
       }
     });
+    
+    // Update compare widget
+    function updateCompareWidget() {
+      const compareList = JSON.parse(localStorage.getItem('compare') || '[]');
+      const widget = document.getElementById('compare-widget');
+      const count = document.getElementById('compare-count');
+      
+      if (widget && count) {
+        if (compareList.length > 0) {
+          widget.classList.add('active');
+          count.textContent = compareList.length;
+        } else {
+          widget.classList.remove('active');
+        }
+      }
+    }
   </script>
 {%- else -%}
   <buy-buttons class="buy-buttons buy-buttons-wrapper" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">

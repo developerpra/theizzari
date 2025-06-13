@@ -170,6 +170,24 @@
       "sku": "SKU"
     }
   },
+  "compare": {
+    "title": "Compare Products",
+    "subtitle": "Compare up to 4 products at a time",
+    "empty": "No products added to compare",
+    "continue_shopping": "Continue Shopping",
+    "product": "Product",
+    "vendor": "Brand",
+    "type": "Type",
+    "availability": "Availability",
+    "in_stock": "In Stock",
+    "out_of_stock": "Out of Stock",
+    "sku": "SKU",
+    "actions": "Actions",
+    "buy_now": "Buy Now",
+    "add_to_cart": "Add to Cart",
+    "clear_all": "Clear All",
+    "clear_confirm": "Are you sure you want to clear all products from comparison?"
+  },
   "collection": {
     "general": {
       "empty_collection": "This collection is empty",

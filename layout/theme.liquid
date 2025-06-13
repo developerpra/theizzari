@@ -266,6 +266,50 @@ sale-price.h6.text-subdued,sale-price.h6.text-on-sale,compare-at-price.h6.text-s
          </a>       
 </div>
     </main>
+
+<!-- Compare Widget -->
+<div class="compare-floating-widget" id="compare-widget" onclick="window.location.href='/collections/compare'" style="position: fixed; bottom: 20px; left: 20px; background: #2d5a3d; color: white; padding: 12px 20px; border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: none; align-items: center; gap: 8px; cursor: pointer; z-index: 1000; transition: all 0.3s ease;">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M3 3h18v18H3zM12 8v8m-4-4h8"/>
+  </svg>
+  <span>Compare</span>
+  <span class="compare-count" id="compare-count" style="background: white; color: #2d5a3d; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px;">0</span>
+</div>
+
+<style>
+  .compare-floating-widget:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3) !important;
+  }
+  
+  .compare-floating-widget.active {
+    display: flex !important;
+  }
+  
+  .compare-button.active {
+    background: #2d5a3d;
+    color: white;
+  }
+  
+  .compare-button.active svg {
+    stroke: white;
+  }
+</style>
+
+<script>
+  // Initialize compare widget on all pages
+  document.addEventListener('DOMContentLoaded', function() {
+    const compareList = JSON.parse(localStorage.getItem('compare') || '[]');
+    const widget = document.getElementById('compare-widget');
+    const count = document.getElementById('compare-count');
+    
+    if (widget && count && compareList.length > 0) {
+      widget.classList.add('active');
+      count.textContent = compareList.length;
+    }
+  });
+</script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Get the link element by its ID

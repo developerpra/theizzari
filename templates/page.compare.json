@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "compare-products": {
+      "type": "compare-products",
+      "disabled": false
+    }
+  },
+  "order": ["compare-products"]
+}
