@@ -93,9 +93,12 @@
       "description": "Description",
       "view_details": "View details",
       "add_to_cart_button": "Add to cart",
+      "buy_now_button": "Buy Now",
       "pre_order_button": "Pre-order",
       "sold_out_button": "Sold out",
       "unavailable_button": "Unavailable",
+      "specifications": "Specifications",
+      "request_callback": "Request a Callback",
       "choose_options": "Choose options",
       "added_to_cart": "Added to your cart!",
       "sold_out_badge": "Sold out",
@@ -156,6 +159,15 @@
       "pick_up_currently_unavailable": "Pickup currently unavailable",
       "pick_up_available_at": "Pickup available at {{ location_name }}",
       "pick_up_unavailable_at": "Pickup currently unavailable at {{ location_name }}"
+    },
+    "specifications": {
+      "purity": "Purity",
+      "net_weight": "Net Weight",
+      "gross_weight": "Gross Weight",
+      "stone_weight": "Stone Weight",
+      "diamond_weight": "Diamond Weight",
+      "brand": "Brand",
+      "sku": "SKU"
     }
   },
   "collection": {

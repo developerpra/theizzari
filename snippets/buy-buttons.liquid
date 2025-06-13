@@ -74,40 +74,101 @@ Supported variables
         </gift-card-recipient>
       {%- endif -%}
 
-      <buy-buttons class="buy-buttons {% if show_payment_button %}buy-buttons--has-dynamic{% endif %}" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
-        {%- if show_payment_button and atc_button_background == blank and atc_button_text_color == blank -%}
-          {%- assign atc_button_style = 'outline' -%}
-        {%- else -%}
-          {%- assign atc_button_style = 'solid' -%}
-        {%- endif -%}
+      <buy-buttons class="buy-buttons buy-buttons-wrapper {% if show_payment_button %}buy-buttons--has-dynamic{% endif %}" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
+        <!-- Buy Now Button -->
+        <button type="button" class="buy-now-button" {% if button_disabled %}disabled{% endif %} onclick="buyNow('{{ product.selected_or_first_available_variant.id }}')">
+          {{ 'product.general.buy_now_button' | t | default: 'Buy Now' }}
+        </button>
 
-        {%- render 'button', content: button_content, type: 'submit', disabled: button_disabled, style: atc_button_style, background: atc_button_background, text_color: atc_button_text_color, stretch: true -%}
-
-        {%- if show_payment_button -%}
-          {{- form | payment_button -}}
-
-          <style>
-            #shopify-section-{{ section.id }} .shopify-payment-button {
-              {%- if payment_button_background != blank and payment_button_background != 'rgba(0,0,0,0)' -%}
-                --button-background: {{ payment_button_background.rgb }};
-              {%- endif -%}
-
-              {%- if payment_button_text_color != blank and payment_button_text_color != 'rgba(0,0,0,0)' -%}
-                --button-text-color: {{ payment_button_text_color.rgb }};
-              {%- endif -%}
-
-              {%- unless product.selected_or_first_available_variant.available -%}
-                display: none;
-              {%- endunless -%}
-            }
-          </style>
-        {%- endif -%}
+        <!-- Add to Cart Button -->
+        <button type="submit" class="add-to-cart-button" {% if button_disabled %}disabled{% endif %}>
+          {{ button_content }}
+        </button>
       </buy-buttons>
     </div>
   {%- endform -%}
+
+  <script>
+    function buyNow(variantId) {
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: variantId,
+          quantity: 1
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        window.location.href = '/checkout';
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    }
+    
+    // Callback Modal
+    function openCallbackModal() {
+      alert('Request a callback feature will be implemented with a proper modal');
+      // You can implement a proper modal here
+    }
+    
+    // Compare functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const compareButton = document.querySelector('.compare-button');
+      if (compareButton) {
+        compareButton.addEventListener('click', function() {
+          const productId = this.dataset.productId;
+          const compareList = JSON.parse(localStorage.getItem('compareList') || '[]');
+          
+          if (!compareList.includes(productId)) {
+            compareList.push(productId);
+            localStorage.setItem('compareList', JSON.stringify(compareList));
+            this.classList.add('active');
+            alert('Product added to compare list');
+          } else {
+            alert('Product already in compare list');
+          }
+        });
+      }
+    });
+  </script>
 {%- else -%}
-  <buy-buttons class="buy-buttons" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
-    {%- assign button_content = 'product.general.add_to_cart_button' | t -%}
-    {%- render 'button', content: button_content, type: 'submit', background: variant_picker_block.settings.atc_button_background, text_color: variant_picker.settings.atc_button_text_color, stretch: true -%}
+  <buy-buttons class="buy-buttons buy-buttons-wrapper" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
+    <button type="button" class="buy-now-button">{{ 'product.general.buy_now_button' | t | default: 'Buy Now' }}</button>
+    <button type="submit" class="add-to-cart-button">{{ 'product.general.add_to_cart_button' | t }}</button>
   </buy-buttons>
 {%- endif -%}
+
+<!-- Wishlist Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const wishlistButton = document.querySelector('.wishlist-button');
+    if (wishlistButton) {
+      // Check if product is in wishlist
+      const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+      const productId = wishlistButton.dataset.productId;
+      
+      if (wishlist.includes(productId)) {
+        wishlistButton.classList.add('active');
+      }
+      
+      wishlistButton.addEventListener('click', function() {
+        const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+        const index = wishlist.indexOf(productId);
+        
+        if (index > -1) {
+          wishlist.splice(index, 1);
+          this.classList.remove('active');
+        } else {
+          wishlist.push(productId);
+          this.classList.add('active');
+        }
+        
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      });
+    }
+  });
+</script>
