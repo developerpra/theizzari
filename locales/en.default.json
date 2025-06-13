@@ -241,17 +241,14 @@
     "login": {
       "title": "Login",
       "subtitle": "Welcome back! Please login to your account",
-      "instructions": "Enter your email and password to login:",
       "email": "Email",
       "password": "Password",
-      "remember_me": "Remember Me",
-      "forgot": "Forgot Password?",
-      "submit": "Login",
-      "sign_in": "Login",
-      "forgot_password": "Forgot your password?",
-      "no_account": "New here?",
-      "sign_up": "Sign Up",
-      "or": "Login with"
+      "remember_me": "Remember me",
+      "forgot_password": "Forgot Password?",
+      "sign_in": "Sign In",
+      "or": "or",
+      "new_customer": "New to our store?",
+      "create_account": "Create an account"
     },
     "recover_password": {
       "title": "Recover password",
@@ -263,23 +260,18 @@
       "success_message": "An e-mail has been sent to your address with instructions to reset your password."
     },
     "register": {
-      "title": "Sign up",
-      "instructions": "Please fill in the information below:",
-      "name": "Name",
-      "first_name": "First name",
-      "last_name": "Last name",
+      "title": "Sign Up",
+      "subtitle": "Create your account to get started",
+      "name": "Full Name",
       "email": "Email",
       "password": "Password",
-      "confirm": "Confirm Password",
-      "agree": "I agree to the processing of Personal data",
-      "accepts_marketing": "Register to our newsletter",
-      "submit": "Create account",
-      "sign_up": "Sign up",
-      "already": "Already have an account?",
+      "confirm_password": "Confirm Password",
+      "agree_terms": "I agree to the Terms of Service and Privacy Policy",
+      "sign_up": "Create Account",
+      "submit": "Create Account",
+      "or": "or",
       "already_have_account": "Already have an account?",
-      "login": "Login",
-      "sign_in": "Log in",
-      "or": "Sign up with"
+      "sign_in": "Sign in"
     },
     "activate_account": {
       "title": "Activate account",
@@ -481,7 +473,7 @@
       "no_slider": "No Slider"
     },
     "Newsletter": {
-      "err_msg_default": "Can’t send email. Please try again later.",
+      "err_msg_default": "Can't send email. Please try again later.",
       "success_msg_default": "Thanks for contacting us. We'll get back to you as soon as possible."
     },
     "IconListV2": {
