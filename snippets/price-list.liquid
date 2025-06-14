@@ -179,3 +179,9 @@ Supported variables
     {%- endif -%}
   {%- endunless -%}
 </price-list>
+
+{%- if context == 'product' and variant != blank and variant.sku != blank -%}
+  <div class="product-model-no">
+    Model No: {{ variant.sku }}
+  </div>
+{%- endif -%}

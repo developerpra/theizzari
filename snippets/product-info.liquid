@@ -17,207 +17,7 @@ Supported variables
 * update_url: if set to true, the URL on the page is updated when the variant changes (for best experience, this should
               be only used on the product page for the main product
 {%- endcomment -%}
-<style>
-  <style>
-    .custom-container{ padding: 30px}
-.outer{height: 70px; overflow: hidden;}
- .readmore{height: auto !important;}
-  .productdescription{
-    margin:20px auto;
-  }
-  a.query__btn {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font-size: 16px;
-    font-weight: 400;
-    font-family:Fancy_Cut;
-        margin-bottom: 15px;
 
-  }
-  
-  /* Title and Wishlist */
-  .product-title-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-  
-  .product-title {
-    margin: 0;
-  }
-  
-  /* Wishlist and Action Buttons */
-  .product-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 20px 0;
-  }
-  
-  .wishlist-button,
-  .action-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .wishlist-button:hover,
-  .action-button:hover {
-    border-color: #2d5a3d;
-    background: #f5f5f5;
-  }
-  
-  .wishlist-button.active svg {
-    fill: #e74c3c;
-  }
-  
-  .callback-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background: white;
-    color: #2d5a3d;
-    border: 1px solid #2d5a3d;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .callback-button:hover {
-    background: #2d5a3d;
-    color: white;
-  }
-  
-  .share-buttons {
-    display: flex;
-    gap: 12px;
-  }
-  
-  .share-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid #e0e0e0;
-    border-radius: 50%;
-    background: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .share-button:hover {
-    border-color: #2d5a3d;
-    background: #f5f5f5;
-  }
-  
-  /* Product Specifications */
-  .product-specifications {
-    margin: 30px 0;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-  }
-  
-  .product-specifications h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: #1a1a1a;
-  }
-  
-  .specification-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-  
-  .specification-item {
-    display: flex;
-    padding: 8px 0;
-    border-bottom: 1px solid #e0e0e0;
-  }
-  
-  .specification-label {
-    font-weight: 500;
-    color: #666;
-    min-width: 120px;
-  }
-  
-  .specification-value {
-    color: #1a1a1a;
-  }
-  
-  /* Buy Buttons Alignment */
-  .buy-buttons-wrapper {
-    display: flex;
-    gap: 12px;
-    margin: 24px 0;
-  }
-  
-  .buy-now-button {
-    flex: 1;
-    padding: 14px 24px;
-    background: #2d5a3d;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .buy-now-button:hover {
-    background: #234731;
-  }
-  
-  .add-to-cart-button {
-    flex: 1;
-    padding: 14px 24px;
-    background: white;
-    color: #2d5a3d;
-    border: 2px solid #2d5a3d;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .add-to-cart-button:hover {
-    background: #2d5a3d;
-    color: white;
-  }
-  
-  @media (max-width: 768px) {
-    .specification-list {
-      grid-template-columns: 1fr;
-    }
-    
-    .buy-buttons-wrapper {
-      flex-direction: column;
-    }
-    
-    .product-title-wrapper {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-</style>
 
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
@@ -337,7 +137,7 @@ Supported variables
                 </h1>
                 
                 <button class="wishlist-button" data-product-id="{{ product.id }}" aria-label="Add to wishlist">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                   </svg>
                 </button>
@@ -369,22 +169,15 @@ Supported variables
             {%- endif -%}
 
           {%- when 'price' -%}
-            <div class="v-stack">
-              {%- render 'price-list', product: product, variant: product.selected_or_first_available_variant, context: 'product', form_id: product_form_id -%}
-
-              {%- if block.settings.show_taxes_notice -%}
-                <p class="text-sm text-subdued">
-                  {%- if cart.taxes_included -%}
-                    {{ 'product.general.taxes_included' | t }}
-                  {%- else -%}
-                    {{ 'product.general.taxes_excluded' | t }}
-                  {%- endif -%}
-
-                  {%- if shop.shipping_policy.body != blank -%}
-                    {{ 'product.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                  {%- endif -%}
-                </p>
-              {%- endif -%}
+            <div class="price-qty-row flex justify-between">
+              <div style="flex:1; min-width:0;">
+                {%- render 'price-list', product: product, variant: product.selected_or_first_available_variant, context: 'product', form_id: product_form_id -%}
+              </div>
+              <div style="margin-top:2px">
+                {%- if product.available -%}
+                  {% render 'quantity-selector', variant: product.selected_or_first_available_variant, form: product_form_id %}
+                {%- endif -%}
+              </div>
             </div>
             
             <!-- Action Buttons after Price -->
@@ -559,11 +352,6 @@ Supported variables
               </div>
             {%- endif -%}
 
-          {%- when 'quantity_selector' -%}
-            {%- if product.available -%}
-              {% render 'quantity-selector', variant: product.selected_or_first_available_variant, form: product_form_id %}
-            {%- endif -%}
-
           {%- when 'inventory' -%}
             {%- render 'inventory',
                 product: product,
@@ -632,6 +420,47 @@ Supported variables
             {%- endif -%}
 
           {%- when 'buy_buttons' -%}
+
+            {%- if product.metafields.details -%}
+              <h4>SPECIFICATIONS</h4>
+              <hr />
+              <div class="product-metafields">
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  {%- if product.metafields.details.purity.value != blank -%}
+                    <li style="padding: 8px 0;  display: flex; justify-content: space-between;">
+                      <span>PURITY</span>
+                      <span>{{ product.metafields.details.purity.value }}</span>
+                    </li>
+                  {%- endif -%}
+                  {%- if product.metafields.details.nt_wt_gram.value != blank -%}
+                    <li style="padding: 8px 0;  display: flex; justify-content: space-between;">
+                      <span >NET WT</span>
+                      <span >{{ product.metafields.details.nt_wt_gram.value }}</span>
+                    </li>
+                  {%- endif -%}
+                  {%- if product.metafields.details.g_wt_grm.value != blank -%}
+                    <li style="padding: 8px 0;  display: flex; justify-content: space-between;">
+                      <span >GROSS WT</span>
+                      <span >{{ product.metafields.details.g_wt_grm.value }}</span>
+                    </li>
+                  {%- endif -%}
+                  {%- if product.metafields.details.stn_wt.value != blank -%}
+                    <li style="padding: 8px 0;  display: flex; justify-content: space-between;">
+                      <span >STN. WT</span>
+                      <span >{{ product.metafields.details.stn_wt.value }}</span>
+                    </li>
+                  {%- endif -%}
+                  {%- if product.metafields.details.dia_wt.value != blank -%}
+                    <li style="padding: 8px 0; display: flex; justify-content: space-between;">
+                      <span >DIA WT</span>
+                      <span >{{ product.metafields.details.dia_wt.value }}</span>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          
+            
             {%- render 'buy-buttons',
                 product: product,
                 form_id: product_form_id,
