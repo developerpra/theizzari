@@ -4,15 +4,31 @@
   {% endif %}
 
   <div class="testimonial-wrapper">
-    <button class="nav-button nav-button-left" onclick="scrollTestimonials('left')" aria-label="Previous testimonials">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <button
+      class="nav-button nav-button-left"
+      onclick="scrollTestimonials('left')"
+      aria-label="Previous testimonials">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M15 18L9 12L15 6"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
       </svg>
     </button>
-    
+
     <div class="testimonial-container" id="testimonial-container-{{ section.id }}">
       {% for block in section.blocks %}
-        <div class="testimonial-card" style="background-color: {{ block.settings.background_color }}; color: {{ block.settings.text_color }};" {{ block.shopify_attributes }}>
+        <div
+          class="testimonial-card"
+          style="background-color: {{ block.settings.background_color }}; color: {{ block.settings.text_color }};"
+          {{ block.shopify_attributes }}>
           <div class="testimonial-quote-icon">"</div>
           {% if block.settings.quote != blank %}
             <p class="testimonial-quote-text">{{ block.settings.quote }}</p>
@@ -23,180 +39,196 @@
         </div>
       {% endfor %}
     </div>
-    
-    <button class="nav-button nav-button-right" onclick="scrollTestimonials('right')" aria-label="Next testimonials">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <button
+      class="nav-button nav-button-right"
+      onclick="scrollTestimonials('right')"
+      aria-label="Next testimonials">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M9 18L15 12L9 6"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round" />
       </svg>
     </button>
   </div>
 </div>
 
 <style>
-.testimonial-carousel-section {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #222;
-}
+  .testimonial-carousel-section {
+    font-family: "Helvetica Neue"
+    , Helvetica
+    , Arial
+    , sans-serif;
+    color: #222;
+  }
 
-.section-heading {
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 48px;
-  color: #111;
-}
+  .section-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 48px;
+    color: #111;
+  }
 
-.testimonial-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.testimonial-container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 24px;
-  overflow-x: auto;
-  padding-bottom: 12px;
-  scroll-padding-left: 20px;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: #ccc transparent;
-  scroll-behavior: smooth;
-  flex: 1;
-}
-
-.testimonial-container::-webkit-scrollbar {
-  height: 8px;
-}
-
-.testimonial-container::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 4px;
-}
-
-.testimonial-card {
-  border-radius: 16px;
-  padding: 30px 25px;
-  flex: 0 0 280px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  text-align: left;
-  transition: box-shadow 0.3s ease;
-  min-height: 240px;
-}
-
-.testimonial-card:hover {
-  box-shadow: 0 12px 25px rgb(0 0 0 / 0.15);
-}
-
-.testimonial-quote-icon {
-  font-size: 3rem;
-  font-weight: bold;
-  opacity: 0.2;
-  margin-bottom: 1rem;
-  user-select: none;
-}
-
-.testimonial-quote-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: inherit;
-}
-
-.testimonial-author {
-  margin-top: 1rem;
-  font-weight: 500;
-  text-align: right;
-  color: inherit;
-}
-
-.nav-button {
-  background: #fff;
-  border: 2px solid #e1e1e1;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: #666;
-  flex-shrink: 0;
-  z-index: 2;
-}
-
-.nav-button:hover {
-  background: #f8f8f8;
-  border-color: #ccc;
-  color: #333;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.nav-button:active {
-  transform: scale(0.95);
-}
-
-.nav-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  background: #f5f5f5;
-}
-
-.nav-button:disabled:hover {
-  background: #f5f5f5;
-  border-color: #e1e1e1;
-  color: #666;
-  box-shadow: none;
-  transform: none;
-}
-
-@media (max-width: 768px) {
   .testimonial-wrapper {
-    gap: 8px;
-  }
-  
-  .nav-button {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .nav-button svg {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .testimonial-card {
-    flex: 0 0 260px;
-  }
-}
-
-@media (max-width: 480px) {
-  .testimonial-wrapper {
-    flex-direction: column;
+    position: relative;
+    display: flex;
+    align-items: center;
     gap: 16px;
   }
-  
+
   .testimonial-container {
-    order: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-padding-left: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+    scroll-behavior: smooth;
+    flex: 1;
   }
-  
-  .nav-button-left {
-    order: 0;
+
+  .testimonial-container::-webkit-scrollbar {
+    height: 8px;
   }
-  
-  .nav-button-right {
-    order: 2;
+
+  .testimonial-container::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
   }
-}
+
+  .testimonial-card {
+    border-radius: 16px;
+    padding: 30px 25px;
+    flex: 0 0 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    transition: box-shadow 0.3s ease;
+    min-height: 240px;
+  }
+
+  .testimonial-card:hover {
+    box-shadow: 0 12px 25px rgb(0 0 0 / 0.15);
+  }
+
+  .testimonial-quote-icon {
+    font-size: 3rem;
+    font-weight: bold;
+    opacity: 0.2;
+    margin-bottom: 1rem;
+    user-select: none;
+  }
+
+  .testimonial-quote-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: inherit;
+  }
+
+  .testimonial-author {
+    margin-top: 1rem;
+    font-weight: 500;
+    text-align: right;
+    color: inherit;
+  }
+
+  .nav-button {
+    background: #fff;
+    border: 2px solid #e1e1e1;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #666;
+    flex-shrink: 0;
+    z-index: 2;
+  }
+
+  .nav-button:hover {
+    background: #f8f8f8;
+    border-color: #ccc;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-button:active {
+    transform: scale(0.95);
+  }
+
+  .nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f5f5f5;
+  }
+
+  .nav-button:disabled:hover {
+    background: #f5f5f5;
+    border-color: #e1e1e1;
+    color: #666;
+    box-shadow: none;
+    transform: none;
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-wrapper {
+      gap: 8px;
+    }
+
+    .nav-button {
+      width: 40px;
+      height: 40px;
+    }
+
+    .nav-button svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .testimonial-card {
+      flex: 0 0 260px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .testimonial-wrapper {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .testimonial-container {
+      order: 1;
+    }
+
+    .nav-button-left {
+      order: 0;
+    }
+
+    .nav-button-right {
+      order: 2;
+    }
+  }
 </style>
 
 <script>
-function scrollTestimonials(direction) {
+  function scrollTestimonials(direction) {
   const container = document.getElementById('testimonial-container-{{ section.id }}');
   const scrollAmount = 304; // card width (280px) + gap (24px)
   
@@ -216,9 +248,9 @@ function scrollTestimonials(direction) {
   setTimeout(() => {
     updateButtonStates();
   }, 300);
-}
+  }
 
-function updateButtonStates() {
+  function updateButtonStates() {
   const container = document.getElementById('testimonial-container-{{ section.id }}');
   const leftButton = document.querySelector('.nav-button-left');
   const rightButton = document.querySelector('.nav-button-right');
@@ -230,96 +262,91 @@ function updateButtonStates() {
     leftButton.disabled = isAtStart;
     rightButton.disabled = isAtEnd;
   }
-}
+  }
 
-// Initialize button states and add scroll listener
-document.addEventListener('DOMContentLoaded', function() {
+  // Initialize button states and add scroll listener
+  document.addEventListener('DOMContentLoaded', function() {
   const container = document.getElementById('testimonial-container-{{ section.id }}');
   if (container) {
     updateButtonStates();
     container.addEventListener('scroll', updateButtonStates);
   }
-});
+  });
 </script>
 
 {% schema %}
-{
-  "name": "Reviews",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Section Heading",
-      "default": "What Our Customers Say"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "testimonial",
-      "name": "Testimonial",
-      "settings": [
-        {
-          "type": "textarea",
-          "id": "quote",
-          "label": "Testimonial Quote",
-          "default": "Absolutely love the jewelry! It's so elegant and versatile."
-        },
-        {
-          "type": "text",
-          "id": "author",
-          "label": "Author Name",
-          "default": "Priya M."
-        },
-        {
-          "type": "color",
-          "id": "background_color",
-          "label": "Card Background Color",
-          "default": "#f9f9f9"
-        },
-        {
-          "type": "color",
-          "id": "text_color",
-          "label": "Text Color",
-          "default": "#1c1c1c"
-        }
-      ]
-    }
-  ],
-  "max_blocks": 10,
-  "presets": [
-    {
-      "name": "Reviews",
-      "category": "Custom",
-      "blocks": [
-        {
-          "type": "testimonial",
-          "settings": {
-            "quote": "These pieces make me feel confident every day!",
-            "author": "Ananya V.",
-            "background_color": "#fff8f0",
-            "text_color": "#222"
+  {
+    "name": "Reviews",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Section Heading",
+        "default": "What Our Customers Say"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "testimonial",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "quote",
+            "label": "Testimonial Quote",
+            "default": "Absolutely love the jewelry! It's so elegant and versatile."
+          }, {
+            "type": "text",
+            "id": "author",
+            "label": "Author Name",
+            "default": "Priya M."
+          }, {
+            "type": "color",
+            "id": "background_color",
+            "label": "Card Background Color",
+            "default": "#f9f9f9"
+          }, {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#1c1c1c"
           }
-        },
-        {
-          "type": "testimonial",
-          "settings": {
-            "quote": "Minimal yet luxurious. Perfect for any occasion.",
-            "author": "Ishita R.",
-            "background_color": "#f4f6f8",
-            "text_color": "#333"
+        ]
+      }
+    ],
+    "max_blocks": 10,
+    "presets": [
+      {
+        "name": "Reviews",
+        "category": "Custom",
+        "blocks": [
+          {
+            "type": "testimonial",
+            "settings": {
+              "quote": "These pieces make me feel confident every day!",
+              "author": "Ananya V.",
+              "background_color": "#fff8f0",
+              "text_color": "#222"
+            }
+          }, {
+            "type": "testimonial",
+            "settings": {
+              "quote": "Minimal yet luxurious. Perfect for any occasion.",
+              "author": "Ishita R.",
+              "background_color": "#f4f6f8",
+              "text_color": "#333"
+            }
+          }, {
+            "type": "testimonial",
+            "settings": {
+              "quote": "The craftsmanship is incredible. Highly recommend!",
+              "author": "Simran K.",
+              "background_color": "#f0f0f0",
+              "text_color": "#000"
+            }
           }
-        },
-        {
-          "type": "testimonial",
-          "settings": {
-            "quote": "The craftsmanship is incredible. Highly recommend!",
-            "author": "Simran K.",
-            "background_color": "#f0f0f0",
-            "text_color": "#000"
-          }
-        }
-      ]
-    }
-  ]
-}
+        ]
+      }
+    ]
+  }
 {% endschema %}

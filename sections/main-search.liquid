@@ -36,7 +36,7 @@
       @media screen and (min-width: 1000px) {
         #shopify-section-{{ section.id }} .collection {
           {%- if show_filters -%}
-            --collection-grid-template: var(--collection-sidebar-width, 0) minmax(0,1fr);
+            --collection-grid-template: var(--collection-sidebar-width, 0) minmax(0, 1fr);
           {%- endif -%}
         }
       }
@@ -44,6 +44,77 @@
       @media screen and (min-width: 1400px) {
         #shopify-section-{{ section.id }} {
           --product-list-items-per-row: 4;
+        }
+      }
+
+      /* Load More Button Styles */
+      .load-more-container {
+        text-align: center;
+        margin-top: 3rem;
+        padding: 2rem 0;
+      }
+
+      .load-more-button {
+        min-width: 200px;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 500;
+        background-color: #264B3B;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .load-more-button:hover:not(:disabled) {
+        background-color: #1e3a2d;
+        transform: translateY(-2px);
+      }
+
+      .load-more-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .load-more-info {
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        color: #666;
+      }
+
+      .spinner {
+        width: 20px;
+        height: 20px;
+        animation: rotate 2s linear infinite;
+        vertical-align: middle;
+      }
+
+      .spinner-path {
+        stroke: currentColor;
+        stroke-linecap: round;
+        animation: dash 1.5s ease-in-out infinite;
+      }
+
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes dash {
+        0% {
+          stroke-dasharray: 1, 150;
+          stroke-dashoffset: 0;
+        }
+        50% {
+          stroke-dasharray: 90, 150;
+          stroke-dashoffset: -35;
+        }
+        100% {
+          stroke-dasharray: 90, 150;
+          stroke-dashoffset: -124;
         }
       }
     </style>
@@ -72,7 +143,10 @@
 
                   {%- if search.types.size > 1 and unique_types.size > 1 -%}
                     <div part="tab-list-scrollable" class="scrollable">
-                      <slot role="tablist" part="tab-list" name="title"></slot>
+                      <slot
+                        role="tablist"
+                        part="tab-list"
+                        name="title"></slot>
                     </div>
                   {%- endif -%}
 
@@ -84,17 +158,29 @@
                 {%- assign page_results = search.results | where: 'object_type', 'page' -%}
 
                 {%- if product_results.size > 0 or active_values_count > 0 -%}
-                  <button type="button" class="h6" role="tab" slot="title">{{ 'search.general.products' | t }}</button>
+                  <button
+                    type="button"
+                    class="h6"
+                    role="tab"
+                    slot="title">{{ 'search.general.products' | t }}</button>
 
-                  <div class="main-search__resource-item" role="tabpanel" slot="content" {% cycle 'result_tab': '', 'hidden', 'hidden', 'hidden' %}>
-                    <div class="v-stack gap-6 sm:gap-12">
+                  <div
+                    class="main-search__resource-item"
+                    role="tabpanel"
+                    slot="content"
+                    {% cycle 'result_tab': '', 'hidden', 'hidden', 'hidden' %}>
+                    <div class="v-stack gap-6">
                       {%- if show_filters or section.settings.show_sort_by -%}
                         <height-observer variable="collection-toolbar" class="collection-toolbar full-bleed">
                           <div class="collection-toolbar__button-list">
                             {%- if show_filters -%}
                               <div class="collection-toolbar__button-container md:hidden">
-                                <button type="button" aria-controls="facets-drawer" class="collection-toolbar__button heading text-xxs w-full">
-                                  {{- 'collection.faceting.filter_button' | t }} {% if active_values_count > 0 %}({{ active_values_count }}){% endif -%}
+                                <button
+                                  type="button"
+                                  aria-controls="facets-drawer"
+                                  class="collection-toolbar__button heading text-xxs w-full">
+                                  {{- 'collection.faceting.filter_button' | t }}
+                                  {% if active_values_count > 0 %}({{ active_values_count }}){% endif -%}
                                 </button>
                               </div>
                             {%- endif -%}
@@ -103,20 +189,34 @@
                               {%- assign selected_sort_by_value = search.sort_by | default: search.default_sort_by -%}
 
                               <div class="collection-toolbar__button-container">
-                                <button type="button" aria-controls="sort-by-popover" class="collection-toolbar__button heading text-xxs w-full">
+                                <button
+                                  type="button"
+                                  aria-controls="sort-by-popover"
+                                  class="collection-toolbar__button heading text-xxs w-full">
                                   <span class="text-with-icon justify-center">
                                     {{- 'collection.faceting.sort_by' | t -}}
                                     {%- render 'icon' with 'chevron-down' -%}
                                   </span>
                                 </button>
 
-                                <facets-sort-popover id="sort-by-popover" section-id="{{ section.id }}" class="popover popover--bottom-end color-scheme color-scheme--dialog" close-on-listbox-select>
+                                <facets-sort-popover
+                                  id="sort-by-popover"
+                                  section-id="{{ section.id }}"
+                                  class="popover popover--bottom-end color-scheme color-scheme--dialog"
+                                  close-on-listbox-select>
                                   <p class="h4" slot="header">{{ 'collection.faceting.sort_by' | t }}</p>
 
                                   <x-listbox class="popover__value-list">
                                     {%- for sort_option in search.sort_options -%}
                                       {%- if sort_option.name != blank -%}
-                                        <button type="button" class="popover-listbox__option group" role="option" value="{{ sort_option.value }}" {% if sort_option.value == selected_sort_by_value %}aria-selected="true"{% endif %}>
+                                        <button
+                                          type="button"
+                                          class="popover-listbox__option group"
+                                          role="option"
+                                          value="{{ sort_option.value }}"
+                                          {% if sort_option.value == selected_sort_by_value %}
+                                          aria-selected="true"
+                                          {% endif %}>
                                           <span class="reversed-link">{{ sort_option.name }}</span>
                                         </button>
                                       {%- endif -%}
@@ -134,16 +234,30 @@
                           <facets-drawer id="facets-drawer" class="facets-drawer drawer drawer--sm color-scheme color-scheme--dialog md:hidden">
                             <p class="h4" slot="header">{{ 'collection.faceting.filters' | t }}</p>
 
-                            {%- render 'facets', results: search, show_filters: section.settings.show_filters, open_filters_by_default: section.settings.open_filters_by_default, update_on_change: false, context: 'drawer' -%}
+                            {%- render 'facets'
+                              , results: search
+                              , show_filters: section.settings.show_filters
+                              , open_filters_by_default: section.settings.open_filters_by_default
+                              , update_on_change: false
+                              , context: 'drawer' -%}
 
                             <div slot="footer">
                               {%- assign button_content = 'collection.faceting.apply_filters' | t -%}
-                              {%- render 'button', type: 'button', content: button_content, stretch: true, is: 'dialog-close-button' -%}
+                              {%- render 'button'
+                                , type: 'button'
+                                , content: button_content
+                                , stretch: true
+                                , is: 'dialog-close-button' -%}
                             </div>
                           </facets-drawer>
 
                           <safe-sticky class="facets-sidebar md-max:hidden">
-                            {%- render 'facets', results: search, show_filters: section.settings.show_filters, open_filters_by_default: section.settings.open_filters_by_default, update_on_change: true, context: 'sidebar' -%}
+                            {%- render 'facets'
+                              , results: search
+                              , show_filters: section.settings.show_filters
+                              , open_filters_by_default: section.settings.open_filters_by_default
+                              , update_on_change: true
+                              , context: 'sidebar' -%}
                           </safe-sticky>
                         {%- endif -%}
 
@@ -154,21 +268,51 @@
 
                               {%- assign button_content = 'collection.faceting.clear_filters' | t -%}
                               {%- capture clean_search_url -%}{{ routes.search_url }}?q={{ search.terms }}{%- endcapture -%}
-
-                              {%- render 'button', href: clean_search_url, is: 'facet-link', content: button_content -%}
+                              {%- render 'button'
+                                , href: clean_search_url
+                                , is: 'facet-link'
+                                , content: button_content -%}
                             </div>
                           </div>
                         {%- else -%}
                           <div class="collection__main">
-                            {%- render 'active-facets', results: search -%}
+                            {%- render 'active-facets'
+                              , results: search -%}
 
                             <product-list id="product-list-{{ section.id }}" class="product-list">
                               {%- for product in product_results -%}
-                                {%- render 'product-card', product: product, stacked: true, reveal: settings.stagger_products_apparition -%}
+                                {%- render 'product-card'
+                                  , product: product
+                                  , stacked: true
+                                  , reveal: settings.stagger_products_apparition -%}
                               {%- endfor -%}
                             </product-list>
 
-                            {%- render 'pagination', paginate: paginate, facet: true -%}
+                            {%- comment -%} Load More Button {%- endcomment -%}
+                            {%- if paginate.pages > 1 -%}
+                              <div class="load-more-container" data-load-more>
+                                <button 
+                                  type="button" 
+                                  class="load-more-button button button--primary"
+                                  data-load-more-button
+                                  data-next-url="{{ paginate.next.url }}"
+                                  {% unless paginate.next %}disabled{% endunless %}
+                                >
+                                  <span class="load-more-text">{{ 'collection.load_more.button_label' | t | default: 'Load More' }}</span>
+                                  <span class="load-more-spinner" style="display: none;">
+                                    <svg class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                      <circle class="spinner-path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                    </svg>
+                                  </span>
+                                </button>
+                                
+                                <div class="load-more-info">
+                                  <span class="products-shown">
+                                    {{ 'collection.load_more.showing' | t: count: paginate.current_offset | plus: paginate.items, total: paginate.items_count | default: 'Showing %{count} of %{total} products' }}
+                                  </span>
+                                </div>
+                              </div>
+                            {%- endif -%}
                           </div>
                         {%- endif -%}
                       </div>
@@ -177,27 +321,54 @@
                 {%- endif -%}
 
                 {%- if article_results.size > 0 -%}
-                  <button type="button" class="h6" role="tab" slot="title">{{ 'search.general.posts' | t }}</button>
+                  <button
+                    type="button"
+                    class="h6"
+                    role="tab"
+                    slot="title">{{ 'search.general.posts' | t }}</button>
 
-                  <div class="main-search__resource-item" role="tabpanel" slot="content" {% cycle 'result_tab': '', 'hidden', 'hidden', 'hidden' %}>
-                    <blog-posts class="blog-post-list justify-center" {% if settings.stagger_blog_posts_apparition %}reveal-on-scroll="true"{% endif %}>
+                  <div
+                    class="main-search__resource-item"
+                    role="tabpanel"
+                    slot="content"
+                    {% cycle 'result_tab': '', 'hidden', 'hidden', 'hidden' %}>
+                    <blog-posts
+                      class="blog-post-list justify-center"
+                      {% if settings.stagger_blog_posts_apparition %}
+                      reveal-on-scroll="true"
+                      {% endif %}>
                       {%- capture sizes -%}(max-width: 699px) 95vw, (max-width: 1149px) calc(100vw / 2), calc((80rem - (5rem * (3 - 1) / 3){%- endcapture -%}
-
                       {%- for article in article_results -%}
-                        {%- render 'blog-post-card', article: article, show_category: section.settings.show_category, show_excerpt: section.settings.show_excerpt, show_read_more: section.settings.show_read_more, sizes: sizes -%}
+                        {%- render 'blog-post-card'
+                          , article: article
+                          , show_category: section.settings.show_category
+                          , show_excerpt: section.settings.show_excerpt
+                          , show_read_more: section.settings.show_read_more
+                          , sizes: sizes -%}
                       {%- endfor -%}
                     </blog-posts>
                   </div>
                 {%- endif -%}
 
                 {%- if page_results.size > 0 -%}
-                  <button type="button" class="h6" role="tab" slot="title">{{ 'search.general.pages' | t }}</button>
+                  <button
+                    type="button"
+                    class="h6"
+                    role="tab"
+                    slot="title">{{ 'search.general.pages' | t }}</button>
 
-                  <div class="main-search__resource-item" role="tabpanel" slot="content" {% cycle 'result_tab': '', 'hidden', 'hidden', 'hidden' %}>
+                  <div
+                    class="main-search__resource-item"
+                    role="tabpanel"
+                    slot="content"
+                    {% cycle 'result_tab': '', 'hidden', 'hidden', 'hidden' %}>
                     <ul class="main-search__linklist v-stack gap-3 unstyled-list" role="list">
                       {%- for page in page_results -%}
                         <li>
-                          <a href="{{ page.url }}" class="link-reverse" data-instant>{{ page.title }}</a>
+                          <a
+                            href="{{ page.url }}"
+                            class="link-reverse"
+                            data-instant>{{ page.title }}</a>
                         </li>
                       {%- endfor -%}
                     </ul>
@@ -219,11 +390,20 @@
               <p>{{ 'search.general.no_results' | t }}</p>
             </div>
 
-            <form class="main-search-form" action="{{ routes.search_url }}" method="get" role="search">
+            <form
+              class="main-search-form"
+              action="{{ routes.search_url }}"
+              method="get"
+              role="search">
               {%- assign placeholder = 'search.general.search_placeholder' | t -%}
 
               <div class="relative">
-                {%- render 'input', type: 'text', name: 'q', label: placeholder, autocomplete: 'off', autocorrect: 'off' -%}
+                {%- render 'input'
+                  , type: 'text'
+                  , name: 'q'
+                  , label: placeholder
+                  , autocomplete: 'off'
+                  , autocorrect: 'off' -%}
                 <button type="submit" class="input-suffix link-faded">{% render 'icon' with 'search' %}</button>
               </div>
             </form>
@@ -241,11 +421,20 @@
             <h1 class="h4">{{ 'search.general.title' | t }}</h1>
           </div>
 
-          <form class="main-search-form" action="{{ routes.search_url }}" method="get" role="search">
+          <form
+            class="main-search-form"
+            action="{{ routes.search_url }}"
+            method="get"
+            role="search">
             {%- assign placeholder = 'search.general.search_placeholder' | t -%}
 
             <div class="relative">
-              {%- render 'input', type: 'text', name: 'q', label: placeholder, autocomplete: 'off', autocorrect: 'off' -%}
+              {%- render 'input'
+                , type: 'text'
+                , name: 'q'
+                , label: placeholder
+                , autocomplete: 'off'
+                , autocorrect: 'off' -%}
               <button type="submit" class="input-suffix link-faded">{% render 'icon' with 'search' %}</button>
             </div>
           </form>
@@ -255,113 +444,170 @@
   </div>
 {%- endif -%}
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const loadMoreContainer = document.querySelector('[data-load-more]');
+    const loadMoreButton = document.querySelector('[data-load-more-button]');
+    const productList = document.getElementById('product-list-{{ section.id }}');
+    
+    if (!loadMoreButton || !productList) return;
+    
+    loadMoreButton.addEventListener('click', async function() {
+      const nextUrl = this.dataset.nextUrl;
+      if (!nextUrl || this.disabled) return;
+      
+      // Show loading state
+      this.disabled = true;
+      this.querySelector('.load-more-text').style.display = 'none';
+      this.querySelector('.load-more-spinner').style.display = 'inline-block';
+      
+      try {
+        const response = await fetch(nextUrl);
+        const html = await response.text();
+        
+        // Parse the response
+        const parser = new DOMParser();
+        const newDocument = parser.parseFromString(html, 'text/html');
+        
+        // Get new products
+        const newProducts = newDocument.querySelectorAll('#product-list-{{ section.id }} > *');
+        
+        // Append new products
+        newProducts.forEach(product => {
+          productList.appendChild(product.cloneNode(true));
+        });
+        
+        // Update load more button
+        const newLoadMoreContainer = newDocument.querySelector('[data-load-more]');
+        if (newLoadMoreContainer) {
+          const newButton = newLoadMoreContainer.querySelector('[data-load-more-button]');
+          const newInfo = newLoadMoreContainer.querySelector('.load-more-info');
+          
+          if (newButton && newButton.dataset.nextUrl) {
+            this.dataset.nextUrl = newButton.dataset.nextUrl;
+            this.disabled = false;
+          } else {
+            // No more products
+            this.style.display = 'none';
+          }
+          
+          // Update product count
+          if (newInfo) {
+            loadMoreContainer.querySelector('.load-more-info').innerHTML = newInfo.innerHTML;
+          }
+        } else {
+          // No more products
+          this.style.display = 'none';
+        }
+        
+        // Trigger any necessary events for newly loaded products
+        window.dispatchEvent(new CustomEvent('products:loaded'));
+        
+      } catch (error) {
+        console.error('Error loading more products:', error);
+        this.disabled = false;
+      } finally {
+        // Hide loading state
+        this.querySelector('.load-more-text').style.display = 'inline';
+        this.querySelector('.load-more-spinner').style.display = 'none';
+      }
+    });
+  });
+</script>
+
 {% schema %}
-{
-  "name": "t:sections.main_search.name",
-  "class": "shopify-section--main-search",
-  "tag": "section",
-  "settings": [
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:global.colors.scheme",
-      "default": "scheme-1"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.main_search.product_results_category"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_sort_by",
-      "label": "t:global.faceting.show_sort_by",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "products_per_page",
-      "label": "t:global.faceting.products_per_page",
-      "min": 8,
-      "max": 50,
-      "step": 1,
-      "default": 24
-    },
-    {
-      "type": "header",
-      "content": "t:global.product_list.spacing_category",
-      "info": "t:global.product_list.spacing_category_info"
-    },
-    {
-      "type": "range",
-      "min": 0.2,
-      "max": 2,
-      "step": 0.1,
-      "id": "horizontal_spacing_factor",
-      "label": "t:global.product_list.horizontal_spacing_factor",
-      "default": 1
-    },
-    {
-      "type": "range",
-      "min": 0.2,
-      "max": 2,
-      "step": 0.1,
-      "id": "vertical_spacing_factor",
-      "label": "t:global.product_list.vertical_spacing_factor",
-      "default": 1
-    },
-    {
-      "type": "header",
-      "content": "t:sections.main_search.product_filters_category"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_filters",
-      "label": "t:global.faceting.show_filters",
-      "info": "t:global.faceting.show_filters_info",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_filter_group_name",
-      "label": "t:global.faceting.show_group_name",
-      "info": "t:global.faceting.show_group_name_info",
-      "default": false
-    },
-    {
-      "type": "checkbox",
-      "id": "show_filter_values_count",
-      "label": "t:global.faceting.show_filter_values_count",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "open_filters_by_default",
-      "label": "t:global.faceting.open_filters_by_default",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "t:sections.main_search.blog_post_results_category"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_category",
-      "label": "t:global.blog.show_category",
-      "info": "t:global.blog.show_category_info",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_excerpt",
-      "label": "t:global.blog.show_excerpt",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_read_more",
-      "label": "t:global.blog.show_read_more",
-      "default": true
-    }
-  ]
-}
+  {
+    "name": "t:sections.main_search.name",
+    "class": "shopify-section--main-search",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:global.colors.scheme",
+        "default": "scheme-1"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.main_search.product_results_category"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sort_by",
+        "label": "t:global.faceting.show_sort_by",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "products_per_page",
+        "label": "Products to load",
+        "info": "Number of products to show initially and load on each click",
+        "default": 12
+      }, {
+        "type": "header",
+        "content": "t:global.product_list.spacing_category",
+        "info": "t:global.product_list.spacing_category_info"
+      }, {
+        "type": "range",
+        "min": 0.2,
+        "max": 2,
+        "step": 0.1,
+        "id": "horizontal_spacing_factor",
+        "label": "t:global.product_list.horizontal_spacing_factor",
+        "default": 1
+      }, {
+        "type": "range",
+        "min": 0.2,
+        "max": 2,
+        "step": 0.1,
+        "id": "vertical_spacing_factor",
+        "label": "t:global.product_list.vertical_spacing_factor",
+        "default": 1
+      }, {
+        "type": "header",
+        "content": "t:sections.main_search.product_filters_category"
+      }, {
+        "type": "checkbox",
+        "id": "show_filters",
+        "label": "t:global.faceting.show_filters",
+        "info": "t:global.faceting.show_filters_info",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_filter_group_name",
+        "label": "t:global.faceting.show_group_name",
+        "info": "t:global.faceting.show_group_name_info",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "show_filter_values_count",
+        "label": "t:global.faceting.show_filter_values_count",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "open_filters_by_default",
+        "label": "t:global.faceting.open_filters_by_default",
+        "default": false
+      }, {
+        "type": "header",
+        "content": "t:sections.main_search.blog_post_results_category"
+      }, {
+        "type": "checkbox",
+        "id": "show_category",
+        "label": "t:global.blog.show_category",
+        "info": "t:global.blog.show_category_info",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_excerpt",
+        "label": "t:global.blog.show_excerpt",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_read_more",
+        "label": "t:global.blog.show_read_more",
+        "default": true
+      }
+    ]
+  }
 {% endschema %}

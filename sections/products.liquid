@@ -33,19 +33,15 @@
 
       <div class="specifications">
         <h3>Specification</h3>
-        <table>
-          <tr><td>Purity</td><td>{{ section.settings.purity }}</td></tr>
-          <tr><td>Net WT</td><td>{{ section.settings.net_wt }}</td></tr>
-          <tr><td>Gross WT</td><td>{{ section.settings.gross_wt }}</td></tr>
-          <tr><td>STN. WT</td><td>{{ section.settings.stn_wt }}</td></tr>
-          <tr><td>DIA WT</td><td>{{ section.settings.dia_wt }}</td></tr>
-        </table>
       </div>
 
       <div class="buy-buttons">
         <button class="buy-now">Buy Now</button>
         <form method="post" action="/cart/add">
-          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <input
+            type="hidden"
+            name="id"
+            value="{{ product.selected_or_first_available_variant.id }}">
           <button type="submit" class="add-to-cart">Add to Cart</button>
         </form>
       </div>
@@ -58,7 +54,8 @@
     padding: 40px 20px;
     max-width: 1400px;
     margin: auto;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM Sans'
+    , sans-serif;
   }
   .product-wrapper {
     display: flex;
@@ -88,7 +85,8 @@
   .product-title {
     font-size: 24px;
     font-weight: bold;
-    font-family: 'DM Serif Display', serif;
+    font-family: 'DM Serif Display'
+    , serif;
   }
   .vendor {
     font-size: 14px;
@@ -96,7 +94,7 @@
     margin-bottom: 10px;
   }
   .price {
-    font-size: 22px;
+    font-size: 40px;
     font-weight: 700;
     margin: 10px 0;
   }
@@ -155,39 +153,38 @@
 </style>
 
 {% schema %}
-{
-  "name": "Custom Product Layout",
-  "settings": [
-    {
-      "type": "text",
-      "id": "purity",
-      "label": "Purity",
-      "default": "18KT"
-    },
-    {
-      "type": "text",
-      "id": "net_wt",
-      "label": "Net Weight",
-      "default": "23.36 GMS"
-    },
-    {
-      "type": "text",
-      "id": "gross_wt",
-      "label": "Gross Weight",
-      "default": "25.82 GMS"
-    },
-    {
-      "type": "text",
-      "id": "stn_wt",
-      "label": "Stone Weight",
-      "default": "7.21 CTS"
-    },
-    {
-      "type": "text",
-      "id": "dia_wt",
-      "label": "Diamond Weight",
-      "default": "5.11 CTS"
-    }
-  ]
-}
+  {
+    "name": "Custom Product Layout",
+    "settings": [
+      {
+        "type": "text",
+        "id": "purity",
+        "label": "Purity",
+        "default": "18KT"
+      },
+      {
+        "type": "text",
+        "id": "net_wt",
+        "label": "Net Weight",
+        "default": "23.36 GMS"
+      },
+      {
+        "type": "text",
+        "id": "gross_wt",
+        "label": "Gross Weight",
+        "default": "25.82 GMS"
+      },
+      {
+        "type": "text",
+        "id": "stn_wt",
+        "label": "Stone Weight",
+        "default": "7.21 CTS"
+      }, {
+        "type": "text",
+        "id": "dia_wt",
+        "label": "Diamond Weight",
+        "default": "5.11 CTS"
+      }
+    ]
+  }
 {% endschema %}
