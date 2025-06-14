@@ -122,12 +122,17 @@ Supported variables
         // Check if product is already in compare list
         const productHandle = compareButton.dataset.productHandle;
         const compareList = JSON.parse(localStorage.getItem('compare') || '[]');
+        const buttonText = compareButton.querySelector('span');
         if (compareList.includes(productHandle)) {
           compareButton.classList.add('active');
+          if (buttonText) {
+            buttonText.textContent = 'Added to Compare';
+          }
         }
         
         compareButton.addEventListener('click', function() {
           const compareList = JSON.parse(localStorage.getItem('compare') || '[]');
+          const buttonText = this.querySelector('span');
           
           if (!compareList.includes(productHandle)) {
             if (compareList.length >= 4) {
@@ -137,6 +142,9 @@ Supported variables
             compareList.push(productHandle);
             localStorage.setItem('compare', JSON.stringify(compareList));
             this.classList.add('active');
+            if (buttonText) {
+              buttonText.textContent = 'Added to Compare';
+            }
             updateCompareWidget();
             alert('Product added to compare list');
           } else {
@@ -145,6 +153,9 @@ Supported variables
             compareList.splice(index, 1);
             localStorage.setItem('compare', JSON.stringify(compareList));
             this.classList.remove('active');
+            if (buttonText) {
+              buttonText.textContent = 'Add to Compare';
+            }
             updateCompareWidget();
             alert('Product removed from compare list');
           }

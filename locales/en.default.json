@@ -290,9 +290,11 @@
       "success_message": "An e-mail has been sent to your address with instructions to reset your password."
     },
     "register": {
-      "title": "Sign Up",
       "subtitle": "Create your account to get started",
       "name": "Full Name",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "title": "Sign Up",
       "email": "Email",
       "password": "Password",
       "confirm_password": "Confirm Password",
@@ -300,6 +302,8 @@
       "sign_up": "Create Account",
       "submit": "Create Account",
       "or": "or",
+      "accept_terms": "I agree to the terms and conditions",
+      "create_account": "Create account",
       "already_have_account": "Already have an account?",
       "sign_in": "Sign in"
     },
