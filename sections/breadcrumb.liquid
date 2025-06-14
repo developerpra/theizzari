@@ -1,0 +1,154 @@
+{%- style -%}
+  .breadcrumb {
+
+    padding: 1rem 0;
+    background: #F6F6F8;
+  }
+
+  .breadcrumb__list {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .breadcrumb__item {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    color: #777777;
+    font-weight: 400;
+  }
+
+  .breadcrumb__item:not(:last-child):after {
+    content: "|";
+    margin-left: 8px;
+    margin-right: 8px;
+    color: #777777;
+    opacity: 0.5;
+  }
+
+  .breadcrumb__link {
+    color: #777777;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb__link:hover {
+    color: #000000;
+  }
+
+  .breadcrumb__item:last-child {
+    font-weight: 500;
+  }
+
+  .breadcrumb__item:last-child .breadcrumb__link {
+    color: #000000;
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 699px) {
+    .breadcrumb {
+      padding: 10px 0;
+    }
+
+    .breadcrumb__item {
+      font-size: 13px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="breadcrumb font-dm-sans">
+  <div class="container">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb__list flex items-center">
+        <li class="breadcrumb__item">
+          <a href="{{ routes.root_url }}" class="breadcrumb__link">{{ 'general.breadcrumb.home' | t }}</a>
+        </li>
+
+        {%- case template -%}
+          {%- when 'product' -%}
+            {%- if collection -%}
+              <li class="breadcrumb__item">
+                <a href="{{ collection.url }}" class="breadcrumb__link">{{ collection.title }}</a>
+              </li>
+            {%- endif -%}
+            <li class="breadcrumb__item">
+              <a href="{{ product.url }}" class="breadcrumb__link">{{ product.title }}</a>
+            </li>
+
+          {%- when 'collection' -%}
+            <li class="breadcrumb__item">
+              <a href="{{ collection.url }}" class="breadcrumb__link">{{ collection.title }}</a>
+            </li>
+
+          {%- when 'blog' -%}
+            <li class="breadcrumb__item">
+              <a href="{{ blog.url }}" class="breadcrumb__link">{{ blog.title }}</a>
+            </li>
+
+          {%- when 'article' -%}
+            <li class="breadcrumb__item">
+              <a href="{{ blog.url }}" class="breadcrumb__link">{{ blog.title }}</a>
+            </li>
+            <li class="breadcrumb__item">
+              <a href="{{ article.url }}" class="breadcrumb__link">{{ article.title }}</a>
+            </li>
+
+          {%- when 'page' -%}
+            <li class="breadcrumb__item">
+              <a href="{{ page.url }}" class="breadcrumb__link">{{ page.title }}</a>
+            </li>
+
+          {%- when 'cart' -%}
+            <li class="breadcrumb__item">
+              <a href="{{ routes.cart_url }}" class="breadcrumb__link">{{ 'cart.general.title' | t }}</a>
+            </li>
+
+          {%- when 'customers/account' -%}
+            <li class="breadcrumb__item">
+              <a href="{{ routes.account_url }}" class="breadcrumb__link">{{ 'customer.account.title' | t }}</a>
+            </li>
+
+          {%- when 'customers/order' -%}
+            <li class="breadcrumb__item">
+              <a href="{{ routes.account_url }}" class="breadcrumb__link">{{ 'customer.account.title' | t }}</a>
+            </li>
+            <li class="breadcrumb__item">
+              <a href="{{ order.customer_url }}" class="breadcrumb__link">{{ 'customer.orders.title' | t: number: order.name }}</a>
+            </li>
+
+          {%- when 'customers/addresses' -%}
+            <li class="breadcrumb__item">
+              <a href="{{ routes.account_url }}" class="breadcrumb__link">{{ 'customer.account.title' | t }}</a>
+            </li>
+            <li class="breadcrumb__item">
+              <a href="{{ routes.account_addresses_url }}" class="breadcrumb__link">{{ 'customer.addresses.title' | t }}</a>
+            </li>
+        {%- endcase -%}
+      </ol>
+    </nav>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Breadcrumb",
+    "class": "shopify-section--breadcrumb",
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color scheme",
+        "default": "default"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Breadcrumb",
+        "category": "Navigation"
+      }
+    ]
+  }
+{% endschema %}
