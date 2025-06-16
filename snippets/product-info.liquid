@@ -17,25 +17,7 @@ Supported variables
 * update_url: if set to true, the URL on the page is updated when the variant changes (for best experience, this should
               be only used on the product page for the main product
 {%- endcomment -%}
-<style>
-  <style>
-    .custom-container{ padding: 30px}
-.outer{height: 70px; overflow: hidden;}
- .readmore{height: auto !important;}
-  .productdescription{
-    margin:20px auto;
-  }
-  a.query__btn {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font-size: 16px;
-    font-weight: 400;
-    font-family:Fancy_Cut;
-        margin-bottom: 15px;
 
-  }
-</style>
 
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
@@ -149,9 +131,18 @@ Supported variables
             {%- endif -%}
 
             {%- if request.page_type == 'product' and update_url -%}
-              <h1 class="product-title {{ block.settings.heading_tag }}">
-                {{- product_title -}}
-              </h1>
+              <div class="product-title-wrapper">
+                <h1 class="product-title {{ block.settings.heading_tag }}">
+                  {{- product_title -}}
+                </h1>
+                
+                <button class="wishlist-button" data-product-id="{{ product.id }}" aria-label="Add to wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </button>
+              </div>
+              
               <div class="productdescription">
                 <div class="outer newcollection-contentbox">
                 {{ product.description }}
@@ -178,22 +169,43 @@ Supported variables
             {%- endif -%}
 
           {%- when 'price' -%}
-            <div class="v-stack">
-              {%- render 'price-list', product: product, variant: product.selected_or_first_available_variant, context: 'product', form_id: product_form_id -%}
-
-              {%- if block.settings.show_taxes_notice -%}
-                <p class="text-sm text-subdued">
-                  {%- if cart.taxes_included -%}
-                    {{ 'product.general.taxes_included' | t }}
-                  {%- else -%}
-                    {{ 'product.general.taxes_excluded' | t }}
-                  {%- endif -%}
-
-                  {%- if shop.shipping_policy.body != blank -%}
-                    {{ 'product.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                  {%- endif -%}
-                </p>
-              {%- endif -%}
+            <div class="price-qty-row flex justify-between">
+              <div style="flex:1; min-width:0;">
+                {%- render 'price-list', product: product, variant: product.selected_or_first_available_variant, context: 'product', form_id: product_form_id -%}
+              </div>
+              <div style="quantity-selector">
+                {%- if product.available -%}
+                  {% render 'quantity-selector', variant: product.selected_or_first_available_variant, form: product_form_id %}
+                {%- endif -%}
+              </div>
+            </div>
+            
+            <!-- Action Buttons after Price -->
+            <div class="product-actions flex justify-between font-dm-sans">
+              <a class="product-action">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                {{ 'product.general.request_callback' | t | default: 'Request a Callback' }}
+              </a>
+              
+              <a class="product-action" href="https://wa.me/{{ shop.phone | remove: ' ' | remove: '-' | remove: '(' | remove: ')' }}?text={{ 'Hi, I am interested in ' | append: product.title | url_encode }}" target="_blank"  aria-label="WhatsApp">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                <span>WhatsApp</span>
+              </a>
+              
+              <button class="product-action compare-button" data-product-handle="{{ product.handle }}" aria-label="Add to compare">
+              <div class="dot"></div>  
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M80-120v-80h360v-447q-26-9-45-28t-28-45H240l120 280q0 50-41 85t-99 35q-58 0-99-35t-41-85l120-280h-80v-80h247q12-35 43-57.5t70-22.5q39 0 70 22.5t43 57.5h247v80h-80l120 280q0 50-41 85t-99 35q-58 0-99-35t-41-85l120-280H593q-9 26-28 45t-45 28v447h360v80H80Zm585-320h150l-75-174-75 174Zm-520 0h150l-75-174-75 174Zm335-280q17 0 28.5-11.5T520-760q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760q0 17 11.5 28.5T480-720Z"/></svg>
+                <span>Add to Compare</span>
+              </button>
+              
+              <button class="product-action share-button" data-share-title="{{ product.title | escape }}" data-share-url="{{ shop.url }}{{ product.url }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z"/></svg>
+               <span>Share</span>
+              </button>
             </div>
 
           {%- when 'payment_terms' -%}
@@ -332,11 +344,6 @@ Supported variables
               </div>
             {%- endif -%}
 
-          {%- when 'quantity_selector' -%}
-            {%- if product.available -%}
-              {% render 'quantity-selector', variant: product.selected_or_first_available_variant, form: product_form_id %}
-            {%- endif -%}
-
           {%- when 'inventory' -%}
             {%- render 'inventory',
                 product: product,
@@ -346,8 +353,106 @@ Supported variables
                 low_threshold: block.settings.low_inventory_threshold,
                 form_id: product_form_id
             -%}
+            
+          {%- when 'specifications' -%}
+            {%- if product != blank -%}
+              <div class="product-specifications">
+                <h3>{{ 'product.general.specifications' | t | default: 'Specifications' }}</h3>
+                <div class="specification-list">
+                  {%- if product.metafields.specifications.purity != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.purity' | t | default: 'Purity' }}:</span>
+                      <span class="specification-value">{{ product.metafields.specifications.purity }}</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if product.metafields.specifications.net_weight != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.net_weight' | t | default: 'Net Weight' }}:</span>
+                      <span class="specification-value">{{ product.metafields.specifications.net_weight }}</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if product.metafields.specifications.gross_weight != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.gross_weight' | t | default: 'Gross Weight' }}:</span>
+                      <span class="specification-value">{{ product.metafields.specifications.gross_weight }}</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if product.metafields.specifications.stone_weight != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.stone_weight' | t | default: 'Stone Weight' }}:</span>
+                      <span class="specification-value">{{ product.metafields.specifications.stone_weight }}</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if product.metafields.specifications.diamond_weight != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.diamond_weight' | t | default: 'Diamond Weight' }}:</span>
+                      <span class="specification-value">{{ product.metafields.specifications.diamond_weight }}</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if product.vendor != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.brand' | t | default: 'Brand' }}:</span>
+                      <span class="specification-value">{{ product.vendor }}</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if product.sku != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.sku' | t | default: 'SKU' }}:</span>
+                      <span class="specification-value">{{ product.sku }}</span>
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
 
           {%- when 'buy_buttons' -%}
+
+            {%- if product.metafields.details -%}
+              <h4 class="font-dm-sans specification-heading">SPECIFICATIONS</h4>
+              
+              <div class="product-metafields font-dm-sans">
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  {%- if product.metafields.details.purity.value != blank -%}
+                    <li class="flex justify-between specification-item" style="padding: 8px 0; ">
+                      <span>PURITY</span>
+                      <span>{{ product.metafields.details.purity.value }}</span>
+                    </li>
+                  {%- endif -%}
+                  {%- if product.metafields.details.nt_wt_gram.value != blank -%}
+                    <li class="flex justify-between specification-item" style="padding: 8px 0; ">
+                      <span >NET WT</span>
+                      <span >{{ product.metafields.details.nt_wt_gram.value }}</span>
+                    </li>
+                  {%- endif -%}
+                  {%- if product.metafields.details.g_wt_grm.value != blank -%}
+                    <li class="flex justify-between specification-item" style="padding: 8px 0; ">
+                      <span >GROSS WT</span>
+                      <span >{{ product.metafields.details.g_wt_grm.value }}</span>
+                    </li>
+                  {%- endif -%}
+                  {%- if product.metafields.details.stn_wt.value != blank -%}
+                    <li class="flex justify-between specification-item" style="padding: 8px 0; ">
+                      <span >STN. WT</span>
+                      <span >{{ product.metafields.details.stn_wt.value }}</span>
+                    </li>
+                  {%- endif -%}
+                  {%- if product.metafields.details.dia_wt.value != blank -%}
+                    <li class="flex justify-between specification-item" style="padding: 8px 0;">
+                      <span >DIA WT</span>
+                      <span >{{ product.metafields.details.dia_wt.value }}</span>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          
+            
             {%- render 'buy-buttons',
                 product: product,
                 form_id: product_form_id,
@@ -512,14 +617,14 @@ Supported variables
 
           {%- when 'share_buttons' -%}
 
-          <div class="anyquery">
+          {% comment %} <div class="anyquery">
 <a href="https://api.whatsapp.com/send?phone=919991700275&text={{ product.title }}-https://theizzari.com/{{ product.url }}" class="query__btn">
 <img src="https://cdn.shopify.com/s/files/1/0692/7630/3593/files/WhatsApp_icon_1.png?v=1719491334" style="width:20px;">
 <span>For More information  +91 9991700275</span>
 </a>
-</div>
+</div> {% endcomment %}
           
-            <button class="share-buttons share-buttons--native link-faded" is="share-button" hidden>
+            {% comment %} <button class="share-buttons share-buttons--native link-faded" is="share-button">
               <span class="smallcaps text-xxs">{{- 'general.social.share' | t -}}</span>
               {%- render 'icon' with 'share' -%}
             </button>
@@ -527,7 +632,7 @@ Supported variables
             <div class="share-buttons">
               <span class="smallcaps text-xxs text-subdued">{{- 'general.social.share' | t -}}</span>
               {%- render 'share-buttons', url: product.url, title: product.title, description: product.description, layout: 'list' -%}
-            </div>
+            </div> {% endcomment %}
 
           {%- when 'more_information' -%}
             {%- comment -%}We need at least one block compatible with below gallery information{%- endcomment -%}

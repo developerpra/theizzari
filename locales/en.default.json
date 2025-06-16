@@ -93,9 +93,12 @@
       "description": "Description",
       "view_details": "View details",
       "add_to_cart_button": "Add to cart",
+      "buy_now_button": "Buy Now",
       "pre_order_button": "Pre-order",
       "sold_out_button": "Sold out",
       "unavailable_button": "Unavailable",
+      "specifications": "Specifications",
+      "request_callback": "Request a Callback",
       "choose_options": "Choose options",
       "added_to_cart": "Added to your cart!",
       "sold_out_badge": "Sold out",
@@ -156,7 +159,34 @@
       "pick_up_currently_unavailable": "Pickup currently unavailable",
       "pick_up_available_at": "Pickup available at {{ location_name }}",
       "pick_up_unavailable_at": "Pickup currently unavailable at {{ location_name }}"
+    },
+    "specifications": {
+      "purity": "Purity",
+      "net_weight": "Net Weight",
+      "gross_weight": "Gross Weight",
+      "stone_weight": "Stone Weight",
+      "diamond_weight": "Diamond Weight",
+      "brand": "Brand",
+      "sku": "SKU"
     }
+  },
+  "compare": {
+    "title": "Compare Products",
+    "subtitle": "Compare up to 4 products at a time",
+    "empty": "No products added to compare",
+    "continue_shopping": "Continue Shopping",
+    "product": "Product",
+    "vendor": "Brand",
+    "type": "Type",
+    "availability": "Availability",
+    "in_stock": "In Stock",
+    "out_of_stock": "Out of Stock",
+    "sku": "SKU",
+    "actions": "Actions",
+    "buy_now": "Buy Now",
+    "add_to_cart": "Add to Cart",
+    "clear_all": "Clear All",
+    "clear_confirm": "Are you sure you want to clear all products from comparison?"
   },
   "collection": {
     "general": {
@@ -182,6 +212,10 @@
       "price_filter_to": "To price",
       "price_filter": "{{ min_price }} - {{ max_price }}",
       "in_stock_only": "In stock only"
+    },
+    "load_more": {
+      "button_label": "Load More",
+      "showing": "Showing {{ count }} of {{ total }} products"
     }
   },
   "blog": {
@@ -240,13 +274,15 @@
     },
     "login": {
       "title": "Login",
-      "instructions": "Enter your email and password to login:",
-      "email": "E-mail",
+      "subtitle": "Welcome back! Please login to your account",
+      "email": "Email",
       "password": "Password",
-      "submit": "Login",
-      "forgot_password": "Forgot your password?",
-      "no_account": "Don't have an account?",
-      "sign_up": "Sign up"
+      "remember_me": "Remember me",
+      "forgot_password": "Forgot Password?",
+      "sign_in": "Sign In",
+      "or": "or",
+      "new_customer": "New to our store?",
+      "create_account": "Create an account"
     },
     "recover_password": {
       "title": "Recover password",
@@ -258,16 +294,22 @@
       "success_message": "An e-mail has been sent to your address with instructions to reset your password."
     },
     "register": {
-      "title": "Sign up",
-      "instructions": "Please fill in the information below:",
+      "subtitle": "Create your account to get started",
+      "name": "Full Name",
       "first_name": "First name",
       "last_name": "Last name",
-      "email": "E-mail",
+      "title": "Sign Up",
+      "email": "Email",
       "password": "Password",
-      "accepts_marketing": "Register to our newsletter",
-      "submit": "Create account",
+      "confirm_password": "Confirm Password",
+      "agree_terms": "I agree to the Terms of Service and Privacy Policy",
+      "sign_up": "Create Account",
+      "submit": "Create Account",
+      "or": "or",
+      "accept_terms": "I agree to the terms and conditions",
+      "create_account": "Create account",
       "already_have_account": "Already have an account?",
-      "login": "Login"
+      "sign_in": "Sign in"
     },
     "activate_account": {
       "title": "Activate account",
@@ -469,7 +511,7 @@
       "no_slider": "No Slider"
     },
     "Newsletter": {
-      "err_msg_default": "Can’t send email. Please try again later.",
+      "err_msg_default": "Can't send email. Please try again later.",
       "success_msg_default": "Thanks for contacting us. We'll get back to you as soon as possible."
     },
     "IconListV2": {

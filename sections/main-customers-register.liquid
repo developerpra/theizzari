@@ -1,110 +1,139 @@
-<div class="section-spacing section-spacing--tight">
-  <div class="container container--xxs">
-    <div class="customer-account-box">
-      <div class="v-stack gap-6">
-        <div class="v-stack gap-4">
-          <h1 class="h3">{{ 'customer.register.title' | t }}</h1>
-          <p>{{ 'customer.register.instructions' | t }}</p>
-        </div>
+{%- render 'auth-styles' -%}
 
-        {%- for block in section.blocks -%}
-          {%- case block.type -%}
-            {%- when '@app' -%}
-              {%- render block -%}
+<div class="auth-container">
+  <div class="auth-form-section">
+    <div class="auth-header">
+      <h1>{{ 'customer.register.title' | t }}</h1>
+      <p>{{ 'customer.register.subtitle' | t }}</p>
+    </div>
 
-            {%- when 'liquid' -%}
-              {%- if block.settings.liquid != blank -%}
-                <div {{ block.shopify_attributes }}>
-                  {{- block.settings.liquid -}}
-                </div>
-              {%- endif -%}
-
-            {%- when 'fields' -%}
-              <div {{ block.shopify_attributes }}>
-                {%- form 'create_customer', class: 'form' -%}
-                  <div class="fieldset">
-                    {% liquid
-                      if form.errors
-                        assign form_errors = form.errors | default_errors
-                        render 'banner', status: 'error', content: form_errors
-                      endif
-
-                      if request.locale.iso_code == 'ja'
-                        assign last_name_label = 'customer.register.last_name' | t
-                        render 'input', name: 'customer[last_name]', label: last_name_label, autocomplete: 'family-name', required: true
-
-                        assign first_name_label = 'customer.register.first_name' | t
-                        render 'input', name: 'customer[first_name]', label: first_name_label, autocomplete: 'given-name', required: true
-                      else
-                        assign first_name_label = 'customer.register.first_name' | t
-                        render 'input', name: 'customer[first_name]', label: first_name_label, autocomplete: 'given-name', required: true
-
-                        assign last_name_label = 'customer.register.last_name' | t
-                        render 'input', name: 'customer[last_name]', label: last_name_label, autocomplete: 'family-name', required: true
-                      endif
-
-                      assign email_label = 'customer.register.email' | t
-                      render 'input', type: 'email', name: 'customer[email]', label: email_label, autocomplete: 'email', required: true
-
-                      assign password_label = 'customer.register.password' | t
-                      render 'input', type: 'password', name: 'customer[password]', label: password_label, minlength: 5, autocomplete: 'new-password', required: true
-
-                      if block.settings.show_marketing_consent
-                        assign consent_label = 'customer.register.accepts_marketing' | t
-                        render 'checkbox', name: 'customer[accepts_marketing]', label: consent_label
-                      endif
-                    %}
-                  </div>
-
-                  {%- assign submit_label = 'customer.register.submit' | t -%}
-                  {%- render 'button', content: submit_label, type: 'submit' -%}
-
-                  <div>
-                    <span class="text-subdued">{{ 'customer.register.already_have_account' | t }}</span>
-                    <a href="{{ routes.account_login_url }}" class="link-faded">{{ 'customer.register.login' | t }}</a>
-                  </div>
-                {%- endform -%}
-              </div>
-          {%- endcase -%}
-        {%- endfor -%}
+    {% form 'create_customer'
+      , class: 'auth-form'
+      , id: 'RegisterForm' %}
+      <div class="form-group">
+        <label for="CustomerName">{{ 'customer.register.name' | t }}</label>
+        <input
+          type="text"
+          name="customer[first_name]"
+          id="CustomerName"
+          placeholder="John Doe"
+          required>
       </div>
+
+      <div class="form-group">
+        <label for="CustomerEmail">{{ 'customer.register.email' | t }}</label>
+        <input
+          type="email"
+          name="customer[email]"
+          id="CustomerEmail"
+          placeholder="john@example.com"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="CustomerPassword">{{ 'customer.register.password' | t }}</label>
+        <input
+          type="password"
+          name="customer[password]"
+          id="CustomerPassword"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="CustomerPasswordConfirm">{{ 'customer.register.confirm_password' | t }}</label>
+        <input
+          type="password"
+          name="customer[password_confirmation]"
+          id="CustomerPasswordConfirm"
+          required>
+      </div>
+
+      <div class="form-checkbox">
+        <input
+          type="checkbox"
+          id="AcceptTerms"
+          name="accept_terms"
+          required>
+        <label for="AcceptTerms">{{ 'customer.register.agree_terms' | t }}</label>
+      </div>
+
+      <button type="submit" class="auth-button">
+        {{ 'customer.register.create_account' | t }}
+      </button>
+    {% endform %}
+
+    <div class="auth-divider">
+      <span>{{ 'customer.register.or' | t }}</span>
+    </div>
+
+    <div class="social-buttons">
+      <a href="/auth/google" class="social-button">
+        <img
+          src="{{ 'google.svg' | asset_url }}"
+          alt="Google"
+          width="24"
+          height="24">
+      </a>
+      <a href="/auth/apple" class="social-button">
+        <img
+          src="{{ 'apple.svg' | asset_url }}"
+          alt="Apple"
+          width="24"
+          height="24">
+      </a>
+    </div>
+
+    <div class="auth-footer">
+      <p>
+        {{ 'customer.register.already_have_account' | t }}
+        <a href="{{ routes.account_login_url }}">{{ 'customer.register.sign_in' | t }}</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="auth-image-section">
+    <div class="image-wrapper">
+      <img
+        src="{{ 'login-signup.png' | asset_url }}"
+        alt="Jewelry"
+        width="800"
+        height="600">
     </div>
   </div>
 </div>
 
-{% schema %}
-{
-  "name": "t:sections.main_customers_register.name",
-  "class": "shopify-section--main-customers-register",
-  "tag": "section",
-  "blocks": [
-    {
-      "type": "@app"
-    },
-    {
-      "type": "fields",
-      "name": "t:sections.main_customers_register.blocks.fields.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "checkbox",
-          "id": "show_marketing_consent",
-          "label": "t:sections.main_customers_register.blocks.fields.show_marketing_consent",
-          "default": false
-        }
-      ]
-    },
-    {
-      "type": "liquid",
-      "name": "t:sections.main_customers_register.blocks.liquid.name",
-      "settings": [
-        {
-          "type": "liquid",
-          "id": "liquid",
-          "label": "t:global.code.liquid"
-        }
-      ]
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('RegisterForm');
+    const password = document.getElementById('CustomerPassword');
+    const confirmPassword = document.getElementById('CustomerPasswordConfirm');
+    
+    function validatePasswords() {
+      if (password.value !== confirmPassword.value) {
+        confirmPassword.setCustomValidity('Passwords do not match');
+      } else {
+        confirmPassword.setCustomValidity('');
+      }
     }
-  ]
-}
+    
+    password.addEventListener('change', validatePasswords);
+    confirmPassword.addEventListener('keyup', validatePasswords);
+    
+    form.addEventListener('submit', function(e) {
+      if (password.value !== confirmPassword.value) {
+        e.preventDefault();
+        confirmPassword.setCustomValidity('Passwords do not match');
+        confirmPassword.reportValidity();
+      }
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Register Page",
+    "tag": "section",
+    "class": "shopify-section-register",
+    "settings": []
+  }
 {% endschema %}

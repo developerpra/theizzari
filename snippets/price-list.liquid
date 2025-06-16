@@ -23,19 +23,19 @@ Supported variables
       assign base_text_class = ''
 
       if settings.product_card_text_font == 'heading'
-        assign base_text_class = 'h6 '
+        assign base_text_class = 'product-price '
       endif
 
-      assign regular_price_classes = base_text_class | append: 'text-subdued'
-      assign on_sale_price_classes = base_text_class | append: 'text-on-sale'
-      assign compare_at_price_classes = base_text_class | append: 'text-subdued line-through'
-      assign unit_price_classes = base_text_class | append: 'text-subdued'
+      assign regular_price_classes = base_text_class | append: 'text-subdued font-dm-sans'
+      assign on_sale_price_classes = base_text_class | append: 'text-on-sale font-dm-sans'
+      assign compare_at_price_classes = base_text_class | append: 'text-subdued line-through font-dm-sans'
+      assign unit_price_classes = base_text_class | append: 'text-subdued font-dm-sans'
 
     when 'product'
-      assign regular_price_classes = base_text_class | append: 'h4 text-subdued'
-      assign on_sale_price_classes = base_text_class | append: 'h4 text-on-sale'
-      assign compare_at_price_classes = base_text_class | append: 'h5 text-subdued line-through'
-      assign unit_price_classes = base_text_class | append: 'h6 text-subdued'
+      assign regular_price_classes = base_text_class | append: 'h4 text-subdued font-dm-sans'
+      assign on_sale_price_classes = base_text_class | append: 'h4 text-on-sale font-dm-sans'
+      assign compare_at_price_classes = base_text_class | append: 'h5 text-subdued line-through font-dm-sans'
+      assign unit_price_classes = base_text_class | append: 'product-price text-subdued font-dm-sans'
   endcase
 -%}
 
@@ -179,3 +179,9 @@ Supported variables
     {%- endif -%}
   {%- endunless -%}
 </price-list>
+
+{%- if context == 'product' and variant != blank and variant.sku != blank -%}
+  <div class="product-model-no">
+    Model No: {{ variant.sku }}
+  </div>
+{%- endif -%}

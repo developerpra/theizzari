@@ -22,6 +22,77 @@ CSS
       --collection-list-gap: 1.875rem;
     }
   }
+
+  /* Load More Button Styles */
+  .load-more-container {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem 0;
+  }
+
+  .load-more-button {
+    min-width: 200px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #264B3B;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .load-more-button:hover:not(:disabled) {
+    background-color: #1e3a2d;
+    transform: translateY(-2px);
+  }
+
+  .load-more-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .load-more-info {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #666;
+  }
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    animation: rotate 2s linear infinite;
+    vertical-align: middle;
+  }
+
+  .spinner-path {
+    stroke: currentColor;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
 </style>
 
 {%- comment -%}
@@ -89,7 +160,31 @@ LIQUID
             </div>
 
             {%- if section.settings.collections == empty -%}
-              {%- render 'pagination', paginate: paginate -%}
+              {%- comment -%} Load More Button for Collections {%- endcomment -%}
+              {%- if paginate.pages > 1 -%}
+                <div class="load-more-container" data-load-more>
+                  <button 
+                    type="button" 
+                    class="load-more-button button button--primary"
+                    data-load-more-button
+                    data-next-url="{{ paginate.next.url }}"
+                    {% unless paginate.next %}disabled{% endunless %}
+                  >
+                    <span class="load-more-text">{{ 'collection.load_more.button_label' | t | default: 'Load More' }}</span>
+                    <span class="load-more-spinner" style="display: none;">
+                      <svg class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="spinner-path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                      </svg>
+                    </span>
+                  </button>
+                  
+                  <div class="load-more-info">
+                    <span class="collections-shown">
+                      Showing {{ paginate.current_offset | plus: paginate.items }} of {{ paginate.items_count }} collections
+                    </span>
+                  </div>
+                </div>
+              {%- endif -%}
             {%- endif -%}
           </div>
         {%- endpaginate -%}
@@ -97,6 +192,74 @@ LIQUID
     </div>
   {%- endif -%}
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const loadMoreContainer = document.querySelector('[data-load-more]');
+    const loadMoreButton = document.querySelector('[data-load-more-button]');
+    const collectionList = document.querySelector('.collection-list');
+    
+    if (!loadMoreButton || !collectionList) return;
+    
+    loadMoreButton.addEventListener('click', async function() {
+      const nextUrl = this.dataset.nextUrl;
+      if (!nextUrl || this.disabled) return;
+      
+      // Show loading state
+      this.disabled = true;
+      this.querySelector('.load-more-text').style.display = 'none';
+      this.querySelector('.load-more-spinner').style.display = 'inline-block';
+      
+      try {
+        const response = await fetch(nextUrl);
+        const html = await response.text();
+        
+        // Parse the response
+        const parser = new DOMParser();
+        const newDocument = parser.parseFromString(html, 'text/html');
+        
+        // Get new collections
+        const newCollections = newDocument.querySelectorAll('.collection-list > *');
+        
+        // Append new collections
+        newCollections.forEach(collection => {
+          collectionList.appendChild(collection.cloneNode(true));
+        });
+        
+        // Update load more button
+        const newLoadMoreContainer = newDocument.querySelector('[data-load-more]');
+        if (newLoadMoreContainer) {
+          const newButton = newLoadMoreContainer.querySelector('[data-load-more-button]');
+          const newInfo = newLoadMoreContainer.querySelector('.load-more-info');
+          
+          if (newButton && newButton.dataset.nextUrl) {
+            this.dataset.nextUrl = newButton.dataset.nextUrl;
+            this.disabled = false;
+          } else {
+            // No more collections
+            this.style.display = 'none';
+          }
+          
+          // Update collection count
+          if (newInfo) {
+            loadMoreContainer.querySelector('.load-more-info').innerHTML = newInfo.innerHTML;
+          }
+        } else {
+          // No more collections
+          this.style.display = 'none';
+        }
+        
+      } catch (error) {
+        console.error('Error loading more collections:', error);
+        this.disabled = false;
+      } finally {
+        // Hide loading state
+        this.querySelector('.load-more-text').style.display = 'inline';
+        this.querySelector('.load-more-spinner').style.display = 'none';
+      }
+    });
+  });
+</script>
 
 {% schema %}
 {

@@ -1,0 +1,495 @@
+{%- style -%}
+  .compare-container {
+    padding: 40px 0;
+  }
+  
+  .compare-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .compare-header h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  
+  .compare-empty {
+    text-align: center;
+    padding: 60px 20px;
+  }
+  
+  .compare-empty p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 24px;
+  }
+  
+  .compare-table-wrapper {
+    overflow-x: auto;
+    margin: 0 -20px;
+    padding: 0 20px;
+  }
+  
+  .compare-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .compare-table th,
+  .compare-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .compare-table th {
+    background: #f5f5f5;
+    font-weight: 600;
+    color: #333;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+  
+  .compare-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .compare-product-cell {
+    vertical-align: top;
+    width: 300px;
+    position: relative;
+  }
+  
+  .compare-product-image {
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .compare-product-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+  }
+  
+  .compare-product-price {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d5a3d;
+    margin-bottom: 16px;
+  }
+  
+  .compare-remove-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .compare-remove-btn:hover {
+    background: #f5f5f5;
+    border-color: #d0d0d0;
+  }
+  
+  .compare-spec-row td {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .compare-spec-label {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .compare-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+  }
+  
+  .compare-buy-btn,
+  .compare-cart-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .compare-buy-btn {
+    background: #2d5a3d;
+    color: white;
+  }
+  
+  .compare-buy-btn:hover {
+    background: #234731;
+  }
+  
+  .compare-cart-btn {
+    background: white;
+    color: #2d5a3d;
+    border: 2px solid #2d5a3d;
+  }
+  
+  .compare-cart-btn:hover {
+    background: #2d5a3d;
+    color: white;
+  }
+  
+  .compare-clear-all {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .clear-all-btn {
+    padding: 12px 32px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .clear-all-btn:hover {
+    background: #c82333;
+  }
+  
+  .compare-floating-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #2d5a3d;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: none;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  .compare-floating-widget:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  }
+  
+  .compare-floating-widget.active {
+    display: flex;
+  }
+  
+  .compare-count {
+    background: white;
+    color: #2d5a3d;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  @media (max-width: 768px) {
+    .compare-table {
+      font-size: 14px;
+    }
+    
+    .compare-product-cell {
+      width: 200px;
+    }
+    
+    .compare-product-image {
+      max-width: 150px;
+      height: 150px;
+    }
+    
+    .compare-actions {
+      flex-direction: column;
+    }
+  }
+{%- endstyle -%}
+
+<div class="compare-container container">
+  <div class="compare-header">
+    <h1>{{ 'compare.title' | t | default: 'Compare Products' }}</h1>
+    <p>{{ 'compare.subtitle' | t | default: 'Compare up to 4 products at a time' }}</p>
+  </div>
+  
+  <div id="compare-content">
+    <!-- Content will be loaded dynamically -->
+  </div>
+</div>
+
+<!-- Floating Compare Widget -->
+<div class="compare-floating-widget" id="compare-widget" onclick="window.location.href='/collections/compare'">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M3 3h18v18H3zM12 8v8m-4-4h8"/>
+  </svg>
+  <span>Compare</span>
+  <span class="compare-count" id="compare-count">0</span>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('Compare page loaded');
+    const compareContent = document.getElementById('compare-content');
+    const compareWidget = document.getElementById('compare-widget');
+    const compareCount = document.getElementById('compare-count');
+    
+    // Load compare list from localStorage
+    function loadCompareList() {
+      const compareList = JSON.parse(localStorage.getItem('compare') || '[]');
+      console.log('Compare list:', compareList);
+      updateCompareWidget(compareList.length);
+      
+      if (compareList.length === 0) {
+        compareContent.innerHTML = `
+          <div class="compare-empty">
+            <p>No products added to compare</p>
+            <a href="/collections/all" class="button" style="display: inline-block; padding: 12px 24px; background: #2d5a3d; color: white; text-decoration: none; border-radius: 8px;">Continue Shopping</a>
+          </div>
+        `;
+        return;
+      }
+      
+      // Show loading message
+      compareContent.innerHTML = '<p style="text-align: center;">Loading products...</p>';
+      
+      // Fetch product data
+      fetchCompareProducts(compareList);
+    }
+    
+    // Update floating widget
+    function updateCompareWidget(count) {
+      if (compareWidget && compareCount) {
+        if (count > 0) {
+          compareWidget.classList.add('active');
+          compareCount.textContent = count;
+        } else {
+          compareWidget.classList.remove('active');
+        }
+      }
+    }
+    
+    // Fetch products data
+    async function fetchCompareProducts(productHandles) {
+      const products = [];
+      
+      for (const handle of productHandles) {
+        try {
+          console.log('Fetching product:', handle);
+          const response = await fetch(`/products/${handle}.js`);
+          if (response.ok) {
+            const product = await response.json();
+            console.log('Product fetched:', product);
+            products.push(product);
+          } else {
+            console.error('Failed to fetch product:', handle, response.status);
+          }
+        } catch (error) {
+          console.error('Error fetching product:', handle, error);
+        }
+      }
+      
+      console.log('All products fetched:', products);
+      renderCompareTable(products);
+    }
+    
+    // Render comparison table
+    function renderCompareTable(products) {
+      if (products.length === 0) {
+        compareContent.innerHTML = `
+          <div class="compare-empty">
+            <p>Error loading products. Please try again.</p>
+            <button onclick="location.reload()" style="padding: 12px 24px; background: #2d5a3d; color: white; border: none; border-radius: 8px; cursor: pointer;">Refresh Page</button>
+          </div>
+        `;
+        return;
+      }
+      
+      let tableHTML = `
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                ${products.map(product => `
+                  <td class="compare-product-cell">
+                    <button class="compare-remove-btn" onclick="removeFromCompare('${product.handle}')" aria-label="Remove from compare">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
+                    </button>
+                    <img src="${product.featured_image}" alt="${product.title}" class="compare-product-image" onerror="this.src='https://via.placeholder.com/200x200?text=No+Image'">
+                    <h3 class="compare-product-title">${product.title}</h3>
+                    <div class="compare-product-price">
+                      ${formatMoney(product.price)}
+                    </div>
+                  </td>
+                `).join('')}
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="compare-spec-row">
+                <td class="compare-spec-label">Brand</td>
+                ${products.map(product => `<td>${product.vendor || '-'}</td>`).join('')}
+              </tr>
+              <tr class="compare-spec-row">
+                <td class="compare-spec-label">Type</td>
+                ${products.map(product => `<td>${product.type || '-'}</td>`).join('')}
+              </tr>
+              <tr class="compare-spec-row">
+                <td class="compare-spec-label">Availability</td>
+                ${products.map(product => `<td>${product.available ? 'In Stock' : 'Out of Stock'}</td>`).join('')}
+              </tr>
+              <tr class="compare-spec-row">
+                <td class="compare-spec-label">SKU</td>
+                ${products.map(product => `<td>${product.variants[0].sku || '-'}</td>`).join('')}
+              </tr>
+              <tr>
+                <td class="compare-spec-label">Actions</td>
+                ${products.map(product => `
+                  <td>
+                    <div class="compare-actions">
+                      <button class="compare-buy-btn" onclick="buyNow('${product.variants[0].id}')">
+                        Buy Now
+                      </button>
+                      <button class="compare-cart-btn" onclick="addToCart('${product.variants[0].id}')">
+                        Add to Cart
+                      </button>
+                    </div>
+                  </td>
+                `).join('')}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="compare-clear-all">
+          <button class="clear-all-btn" onclick="clearCompareList()">
+            Clear All
+          </button>
+        </div>
+      `;
+      
+      compareContent.innerHTML = tableHTML;
+    }
+    
+    // Format money
+    function formatMoney(cents) {
+      // Simple formatting - you can adjust based on your currency
+      return '$' + (cents / 100).toFixed(2);
+    }
+    
+    // Remove from compare
+    window.removeFromCompare = function(handle) {
+      const compareList = JSON.parse(localStorage.getItem('compare') || '[]');
+      const index = compareList.indexOf(handle);
+      if (index > -1) {
+        compareList.splice(index, 1);
+        localStorage.setItem('compare', JSON.stringify(compareList));
+        loadCompareList();
+      }
+    }
+    
+    // Clear all
+    window.clearCompareList = function() {
+      if (confirm('Are you sure you want to clear all products from comparison?')) {
+        localStorage.removeItem('compare');
+        loadCompareList();
+      }
+    }
+    
+    // Buy now
+    window.buyNow = function(variantId) {
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: variantId,
+          quantity: 1
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        window.location.href = '/checkout';
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('Error adding to cart. Please try again.');
+      });
+    }
+    
+    // Add to cart
+    window.addToCart = function(variantId) {
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: variantId,
+          quantity: 1
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert('Product added to cart!');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('Error adding to cart. Please try again.');
+      });
+    }
+    
+    // Initialize
+    loadCompareList();
+    
+    // Update widget on other pages
+    if (!window.location.pathname.includes('/compare')) {
+      const compareList = JSON.parse(localStorage.getItem('compare') || '[]');
+      updateCompareWidget(compareList.length);
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Compare Products",
+  "tag": "section",
+  "class": "section-compare-products",
+  "settings": []
+}
+{% endschema %} 
