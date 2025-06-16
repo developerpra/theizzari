@@ -7299,12 +7299,6 @@ tfoot td {
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .js [reveal-on-scroll="true"] {
-    opacity: 0;
-  }
-}
-
 .border {
   border-width: 1px;
 }
@@ -8458,7 +8452,7 @@ a.query__btn {
     align-items: flex-start;
   }
 
-  .product-title {
+  .product-title.h3 {
     font-size: 28px;
   }
 }

@@ -269,79 +269,33 @@
         </div>
 
         <div class="collection md:mt-10">
-          {%- paginate collection.products by section.settings.products_per_page -%}
-            {%- if show_filters -%}
-              <facets-drawer id="facets-drawer" class="facets-drawer drawer drawer--sm color-scheme color-scheme--dialog {% if section.settings.filter_layout == 'sidebar' %}md:hidden{% endif %}">
-                <p class="h4" slot="header">{{ 'collection.faceting.filters' | t }}</p>
-
-                {%- render 'facets'
-                  , results: collection
-                  , show_filters: section.settings.show_filters
-                  , open_filters_by_default: section.settings.open_filters_by_default
-                  , update_on_change: false
-                  , quick_links_menu: section.settings.quick_links_menu
-                  , context: 'drawer' -%}
-
-                <div slot="footer">
-                  {%- assign button_content = 'collection.faceting.apply_filters' | t -%}
-                  {%- render 'button'
-                    , type: 'button'
-                    , content: button_content
-                    , stretch: true
-                    , is: 'dialog-close-button' -%}
-                </div>
-              </facets-drawer>
-
-              {%- if section.settings.filter_layout == 'sidebar' -%}
-                <safe-sticky class="facets-sidebar md-max:hidden">
-                  {%- render 'facets'
-                    , results: collection
-                    , show_filters: section.settings.show_filters
-                    , open_filters_by_default: section.settings.open_filters_by_default
-                    , update_on_change: true
-                    , quick_links_menu: section.settings.quick_links_menu
-                    , context: 'sidebar' -%}
-                </safe-sticky>
-              {%- endif -%}
-            {%- endif -%}
-
-            {%- if collection.products_count == 0 -%}
-              <div class="empty-state">
-                <div class="prose">
-                  <p>{{ 'collection.faceting.no_results' | t }}</p>
-
-                  {%- assign button_content = 'collection.faceting.clear_filters' | t -%}
-                  {%- render 'button'
-                    , href: collection.url
-                    , is: 'facet-link'
-                    , content: button_content -%}
-                </div>
+          <div class="collection__main">
+            {%- render 'active-facets'
+              , results: collection -%}
+            <product-list
+              id="product-list-{{ section.id }}"
+              class="product-list"
+              collection-mobile-layout="{{ products_mobile_grid_mode }}"
+              collection-desktop-layout="{{ products_desktop_grid_mode }}">
+              {%- for product in collection.products limit: section.settings.products_per_page -%}
+                {%- render 'product-card'
+                  , product: product
+                  , reveal: settings.stagger_products_apparition
+                  , hide_product_information: section.settings.hide_product_information
+                  , stacked: true -%}
+              {%- endfor -%}
+            </product-list>
+            <div class="load-more-container text-center font-dm-sans">
+              <button id="load-more-btn" class="button">Load More</button>
+              <div id="products-remaining" style="margin-top: 0.5rem; font-size: 14px; color: #555;">
+                <span
+                  id="remaining-count"
+                  data-total="{{ collection.products_count }}"
+                  data-loaded="{{ section.settings.products_per_page }}">{{ collection.products_count | minus: section.settings.products_per_page }}</span>
+                products remaining
               </div>
-            {%- else -%}
-              <div class="collection__main">
-                {%- render 'active-facets'
-                  , results: collection -%}
-
-                <product-list
-                  id="product-list-{{ section.id }}"
-                  class="product-list"
-                  collection-mobile-layout="{{ products_mobile_grid_mode }}"
-                  collection-desktop-layout="{{ products_desktop_grid_mode }}">
-                  {%- for product in collection.products -%}
-                    {%- render 'product-card'
-                      , product: product
-                      , reveal: settings.stagger_products_apparition
-                      , hide_product_information: section.settings.hide_product_information
-                      , stacked: true -%}
-                  {%- endfor -%}
-                </product-list>
-
-                {%- render 'pagination'
-                  , paginate: paginate
-                  , facet: true -%}
-              </div>
-            {%- endif -%}
-          {%- endpaginate -%}
+            </div>
+          </div>
         </div>
       {%- endif -%}
     </div>
