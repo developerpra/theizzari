@@ -224,8 +224,8 @@
         "image_PcYNPn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/ep2.jpg",
-            "mobile_image": "shopify://shop_images/ep2.jpg",
+            "image": "shopify://shop_images/rs2.jpg",
+            "mobile_image": "shopify://shop_images/rs2.jpg",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-center text-center",
@@ -302,8 +302,8 @@
         "subheading": "Reach the perfect glamour style with our exclusive jewelry collections.",
         "button_label": "Join our Guestlist",
         "button_link": "shopify://pages/contact",
-        "image_left": "shopify://shop_images/Frame_1296.png",
-        "image_right": "shopify://shop_images/Frame_1297.png"
+        "image_left": "shopify://shop_images/rs2_a5e01659-af1f-4283-a06f-af10a885e3e3.jpg",
+        "image_right": "shopify://shop_images/Not_for_the_faint_of_heart.The_Disco_Heart_by_Izzari_is_sparkle_with_an_attitude_fierce_flirty_and_fabulously_bold.Pre-orders_now_open_at_www.theizzari.com_DiscoHeartByIzzari_IzzariFi.jpg"
       }
     }
   },
