@@ -413,43 +413,75 @@
           {%- when 'buy_buttons' -%}
 
             {%- if product.metafields.details -%}
-              <h4 class="font-dm-sans specification-heading">SPECIFICATIONS</h4>
-              
-              <div class="product-metafields font-dm-sans">
-                <ul style="list-style: none; padding: 0; margin: 0;">
-                  {%- if product.metafields.details.purity.value != blank -%}
-                    <li class="flex justify-between specification-item" style="padding: 8px 0; ">
-                      <span>PURITY</span>
-                      <span>{{ product.metafields.details.purity.value }}</span>
-                    </li>
-                  {%- endif -%}
-                  {%- if product.metafields.details.nt_wt_gram.value != blank -%}
-                    <li class="flex justify-between specification-item" style="padding: 8px 0; ">
-                      <span >NET WT</span>
-                      <span >{{ product.metafields.details.nt_wt_gram.value }}</span>
-                    </li>
-                  {%- endif -%}
-                  {%- if product.metafields.details.g_wt_grm.value != blank -%}
-                    <li class="flex justify-between specification-item" style="padding: 8px 0; ">
-                      <span >GROSS WT</span>
-                      <span >{{ product.metafields.details.g_wt_grm.value }}</span>
-                    </li>
-                  {%- endif -%}
-                  {%- if product.metafields.details.stn_wt.value != blank -%}
-                    <li class="flex justify-between specification-item" style="padding: 8px 0; ">
-                      <span >STN. WT</span>
-                      <span >{{ product.metafields.details.stn_wt.value }}</span>
-                    </li>
-                  {%- endif -%}
-                  {%- if product.metafields.details.dia_wt.value != blank -%}
-                    <li class="flex justify-between specification-item" style="padding: 8px 0;">
-                      <span >DIA WT</span>
-                      <span >{{ product.metafields.details.dia_wt.value }}</span>
-                    </li>
-                  {%- endif -%}
-                </ul>
-              </div>
-            {%- endif -%}
+  <div class="specification-wrapper">
+    <h4 
+      class="font-dm-sans specification-heading" 
+      id="specificationToggle" 
+      style="cursor: pointer; display: flex; align-items: center; gap: 10px">
+      <span id="toggleBtn" style="font-size: 24px; transition: transform 0.3s ease;"><strong>+</strong></span> 
+      SPECIFICATIONS
+    </h4>
+
+    <div id="specificationContent" class="product-metafields font-dm-sans">
+      <ul style="list-style: none; padding: 0; margin: 0">
+        {%- if product.metafields.details.purity.value != blank -%}
+          <li class="flex justify-between specification-item" style="padding: 8px 0">
+            <span>PURITY</span>
+            <span>{{ product.metafields.details.purity.value }}</span>
+          </li>
+        {%- endif -%}
+        {%- if product.metafields.details.nt_wt_gram.value != blank -%}
+          <li class="flex justify-between specification-item" style="padding: 8px 0">
+            <span>NET WT</span>
+            <span>{{ product.metafields.details.nt_wt_gram.value }}</span>
+          </li>
+        {%- endif -%}
+        {%- if product.metafields.details.g_wt_grm.value != blank -%}
+          <li class="flex justify-between specification-item" style="padding: 8px 0">
+            <span>GROSS WT</span>
+            <span>{{ product.metafields.details.g_wt_grm.value }}</span>
+          </li>
+        {%- endif -%}
+        {%- if product.metafields.details.stn_wt.value != blank -%}
+          <li class="flex justify-between specification-item" style="padding: 8px 0">
+            <span>STN. WT</span>
+            <span>{{ product.metafields.details.stn_wt.value }}</span>
+          </li>
+        {%- endif -%}
+        {%- if product.metafields.details.dia_wt.value != blank -%}
+          <li class="flex justify-between specification-item" style="padding: 8px 0">
+            <span>DIA WT</span>
+            <span>{{ product.metafields.details.dia_wt.value }}</span>
+          </li>
+        {%- endif -%}
+      </ul>
+    </div>
+  </div>
+
+  <style>
+    #specificationContent {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    #specificationContent.active {
+      max-height: 500px;  /* adjust if your content is taller */
+    }
+    #toggleBtn.active {
+      transform: rotate(45deg);
+    }
+  </style>
+
+  <script>
+    document.getElementById('specificationToggle').addEventListener('click', function () {
+      const content = document.getElementById('specificationContent');
+      const button = document.getElementById('toggleBtn');
+      content.classList.toggle('active');
+      button.classList.toggle('active');
+    });
+  </script>
+{%- endif -%}
+
           
             
             {%- render 'buy-buttons',
