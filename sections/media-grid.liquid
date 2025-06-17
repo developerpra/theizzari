@@ -24,11 +24,23 @@
         --media-grid-gap: {% if section.settings.spacing == 'xs' %}0.75rem{% elsif section.settings.spacing == 'sm' %}1.25rem{% elsif section.settings.spacing == 'md' %}1.875rem{% elsif section.settings.spacing == 'lg' %}2.5rem{% else %}0rem{% endif %};
       }
     }
+
+    .only-mobile { display: none; }
+    @media (max-width: 767px) { .only-mobile { display: block; } .only-desktop { display: none; } }
+    @media (min-width: 768px) { .only-desktop { display: block; } .only-mobile { display: none; } }
   </style>
 
   {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
 
-  <div class="section-spacing color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }} {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
+  {%- assign show_on = section.settings.show_on | default: 'both' -%}
+  {%- assign show_on_class = '' -%}
+  {%- if show_on == 'mobile' -%}
+    {%- assign show_on_class = 'only-mobile' -%}
+  {%- elsif show_on == 'desktop' -%}
+    {%- assign show_on_class = 'only-desktop' -%}
+  {%- endif -%}
+
+  <div class="section-spacing color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }} {% if section.settings.separate_section_with_border %}bordered-section{% endif %} {{ show_on_class }}">
     <div class="container {% unless section.settings.section_width == 'full' %}container--{{ section.settings.section_width }}{% endunless %}">
       <div class="section-stack" style="font-size: 2.5rem; letter-spacing: -0.02em;" >
 {%- if section.settings.subheading != blank -%}
@@ -216,6 +228,17 @@
       "type": "richtext",
       "id": "content",
       "label": "t:global.text.content"
+    },
+    {
+      "type": "select",
+      "id": "show_on",
+      "label": "Show on",
+      "options": [
+        { "value": "both", "label": "Both" },
+        { "value": "desktop", "label": "Desktop only" },
+        { "value": "mobile", "label": "Mobile only" }
+      ],
+      "default": "both"
     }
   ],
   "blocks": [

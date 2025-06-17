@@ -2684,6 +2684,9 @@ model-media .shopify-model-viewer-ui {
   .product-list--carousel {
     --product-list-card-width: min(300px, 65%);
   }
+  .product-card {
+    min-height: 320px;
+  }
 }
 
 @media screen and (min-width: 700px) {
@@ -4544,7 +4547,7 @@ tfoot td {
 }
 
 .collection-toolbar__button-list {
-  flex-grow: 1;
+  flex-grow: 2;
   display: flex;
 }
 
@@ -4576,6 +4579,7 @@ tfoot td {
   gap: 1rem;
   padding-inline: 1.25rem;
   display: flex;
+  flex-grow: 1;
 }
 
 .collection-toolbar__button {
