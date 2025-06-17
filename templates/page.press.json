@@ -223,6 +223,7 @@
         },
         "image_PcYNPn": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/rs2.jpg",
             "mobile_image": "shopify://shop_images/rs2.jpg",
