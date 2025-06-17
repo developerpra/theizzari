@@ -1,1 +1,234 @@
-{"sections":{"main":{"type":"main-product","blocks":{"vendor":{"type":"vendor","disabled":true,"settings":{}},"title":{"type":"title","settings":{"heading_tag":"h3"}},"price":{"type":"price","settings":{"show_taxes_notice":false}},"payment_terms":{"type":"payment_terms","settings":{}},"separator":{"type":"separator","disabled":true,"settings":{}},"description":{"type":"description","disabled":true,"settings":{"collapse_content":false,"show_below_gallery":false}},"variant_picker":{"type":"variant_picker","settings":{"hide_sold_out_variants":false,"selector_style":"block","swatch_selector_style":"swatch","variant_image_options":"","size_chart_page":"size-chart"}},"quantity_selector":{"type":"quantity_selector","settings":{}},"buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":true,"atc_button_background":"","atc_button_text_color":"","payment_button_background":"","payment_button_text_color":""}},"complementary_products":{"type":"complementary_products","settings":{"title":"Pairs well with","products_count":2,"show_below_gallery":true,"stack_products":false,"show_quick_buy":true}},"share_buttons_4f9M9z":{"type":"share_buttons","settings":{}}},"block_order":["vendor","title","price","payment_terms","separator","description","variant_picker","quantity_selector","buy_buttons","complementary_products","share_buttons_4f9M9z"],"settings":{"color_scheme":"","container_size":"lg","product_info_size":35,"show_sticky_add_to_cart":true,"center_basic_info":false,"desktop_media_layout":"grid_2x","desktop_media_grid_gap":30,"mobile_controls":"dots","enable_media_autoplay":false,"enable_video_looping":true,"enable_image_zoom":true,"max_image_zoom_level":3}},"productnew_XPUWnB":{"type":"Productnew","disabled":true,"name":"Product Page","settings":{"purity":"18KT","net_wt":"23.36 GMS","gross_wt":"25.82 GMS","stn_wt":"7.21 CTS","dia_wt":"5.11 CTS"}},"related-products":{"type":"related-products","settings":{"color_scheme":"","separate_section_with_border":false,"hide_product_information":false,"stack_products":false,"recommendations_count":10,"products_per_row_mobile":"2","products_per_row_desktop":4,"horizontal_spacing_factor":1,"vertical_spacing_factor":1,"subheading":"","title":"Related products","content":""}},"image_with_text_MJaEqt":{"type":"image-with-text","blocks":{"subheading_Wm4dnC":{"type":"subheading","disabled":true,"settings":{"text":"Subheading"}},"heading_KVnrUf":{"type":"heading","settings":{"text":"{{ product.metafields.custom.image_with_subtitle.value }}","heading_tag":"h1"}},"richtext_dkLLaB":{"type":"richtext","settings":{"content":"<p>{{ product.metafields.custom.image_with_content | metafield_tag }}<\/p>"}},"link_iYCehz":{"type":"link","settings":{"text":"{{ product.metafields.custom.image_with_button_name.value }}","url":"{{ product.metafields.custom.image_with_button_link.value }}"}}},"block_order":["subheading_Wm4dnC","heading_KVnrUf","richtext_dkLLaB","link_iYCehz"],"settings":{"color_scheme":"","separate_section_with_border":false,"image":"{{ product.metafields.custom.image.value }}","mobile_image":"{{ product.metafields.custom.image.value }}","reveal_on_scroll":true,"image_position":"start","content_width":"sm","remove_vertical_spacing":false}},"new_custom_section_Hek6c7":{"type":"new-custom-section","settings":{"color_scheme":"scheme-1","separate_section_with_border":false,"remove_vertical_spacing":false,"remove_horizontal_spacing":false,"text_alignment":"start","image":"shopify:\/\/shop_images\/ConvertOut-Resized-Izzari1529.jpg","lefttext":"<h1>GIFT WRAPPING<\/h1><p>Send your presents in our signature packaging with a personalised greetings card included<\/p>","leftlink":"","leftlinktext":"Read More","righttext":"<h2>SHIPPING \/ RETURN<\/h2><p>We offer different delivery options. Choose the one you prefer at the checkout. You may return or exchange your IZZARI creation within 30 days.<\/p>","rightlink1":"shopify:\/\/pages\/shipping-policy","rightlinktext1":"View Shipping ","rightlink2":"shopify:\/\/pages\/returns-exchange-policy","rightlinktext2":"View Return"}},"cta_banner_CDdaWy":{"type":"cta-banner","name":"CTA Banner","settings":{"heading":"Live In Glamour","subheading":"Reach the perfect glamour style with our exclusive jewelry collections.","button_label":"SHOP NOW","button_link":"shopify:\/\/collections\/all","image_left":"shopify:\/\/shop_images\/Frame_1296.png","image_right":"shopify:\/\/shop_images\/Frame_1297.png"}}},"order":["main","productnew_XPUWnB","related-products","image_with_text_MJaEqt","new_custom_section_Hek6c7","cta_banner_CDdaWy"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h3"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "separator": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "collapse_content": false,
+            "show_below_gallery": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": "size-chart"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "complementary_products": {
+          "type": "complementary_products",
+          "settings": {
+            "title": "Pairs well with",
+            "products_count": 2,
+            "show_below_gallery": true,
+            "stack_products": false,
+            "show_quick_buy": true
+          }
+        },
+        "share_buttons_4f9M9z": {
+          "type": "share_buttons",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "payment_terms",
+        "separator",
+        "description",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "complementary_products",
+        "share_buttons_4f9M9z"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "container_size": "lg",
+        "product_info_size": 35,
+        "show_sticky_add_to_cart": false,
+        "center_basic_info": false,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "desktop_media_grid_gap": 30,
+        "mobile_controls": "dots",
+        "enable_media_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3
+      }
+    },
+    "productnew_XPUWnB": {
+      "type": "Productnew",
+      "disabled": true,
+      "name": "Product Page",
+      "settings": {
+        "purity": "18KT",
+        "net_wt": "23.36 GMS",
+        "gross_wt": "25.82 GMS",
+        "stn_wt": "7.21 CTS",
+        "dia_wt": "5.11 CTS"
+      }
+    },
+    "new_custom_section_Hek6c7": {
+      "type": "new-custom-section",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "separate_section_with_border": false,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "text_alignment": "start",
+        "image": "shopify://shop_images/ConvertOut-Resized-Izzari1529.jpg",
+        "lefttext": "<h1>GIFT WRAPPING</h1><p>Send your presents in our signature packaging with a personalised greetings card included</p>",
+        "leftlink": "",
+        "leftlinktext": "Read More",
+        "righttext": "<h2>SHIPPING / RETURN</h2><p>We offer different delivery options. Choose the one you prefer at the checkout. You may return or exchange your IZZARI creation within 30 days.</p>",
+        "rightlink1": "shopify://pages/shipping-policy",
+        "rightlinktext1": "View Shipping ",
+        "rightlink2": "shopify://pages/returns-exchange-policy",
+        "rightlinktext2": "View Return"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": false,
+        "hide_product_information": false,
+        "stack_products": false,
+        "recommendations_count": 10,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "",
+        "title": "Related products",
+        "content": ""
+      }
+    },
+    "image_with_text_MJaEqt": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_Wm4dnC": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_KVnrUf": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ product.metafields.custom.image_with_subtitle.value }}",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_dkLLaB": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>{{ product.metafields.custom.image_with_content | metafield_tag }}</p>"
+          }
+        },
+        "link_iYCehz": {
+          "type": "link",
+          "settings": {
+            "text": "{{ product.metafields.custom.image_with_button_name.value }}",
+            "url": "{{ product.metafields.custom.image_with_button_link.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_Wm4dnC",
+        "heading_KVnrUf",
+        "richtext_dkLLaB",
+        "link_iYCehz"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": false,
+        "image": "{{ product.metafields.custom.image.value }}",
+        "mobile_image": "{{ product.metafields.custom.image.value }}",
+        "reveal_on_scroll": true,
+        "image_position": "start",
+        "content_width": "sm",
+        "remove_vertical_spacing": false
+      }
+    },
+    "cta_banner_CDdaWy": {
+      "type": "cta-banner",
+      "name": "CTA Banner",
+      "settings": {
+        "heading": "Live In Glamour",
+        "subheading": "Reach the perfect glamour style with our exclusive jewelry collections.",
+        "button_label": "SHOP NOW",
+        "button_link": "shopify://collections/all",
+        "image_left": "shopify://shop_images/rs2_a5e01659-af1f-4283-a06f-af10a885e3e3.jpg",
+        "image_right": "shopify://shop_images/Not_for_the_faint_of_heart.The_Disco_Heart_by_Izzari_is_sparkle_with_an_attitude_fierce_flirty_and_fabulously_bold.Pre-orders_now_open_at_www.theizzari.com_DiscoHeartByIzzari_IzzariFi.jpg"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "productnew_XPUWnB",
+    "new_custom_section_Hek6c7",
+    "related-products",
+    "image_with_text_MJaEqt",
+    "cta_banner_CDdaWy"
+  ]
+}
