@@ -199,8 +199,8 @@
           "settings": {
             "image": "shopify://shop_images/ep3.jpg",
             "mobile_image": "shopify://shop_images/ep3.jpg",
-            "subheading": "Tell your storyFrom red carpet showcases to intimate styling sessions",
-            "title": "Jewelry showcase",
+            "subheading": "From red carpet showcases to intimate styling sessions",
+            "title": "",
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
             "content_max_width": 780,
@@ -226,8 +226,8 @@
           "settings": {
             "image": "shopify://shop_images/ep2.jpg",
             "mobile_image": "shopify://shop_images/ep2.jpg",
-            "subheading": "Tell your storyFrom red carpet showcases to intimate styling sessions",
-            "title": "Boutique Launch",
+            "subheading": "Tell your story",
+            "title": "",
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
             "content_max_width": 780,
