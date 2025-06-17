@@ -1,1 +1,531 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"color_scheme":"","show_title":true,"page_width":"xs"}},"slideshow_jAqiMc":{"type":"slideshow","blocks":{"image_RaYhCi":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/about_us.jpg","mobile_image":"shopify:\/\/shop_images\/about_us.jpg","subheading":"Jewels born of emotion. Crafted for moments. Worn by icons.","title":"Where Stories Turn to Stone","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","content_max_width":960,"button_1_text":"Explore our craft","button_1_link":"","button_1_style":"solid","button_1_background":"#ffffff","button_1_text_color":"#000000","button_2_text":"","button_2_link":"","button_2_style":"outline","button_2_background":"#ffffff","button_2_text_color":"#000000","background":"","background_opacity":0,"text_color":"#ffffff","border_color":"","gradient_overlay":"linear-gradient(180deg, rgba(NaN, NaN, NaN, 1), rgba(4, 4, 4, 0.65) 100%)"}},"image_6fqzHH":{"type":"image","disabled":true,"settings":{"subheading":"Tell your story","title":"Slide 2","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","content_max_width":780,"button_1_text":"","button_1_link":"","button_1_style":"solid","button_1_background":"#ffffff","button_1_text_color":"#000000","button_2_text":"","button_2_link":"","button_2_style":"outline","button_2_background":"#ffffff","button_2_text_color":"#000000","background":"","background_opacity":50,"text_color":"#ffffff","border_color":"","gradient_overlay":"linear-gradient(180deg, rgba(54, 54, 54, 0.2), rgba(4, 4, 4, 0.65) 100%)"}}},"block_order":["image_RaYhCi","image_6fqzHH"],"settings":{"allow_transparent_header":false,"show_next_section_button":false,"media_size":"auto","show_initial_transition":false,"autoplay":true,"autoplay_pause_on_video":true,"cycle_speed":5,"background":"#000000","controls_color":"#ffffff"}},"rich_text_rbjp8b":{"type":"rich-text","blocks":{"heading_BULhLX":{"type":"heading","settings":{"text":"From the Desk of Aanchal Jain","heading_tag":"h1"}}},"block_order":["heading_BULhLX"],"custom_css":[],"settings":{"color_scheme":"","separate_section_with_border":false,"content_width":"lg","text_position":"center","remove_vertical_spacing":false}},"multiple_media_with_text_hePETf":{"type":"multiple-media-with-text","blocks":{"image_3V8iXA":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/About_1.jpg","rotation":0}},"image_YLhxet":{"type":"image","disabled":true,"settings":{"rotation":0}}},"block_order":["image_3V8iXA","image_YLhxet"],"settings":{"color_scheme":"","reveal_on_scroll":true,"separate_section_with_border":false,"media_position_desktop":"before_text","media_position_mobile":"before_text","media_layout":"overlap","media_alignment":"center","media_alignment_offset":0,"media_mobile_alignment_offset":0,"text_alignment":"center","subheading":"","title":"“Jewelry should live with you.”","content":"<p>“I founded Izzari with the belief that jewelry shouldn’t sit in lockers. It should move with you — be worn, lived in, and loved every day.”<\/p><p><\/p><p>                                                   - Aanchal Jain<\/p>","button_1_text":"","button_1_link":"","button_1_style":"solid","button_2_text":"","button_2_link":"","button_2_style":"solid"}},"media_grid_A8P3xD":{"type":"media-grid","blocks":{"image_tdyNEY":{"type":"image","settings":{"color_scheme":"","image":"shopify:\/\/shop_images\/mt.jpg","column_count":"8","row_count":2,"title":"","heading_tag":"h4","content":"","link_text":"","link_url":"","link_style":"link","text_position":"place-self-center text-center","overlay_color":"#000000","overlay_opacity":0}},"image_EQWd3k":{"type":"image","settings":{"color_scheme":"","image":"shopify:\/\/shop_images\/WhatsApp_Image_2024-08-21_at_10.50.58_AM.jpg","column_count":"4","row_count":1,"title":"","heading_tag":"h4","content":"","link_text":"","link_url":"","link_style":"link","text_position":"place-self-center text-center","overlay_color":"#000000","overlay_opacity":0}},"image_X7Amdb":{"type":"image","settings":{"color_scheme":"","image":"shopify:\/\/shop_images\/Digital_Diana_Penty6.jpg","column_count":"4","row_count":1,"title":"","heading_tag":"h4","content":"","link_text":"","link_url":"","link_style":"link","text_position":"place-self-center text-center","overlay_color":"#000000","overlay_opacity":0}}},"block_order":["image_tdyNEY","image_EQWd3k","image_X7Amdb"],"settings":{"color_scheme":"","separate_section_with_border":true,"desktop_row_height":290,"mobile_row_height":180,"section_width":"lg","spacing":"md","subheading":"“Worn by” celebrities","title":"","content":""}},"image_with_text_XTr6F8":{"type":"image-with-text","blocks":{"subheading_yrXzJf":{"type":"subheading","settings":{"text":"Subheading"}},"heading_Um8bHC":{"type":"heading","settings":{"text":"Image with text","heading_tag":"h1"}},"richtext_dCGTtd":{"type":"richtext","settings":{"content":"<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"}},"button_t9xg4F":{"type":"button","settings":{"style":"solid","text":"Button text","url":"","background":"","text_color":""}}},"block_order":["subheading_yrXzJf","heading_Um8bHC","richtext_dCGTtd","button_t9xg4F"],"settings":{"color_scheme":"","separate_section_with_border":true,"reveal_on_scroll":true,"image_position":"start","content_width":"sm","remove_vertical_spacing":true}},"logo_list_pr9LGx":{"type":"logo-list","blocks":{"logo_HhdzC7":{"type":"logo","settings":{"logo":"shopify:\/\/shop_images\/Frame_1368.png","logo_width":120,"link":""}},"logo_DDPMKq":{"type":"logo","settings":{"logo":"shopify:\/\/shop_images\/Frame_1369.png","logo_width":120,"link":""}},"logo_DiAEUU":{"type":"logo","settings":{"logo":"shopify:\/\/shop_images\/Frame_1370.png","logo_width":120,"link":""}}},"block_order":["logo_HhdzC7","logo_DDPMKq","logo_DiAEUU"],"settings":{"color_scheme":"scheme-1","separate_section_with_border":true,"subheading":"","title":"Featured in","items_per_row":3,"logo_item_background":"","logo_item_border":""}},"image_with_text_overlay_rzXAVb":{"type":"image-with-text-overlay","blocks":{"heading_TkdYPh":{"type":"heading","settings":{"text":"At Izzari","heading_tag":"h1"}},"richtext_Kw3rjK":{"type":"richtext","settings":{"content":"<p>We sculpt stories into precious form.From natural diamonds and global design cues, we create pieces that aren’t just worn — they’re remembered.<\/p>"}},"button_z9xmWy":{"type":"button","settings":{"style":"solid","text":"CRAFTED FOR YOU","url":"","background":"","text_color":""}}},"block_order":["heading_TkdYPh","richtext_Kw3rjK","button_z9xmWy"],"settings":{"color_scheme":"","image_size":"auto","image":"shopify:\/\/shop_images\/Frame_1122.png","allow_transparent_header":false,"reveal_on_scroll":true,"remove_vertical_spacing":true,"content_width":"md","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","overlay_color":"#000000","overlay_opacity":30}},"image_with_text_rMFYAh":{"type":"image-with-text","blocks":{"subheading_KY6m3H":{"type":"subheading","settings":{"text":"Subheading"}},"heading_qMdzHM":{"type":"heading","settings":{"text":"Image with text","heading_tag":"h1"}},"richtext_QGjJAc":{"type":"richtext","settings":{"content":"<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"}},"button_ezqdJP":{"type":"button","settings":{"style":"solid","text":"Button text","url":"","background":"","text_color":""}}},"block_order":["subheading_KY6m3H","heading_qMdzHM","richtext_QGjJAc","button_ezqdJP"],"settings":{"color_scheme":"","separate_section_with_border":true,"reveal_on_scroll":true,"image_position":"start","content_width":"sm","remove_vertical_spacing":true}},"image_with_text_fXeJqr":{"type":"image-with-text","blocks":{"subheading_wJLQkp":{"type":"subheading","settings":{"text":"Subheading"}},"heading_8ThYQB":{"type":"heading","settings":{"text":"Image with text","heading_tag":"h1"}},"richtext_dABthM":{"type":"richtext","settings":{"content":"<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"}},"button_kkjCAy":{"type":"button","settings":{"style":"solid","text":"Button text","url":"","background":"","text_color":""}}},"block_order":["subheading_wJLQkp","heading_8ThYQB","richtext_dABthM","button_kkjCAy"],"settings":{"color_scheme":"","separate_section_with_border":true,"reveal_on_scroll":true,"image_position":"start","content_width":"sm","remove_vertical_spacing":true}},"image_with_text_nHfhgQ":{"type":"image-with-text","blocks":{"subheading_wTKTfX":{"type":"subheading","settings":{"text":"Subheading"}},"heading_hyGVNJ":{"type":"heading","settings":{"text":"Image with text","heading_tag":"h1"}},"richtext_m7RLkA":{"type":"richtext","settings":{"content":"<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"}},"button_3XbWp6":{"type":"button","settings":{"style":"solid","text":"Button text","url":"","background":"","text_color":""}}},"block_order":["subheading_wTKTfX","heading_hyGVNJ","richtext_m7RLkA","button_3XbWp6"],"settings":{"color_scheme":"","separate_section_with_border":true,"reveal_on_scroll":true,"image_position":"start","content_width":"sm","remove_vertical_spacing":true}}},"order":["main","slideshow_jAqiMc","rich_text_rbjp8b","multiple_media_with_text_hePETf","media_grid_A8P3xD","image_with_text_XTr6F8","logo_list_pr9LGx","image_with_text_overlay_rzXAVb","image_with_text_rMFYAh","image_with_text_fXeJqr","image_with_text_nHfhgQ"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "show_title": true,
+        "page_width": "xs"
+      }
+    },
+    "slideshow_jAqiMc": {
+      "type": "slideshow",
+      "blocks": {
+        "image_RaYhCi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/about_us.jpg",
+            "mobile_image": "shopify://shop_images/about_us.jpg",
+            "subheading": "Jewels born of emotion. Crafted for moments. Worn by icons.",
+            "title": "Where Stories Turn to Stone",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "content_max_width": 960,
+            "button_1_text": "Explore our craft",
+            "button_1_link": "shopify://collections",
+            "button_1_style": "solid",
+            "button_1_background": "#ffffff",
+            "button_1_text_color": "#000000",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_style": "outline",
+            "button_2_background": "#ffffff",
+            "button_2_text_color": "#000000",
+            "background": "",
+            "background_opacity": 0,
+            "text_color": "#ffffff",
+            "border_color": "",
+            "gradient_overlay": "linear-gradient(180deg, rgba(NaN, NaN, NaN, 1), rgba(4, 4, 4, 0.65) 100%)"
+          }
+        },
+        "image_6fqzHH": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "subheading": "Tell your story",
+            "title": "Slide 2",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "content_max_width": 780,
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_1_style": "solid",
+            "button_1_background": "#ffffff",
+            "button_1_text_color": "#000000",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_style": "outline",
+            "button_2_background": "#ffffff",
+            "button_2_text_color": "#000000",
+            "background": "",
+            "background_opacity": 50,
+            "text_color": "#ffffff",
+            "border_color": "",
+            "gradient_overlay": "linear-gradient(180deg, rgba(54, 54, 54, 0.2), rgba(4, 4, 4, 0.65) 100%)"
+          }
+        }
+      },
+      "block_order": [
+        "image_RaYhCi",
+        "image_6fqzHH"
+      ],
+      "settings": {
+        "allow_transparent_header": false,
+        "show_next_section_button": false,
+        "media_size": "auto",
+        "show_initial_transition": false,
+        "autoplay": true,
+        "autoplay_pause_on_video": true,
+        "cycle_speed": 5,
+        "background": "#000000",
+        "controls_color": "#ffffff"
+      }
+    },
+    "rich_text_rbjp8b": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_BULhLX": {
+          "type": "heading",
+          "settings": {
+            "text": "From the Desk of Aanchal Jain",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BULhLX"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": false,
+        "content_width": "lg",
+        "text_position": "center",
+        "remove_vertical_spacing": false
+      }
+    },
+    "multiple_media_with_text_hePETf": {
+      "type": "multiple-media-with-text",
+      "blocks": {
+        "image_3V8iXA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DSC_0034.jpg",
+            "rotation": 0
+          }
+        },
+        "image_YLhxet": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "rotation": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_3V8iXA",
+        "image_YLhxet"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "reveal_on_scroll": true,
+        "separate_section_with_border": false,
+        "media_position_desktop": "before_text",
+        "media_position_mobile": "before_text",
+        "media_layout": "overlap",
+        "media_alignment": "center",
+        "media_alignment_offset": 0,
+        "media_mobile_alignment_offset": 0,
+        "text_alignment": "center",
+        "subheading": "",
+        "title": "“Jewelry should live with you.”",
+        "content": "<p>“I founded Izzari with the belief that jewelry shouldn’t sit in lockers. It should move with you — be worn, lived in, and loved every day.”</p><p></p><p>                                                   - Aanchal Jain</p>",
+        "button_1_text": "",
+        "button_1_link": "",
+        "button_1_style": "solid",
+        "button_2_text": "",
+        "button_2_link": "",
+        "button_2_style": "solid"
+      }
+    },
+    "media_grid_A8P3xD": {
+      "type": "media-grid",
+      "blocks": {
+        "image_tdyNEY": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/mt.jpg",
+            "column_count": "8",
+            "row_count": 2,
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_text": "",
+            "link_url": "",
+            "link_style": "link",
+            "text_position": "place-self-center text-center",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_EQWd3k": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/WhatsApp_Image_2024-08-21_at_10.50.58_AM.jpg",
+            "column_count": "4",
+            "row_count": 1,
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_text": "",
+            "link_url": "",
+            "link_style": "link",
+            "text_position": "place-self-center text-center",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_X7Amdb": {
+          "type": "image",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/Digital_Diana_Penty6.jpg",
+            "column_count": "4",
+            "row_count": 1,
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_text": "",
+            "link_url": "",
+            "link_style": "link",
+            "text_position": "place-self-center text-center",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_tdyNEY",
+        "image_EQWd3k",
+        "image_X7Amdb"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "desktop_row_height": 290,
+        "mobile_row_height": 180,
+        "section_width": "lg",
+        "spacing": "md",
+        "subheading": "“Worn by” celebrities",
+        "title": "",
+        "content": ""
+      }
+    },
+    "image_with_text_XTr6F8": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_yrXzJf": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_Um8bHC": {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_dCGTtd": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "button_t9xg4F": {
+          "type": "button",
+          "settings": {
+            "style": "solid",
+            "text": "Button text",
+            "url": "",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_yrXzJf",
+        "heading_Um8bHC",
+        "richtext_dCGTtd",
+        "button_t9xg4F"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "reveal_on_scroll": true,
+        "image_position": "start",
+        "content_width": "sm",
+        "remove_vertical_spacing": true
+      }
+    },
+    "logo_list_pr9LGx": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_HhdzC7": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Frame_1368.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_DDPMKq": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Frame_1369.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_DiAEUU": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Frame_1370.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_HhdzC7",
+        "logo_DDPMKq",
+        "logo_DiAEUU"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "separate_section_with_border": true,
+        "subheading": "",
+        "title": "Featured in",
+        "items_per_row": 3,
+        "logo_item_background": "",
+        "logo_item_border": ""
+      }
+    },
+    "image_with_text_overlay_rzXAVb": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_TkdYPh": {
+          "type": "heading",
+          "settings": {
+            "text": "At Izzari",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_Kw3rjK": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We sculpt stories into precious form.From natural diamonds and global design cues, we create pieces that aren’t just worn — they’re remembered.</p>"
+          }
+        },
+        "button_z9xmWy": {
+          "type": "button",
+          "settings": {
+            "style": "solid",
+            "text": "CRAFTED FOR YOU",
+            "url": "",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_TkdYPh",
+        "richtext_Kw3rjK",
+        "button_z9xmWy"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "image_size": "auto",
+        "image": "shopify://shop_images/Frame_1122.png",
+        "allow_transparent_header": false,
+        "reveal_on_scroll": true,
+        "remove_vertical_spacing": true,
+        "content_width": "md",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "image_with_text_rMFYAh": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_KY6m3H": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_qMdzHM": {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_QGjJAc": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "button_ezqdJP": {
+          "type": "button",
+          "settings": {
+            "style": "solid",
+            "text": "Button text",
+            "url": "",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_KY6m3H",
+        "heading_qMdzHM",
+        "richtext_QGjJAc",
+        "button_ezqdJP"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "reveal_on_scroll": true,
+        "image_position": "start",
+        "content_width": "sm",
+        "remove_vertical_spacing": true
+      }
+    },
+    "image_with_text_fXeJqr": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_wJLQkp": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_8ThYQB": {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_dABthM": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "button_kkjCAy": {
+          "type": "button",
+          "settings": {
+            "style": "solid",
+            "text": "Button text",
+            "url": "",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_wJLQkp",
+        "heading_8ThYQB",
+        "richtext_dABthM",
+        "button_kkjCAy"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "reveal_on_scroll": true,
+        "image_position": "start",
+        "content_width": "sm",
+        "remove_vertical_spacing": true
+      }
+    },
+    "image_with_text_nHfhgQ": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_wTKTfX": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_hyGVNJ": {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_m7RLkA": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "button_3XbWp6": {
+          "type": "button",
+          "settings": {
+            "style": "solid",
+            "text": "Button text",
+            "url": "",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_wTKTfX",
+        "heading_hyGVNJ",
+        "richtext_m7RLkA",
+        "button_3XbWp6"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "reveal_on_scroll": true,
+        "image_position": "start",
+        "content_width": "sm",
+        "remove_vertical_spacing": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "slideshow_jAqiMc",
+    "rich_text_rbjp8b",
+    "multiple_media_with_text_hePETf",
+    "media_grid_A8P3xD",
+    "image_with_text_XTr6F8",
+    "logo_list_pr9LGx",
+    "image_with_text_overlay_rzXAVb",
+    "image_with_text_rMFYAh",
+    "image_with_text_fXeJqr",
+    "image_with_text_nHfhgQ"
+  ]
+}
