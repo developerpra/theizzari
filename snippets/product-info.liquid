@@ -354,55 +354,58 @@
             -%}
             
           {%- when 'specifications' -%}
-            {%- if product.metafields.details -%}
-              <div class="specifications-collapsible" style="margin-bottom: 1em;">
-                <div class="flex justify-between items-center" style="cursor: pointer;" onclick="
-                  var list = this.nextElementSibling;
-                  var icon = this.querySelector('.spec-toggle-icon');
-                  if (list.style.display === 'none') {
-                    list.style.display = 'block';
-                    icon.textContent = '-';
-                  } else {
-                    list.style.display = 'none';
-                    icon.textContent = '+';
-                  }
-                ">
-                  <h4 class="font-dm-sans specification-heading" style="margin: 0;">SPECIFICATIONS</h4>
-                  <span class="spec-toggle-icon" style="font-size: 1.5em; margin-left: 0.5em; user-select: none;">+</span>
-                </div>
-                <div class="product-metafields font-dm-sans" style="display: none;">
-                  <ul style="list-style: none; padding: 0; margin: 0;">
-                    {%- if product.metafields.details.purity.value != blank -%}
-                      <li class="flex justify-between specification-item" style="padding: 8px 0; ">
-                        <span>PURITY</span>
-                        <span>{{ product.metafields.details.purity.value }}</span>
-                      </li>
-                    {%- endif -%}
-                    {%- if product.metafields.details.nt_wt_gram.value != blank -%}
-                      <li class="flex justify-between specification-item" style="padding: 8px 0; ">
-                        <span >NET WT</span>
-                        <span >{{ product.metafields.details.nt_wt_gram.value }}</span>
-                      </li>
-                    {%- endif -%}
-                    {%- if product.metafields.details.g_wt_grm.value != blank -%}
-                      <li class="flex justify-between specification-item" style="padding: 8px 0; ">
-                        <span >GROSS WT</span>
-                        <span >{{ product.metafields.details.g_wt_grm.value }}</span>
-                      </li>
-                    {%- endif -%}
-                    {%- if product.metafields.details.stn_wt.value != blank -%}
-                      <li class="flex justify-between specification-item" style="padding: 8px 0; ">
-                        <span >STN. WT</span>
-                        <span >{{ product.metafields.details.stn_wt.value }}</span>
-                      </li>
-                    {%- endif -%}
-                    {%- if product.metafields.details.dia_wt.value != blank -%}
-                      <li class="flex justify-between specification-item" style="padding: 8px 0;">
-                        <span >DIA WT</span>
-                        <span >{{ product.metafields.details.dia_wt.value }}</span>
-                      </li>
-                    {%- endif -%}
-                  </ul>
+            {%- if product != blank -%}
+              <div class="product-specifications">
+                <h3>{{ 'product.general.specifications' | t | default: 'Specifications' }}</h3>
+                <div class="specification-list">
+                  {%- if product.metafields.specifications.purity != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.purity' | t | default: 'Purity' }}:</span>
+                      <span class="specification-value">{{ product.metafields.specifications.purity }}</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if product.metafields.specifications.net_weight != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.net_weight' | t | default: 'Net Weight' }}:</span>
+                      <span class="specification-value">{{ product.metafields.specifications.net_weight }}</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if product.metafields.specifications.gross_weight != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.gross_weight' | t | default: 'Gross Weight' }}:</span>
+                      <span class="specification-value">{{ product.metafields.specifications.gross_weight }}</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if product.metafields.specifications.stone_weight != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.stone_weight' | t | default: 'Stone Weight' }}:</span>
+                      <span class="specification-value">{{ product.metafields.specifications.stone_weight }}</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if product.metafields.specifications.diamond_weight != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.diamond_weight' | t | default: 'Diamond Weight' }}:</span>
+                      <span class="specification-value">{{ product.metafields.specifications.diamond_weight }}</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if product.vendor != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.brand' | t | default: 'Brand' }}:</span>
+                      <span class="specification-value">{{ product.vendor }}</span>
+                    </div>
+                  {%- endif -%}
+                  
+                  {%- if product.sku != blank -%}
+                    <div class="specification-item">
+                      <span class="specification-label">{{ 'product.specifications.sku' | t | default: 'SKU' }}:</span>
+                      <span class="specification-value">{{ product.sku }}</span>
+                    </div>
+                  {%- endif -%}
                 </div>
               </div>
             {%- endif -%}
