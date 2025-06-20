@@ -2684,7 +2684,7 @@ model-media .shopify-model-viewer-ui {
   .product-list--carousel {
     --product-list-card-width: min(300px, 65%);
   }
-  .product-card {
+  .product-list--carousel .product-card {
     min-height: 320px;
   }
 }
