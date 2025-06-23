@@ -2,52 +2,52 @@
   .compare-container {
     padding: 40px 0;
   }
-  
+
   .compare-header {
     text-align: center;
     margin-bottom: 40px;
   }
-  
+
   .compare-header h1 {
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 16px;
   }
-  
+
   .compare-empty {
     text-align: center;
     padding: 60px 20px;
   }
-  
+
   .compare-empty p {
     font-size: 18px;
     color: #666;
     margin-bottom: 24px;
   }
-  
+
   .compare-table-wrapper {
     overflow-x: auto;
     margin: 0 -20px;
     padding: 0 20px;
   }
-  
+
   .compare-table {
     width: 100%;
     min-width: 600px;
     border-collapse: collapse;
     background: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
   }
-  
+
   .compare-table th,
   .compare-table td {
     padding: 16px;
     text-align: left;
     border-bottom: 1px solid #e0e0e0;
   }
-  
+
   .compare-table th {
     background: #f5f5f5;
     font-weight: 600;
@@ -56,17 +56,17 @@
     left: 0;
     z-index: 1;
   }
-  
+
   .compare-table tr:last-child td {
     border-bottom: none;
   }
-  
+
   .compare-product-cell {
     vertical-align: top;
     width: 300px;
     position: relative;
   }
-  
+
   .compare-product-image {
     width: 100%;
     max-width: 200px;
@@ -75,21 +75,21 @@
     border-radius: 8px;
     margin-bottom: 12px;
   }
-  
+
   .compare-product-title {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 8px;
     color: #1a1a1a;
   }
-  
+
   .compare-product-price {
     font-size: 20px;
     font-weight: 600;
     color: #2d5a3d;
     margin-bottom: 16px;
   }
-  
+
   .compare-remove-btn {
     position: absolute;
     top: 8px;
@@ -105,28 +105,28 @@
     cursor: pointer;
     transition: all 0.3s ease;
   }
-  
+
   .compare-remove-btn:hover {
     background: #f5f5f5;
     border-color: #d0d0d0;
   }
-  
+
   .compare-spec-row td {
     font-size: 14px;
     color: #666;
   }
-  
+
   .compare-spec-label {
     font-weight: 500;
     color: #333;
   }
-  
+
   .compare-actions {
     margin-top: 16px;
     display: flex;
     gap: 12px;
   }
-  
+
   .compare-buy-btn,
   .compare-cart-btn {
     flex: 1;
@@ -138,32 +138,32 @@
     cursor: pointer;
     transition: all 0.3s ease;
   }
-  
+
   .compare-buy-btn {
     background: #2d5a3d;
     color: white;
   }
-  
+
   .compare-buy-btn:hover {
     background: #234731;
   }
-  
+
   .compare-cart-btn {
     background: white;
     color: #2d5a3d;
     border: 2px solid #2d5a3d;
   }
-  
+
   .compare-cart-btn:hover {
     background: #2d5a3d;
     color: white;
   }
-  
+
   .compare-clear-all {
     text-align: center;
     margin-top: 40px;
   }
-  
+
   .clear-all-btn {
     padding: 12px 32px;
     background: #dc3545;
@@ -175,11 +175,11 @@
     cursor: pointer;
     transition: background 0.3s ease;
   }
-  
+
   .clear-all-btn:hover {
     background: #c82333;
   }
-  
+
   .compare-floating-widget {
     position: fixed;
     bottom: 20px;
@@ -188,7 +188,7 @@
     color: white;
     padding: 12px 20px;
     border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     display: none;
     align-items: center;
     gap: 8px;
@@ -196,16 +196,16 @@
     z-index: 1000;
     transition: all 0.3s ease;
   }
-  
+
   .compare-floating-widget:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   }
-  
+
   .compare-floating-widget.active {
     display: flex;
   }
-  
+
   .compare-count {
     background: white;
     color: #2d5a3d;
@@ -218,21 +218,21 @@
     font-weight: 600;
     font-size: 14px;
   }
-  
+
   @media (max-width: 768px) {
     .compare-table {
       font-size: 14px;
     }
-    
+
     .compare-product-cell {
       width: 200px;
     }
-    
+
     .compare-product-image {
       max-width: 150px;
       height: 150px;
     }
-    
+
     .compare-actions {
       flex-direction: column;
     }
@@ -244,16 +244,25 @@
     <h1>{{ 'compare.title' | t | default: 'Compare Products' }}</h1>
     <p>{{ 'compare.subtitle' | t | default: 'Compare up to 4 products at a time' }}</p>
   </div>
-  
+
   <div id="compare-content">
     <!-- Content will be loaded dynamically -->
   </div>
 </div>
 
 <!-- Floating Compare Widget -->
-<div class="compare-floating-widget" id="compare-widget" onclick="window.location.href='/collections/compare'">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M3 3h18v18H3zM12 8v8m-4-4h8"/>
+<div
+  class="compare-floating-widget"
+  id="compare-widget"
+  onclick="window.location.href='/pages/compare'">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2">
+    <path d="M3 3h18v18H3zM12 8v8m-4-4h8" />
   </svg>
   <span>Compare</span>
   <span class="compare-count" id="compare-count">0</span>
@@ -262,6 +271,12 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     console.log('Compare page loaded');
+    
+    // Remove any query parameters from the URL without reloading
+    if (window.location.search) {
+      const cleanUrl = window.location.pathname;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
     const compareContent = document.getElementById('compare-content');
     const compareWidget = document.getElementById('compare-widget');
     const compareCount = document.getElementById('compare-count');
@@ -486,10 +501,10 @@
 </script>
 
 {% schema %}
-{
-  "name": "Compare Products",
-  "tag": "section",
-  "class": "section-compare-products",
-  "settings": []
-}
-{% endschema %} 
+  {
+    "name": "Compare Products",
+    "tag": "section",
+    "class": "section-compare-products",
+    "settings": []
+  }
+{% endschema %}
