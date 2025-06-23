@@ -14,6 +14,28 @@ may have important consequence on the section itself.
   {%- assign show_on_class = 'only-desktop' -%}
 {%- endif -%}
 
+<style>
+  /* Visibility controls for slideshow */
+  .only-mobile { 
+    display: block !important; 
+  }
+  .only-desktop { 
+    display: block !important; 
+  }
+  
+  @media (max-width: 767px) { 
+    .only-desktop { 
+      display: none !important; 
+    }
+  }
+  
+  @media (min-width: 768px) { 
+    .only-mobile { 
+      display: none !important; 
+    } 
+  }
+</style>
+
 <div class="section-spacing {{ show_on_class }}">
   <div class="container">
     <div class="section-stack">
@@ -208,6 +230,18 @@ may have important consequence on the section itself.
   },
   "settings": [
     {
+      "type": "select",
+      "id": "show_on",
+      "label": "Visibility",
+      "info": "Control whether this section is visible on mobile devices, desktop devices, or both",
+      "options": [
+        { "value": "both", "label": "Both" },
+        { "value": "desktop", "label": "Desktop only" },
+        { "value": "mobile", "label": "Mobile only" }
+      ],
+      "default": "both"
+    },
+    {
       "type": "checkbox",
       "id": "allow_transparent_header",
       "label": "t:global.section.allow_transparent_header",
@@ -300,17 +334,7 @@ may have important consequence on the section itself.
       "info": "t:sections.slideshow.controls_color_info",
       "default": "#ffffff"
     },
-    {
-      "type": "select",
-      "id": "show_on",
-      "label": "Show on",
-      "options": [
-        { "value": "both", "label": "Both" },
-        { "value": "desktop", "label": "Desktop only" },
-        { "value": "mobile", "label": "Mobile only" }
-      ],
-      "default": "both"
-    },
+
     {
       "type": "inline_richtext",
       "id": "subheading",

@@ -25,9 +25,25 @@
       }
     }
 
-    .only-mobile { display: none; }
-    @media (max-width: 767px) { .only-mobile { display: block; } .only-desktop { display: none; } }
-    @media (min-width: 768px) { .only-desktop { display: block; } .only-mobile { display: none; } }
+    /* Visibility controls for media grid */
+    .only-mobile { 
+      display: block !important; 
+    }
+    .only-desktop { 
+      display: block !important; 
+    }
+    
+    @media (max-width: 767px) { 
+      .only-desktop { 
+        display: none !important; 
+      }
+    }
+    
+    @media (min-width: 768px) { 
+      .only-mobile { 
+        display: none !important; 
+      } 
+    }
   </style>
 
   {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
@@ -121,6 +137,18 @@
     "groups": ["header", "custom.overlay"]
   },
   "settings": [
+     {
+      "type": "select",
+      "id": "show_on",
+      "label": "Visibility",
+      "info": "Control whether this section is visible on mobile devices, desktop devices, or both",
+      "options": [
+        { "value": "both", "label": "Both" },
+        { "value": "desktop", "label": "Desktop only" },
+        { "value": "mobile", "label": "Mobile only" }
+      ],
+      "default": "both"
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
@@ -228,17 +256,6 @@
       "type": "richtext",
       "id": "content",
       "label": "t:global.text.content"
-    },
-    {
-      "type": "select",
-      "id": "show_on",
-      "label": "Show on",
-      "options": [
-        { "value": "both", "label": "Both" },
-        { "value": "desktop", "label": "Desktop only" },
-        { "value": "mobile", "label": "Mobile only" }
-      ],
-      "default": "both"
     }
   ],
   "blocks": [
