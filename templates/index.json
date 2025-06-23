@@ -103,7 +103,7 @@
       "type": "Bestseller",
       "name": "Bestsellers",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "separate_section_with_border": true,
         "hide_product_information": false,
         "stack_products": false,
@@ -409,7 +409,7 @@
         "autoplay": true,
         "autoplay_pause_on_video": true,
         "cycle_speed": 5,
-        "background": "#307a07",
+        "background": "#264b3b",
         "controls_color": "#ffffff",
         "subheading": "",
         "title": "“Worn by” celebrities",
