@@ -16,7 +16,7 @@
         "show_title": true,
         "collections": [],
         "collections_per_row_mobile": "2",
-        "collections_per_row_desktop": 4,
+        "collections_per_row_desktop": 3,
         "image_size": "sm",
         "content_position": "place-self-end-center text-center",
         "text_color": "#264b3b",
