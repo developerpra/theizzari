@@ -8,13 +8,16 @@
  * ------------------------------------------------------------
  */
 {
+  "parent": "product.json",
+  "context": {
+    "market": "in"
+  },
   "sections": {
     "main": {
-      "type": "main-blog",
-      "settings": {}
+      "settings": {
+        "product_info_size": 50
+      },
+      "blocks": {}
     }
-  },
-  "order": [
-    "main"
-  ]
+  }
 }
