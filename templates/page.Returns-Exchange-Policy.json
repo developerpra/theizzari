@@ -49,7 +49,7 @@
         "richtext_hEpBhR"
       ],
       "custom_css": [
-        ".prose.text-start li {font-family: DM Sans,sans-serif!important; padding-top: 25px;}"
+        ".prose.text-start li {font-family: DM Sans, sans-serif !important; padding-top: 25px;}"
       ],
       "settings": {
         "color_scheme": "",
