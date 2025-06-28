@@ -86,13 +86,23 @@
             "button_text": "EXPLORE",
             "button_link": "shopify://collections/feral"
           }
+        },
+        "collection_GALXCB": {
+          "type": "collection",
+          "settings": {
+            "collection_title": "Aura Eyewear",
+            "collection_description": "",
+            "button_text": "EXPLORE",
+            "button_link": "shopify://collections/aura"
+          }
         }
       },
       "block_order": [
         "collection_CH8Yai",
         "collection_6bqqpH",
         "collection_YTPMqB",
-        "collection_AtCGzD"
+        "collection_AtCGzD",
+        "collection_GALXCB"
       ],
       "name": "Signature Styles",
       "settings": {
