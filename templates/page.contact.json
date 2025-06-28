@@ -18,29 +18,6 @@
         "page_width": "xs"
       }
     },
-    "contact-form": {
-      "type": "contact",
-      "blocks": {
-        "text_Y9XBUC": {
-          "type": "text",
-          "settings": {
-            "title": "Mobile",
-            "use_long_text": false,
-            "required": false
-          }
-        }
-      },
-      "block_order": [
-        "text_Y9XBUC"
-      ],
-      "settings": {
-        "color_scheme": "",
-        "separate_section_with_border": true,
-        "subheading": "",
-        "title": "Contact",
-        "content": ""
-      }
-    },
     "rich_text_jRUV8K": {
       "type": "rich-text",
       "blocks": {
@@ -81,7 +58,6 @@
   },
   "order": [
     "main",
-    "contact-form",
     "rich_text_jRUV8K"
   ]
 }
