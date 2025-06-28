@@ -22,7 +22,7 @@
         "richtext_6fnYi8": {
           "type": "richtext",
           "settings": {
-            "content": "<p>A celebration of modern femininity and unapologetic glamour. Crafted in the shape of a sculptural heart, this collection redefines statement jewellery with a bold fusion of colour, sparkle, and rhythm.</p>"
+            "content": "<p>A celebration of modern femininity and unapologetic glamour.</p>"
           }
         }
       },
@@ -412,7 +412,7 @@
         "background": "#264b3b",
         "controls_color": "#ffffff",
         "subheading": "",
-        "title": "“Worn by” celebrities",
+        "title": "Worn by celebrities",
         "content": ""
       }
     },
@@ -872,10 +872,10 @@
         "instafeed_app_block_cfmzWX": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
-            "title": "@izzarijewellery",
+            "title": "Check Us Out On Social Media",
             "title_color": "#000000",
             "title_size_v2": 31,
-            "alignment": "center",
+            "alignment": "left",
             "instafeed_margin_top": 69,
             "instafeed_margin_bottom": 0,
             "instafeed_margin_sides": 0,
