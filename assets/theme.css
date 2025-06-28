@@ -8506,9 +8506,9 @@ a.query__btn {
 }
 .product-action {
   position: relative;
-  min-width: 125px;
   text-align: center;
   display: flex;
+  flex:1;
   justify-content: center;
   flex-direction: column;
   align-items: center;
