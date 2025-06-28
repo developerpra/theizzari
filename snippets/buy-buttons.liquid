@@ -91,7 +91,7 @@
         <!-- Buy Now Button -->
         <button
           type="button"
-          class="buy-now-button"
+          class="button flex-1 font-dm-sans"
           {% if button_disabled %}
           disabled{% endif %}
           onclick="buyNow('{{ product.selected_or_first_available_variant.id }}')">
@@ -101,7 +101,7 @@
         <!-- Add to Cart Button -->
         <button
           type="submit"
-          class="add-to-cart-button"
+          class="button flex-1 font-dm-sans"
           {% if button_disabled %}
           disabled{% endif %}>
           {{ button_content }}

@@ -36,7 +36,6 @@
         "show_controls": false,
         "video_size": "md",
         "video": "shopify://files/videos/VID-20250626-WA0026(1).mp4",
-        "mobile_video": "shopify://files/videos/VID-20250626-WA0026(1).mp4",
         "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "text_color": "#ffffff",
         "button_text": "Discover the Collection",
@@ -53,7 +52,7 @@
           "settings": {
             "collection_image": "shopify://shop_images/Not_for_the_faint_of_heart.The_Disco_Heart_by_Izzari_is_sparkle_with_an_attitude_fierce_flirty_and_fabulously_bold.Pre-orders_now_open_at_www.theizzari.com_DiscoHeartByIzzari_IzzariFi.jpg",
             "collection_title": "Disco Heart",
-            "collection_description": "",
+            "collection_description": "Effortless Luxury.",
             "button_text": "EXPLORE",
             "button_link": "shopify://collections/disco-heart"
           }
@@ -63,7 +62,7 @@
           "settings": {
             "collection_image": "shopify://shop_images/J94A1187.jpg",
             "collection_title": "Asterica",
-            "collection_description": "",
+            "collection_description": "Pearls reinvented for the modern muse",
             "button_text": "EXPLORE",
             "button_link": "shopify://collections/asterica"
           }
@@ -73,7 +72,7 @@
           "settings": {
             "collection_image": "shopify://shop_images/ConvertOut-Resized-05-11-23.7923_1_1.jpg",
             "collection_title": "La Joya",
-            "collection_description": "",
+            "collection_description": "Pearls reinvented for the modern muse",
             "button_text": "EXPLORE",
             "button_link": "shopify://collections/la-joya-1"
           }
@@ -83,19 +82,9 @@
           "settings": {
             "collection_image": "shopify://shop_images/IZR170_1.jpg",
             "collection_title": "Feral",
-            "collection_description": "",
+            "collection_description": "Pearls reinvented for the modern muse",
             "button_text": "EXPLORE",
             "button_link": "shopify://collections/feral"
-          }
-        },
-        "collection_i7qLAy": {
-          "type": "collection",
-          "settings": {
-            "collection_image": "shopify://shop_images/ConvertOut-Resized-izzari-05-aug-215908_copy.jpg",
-            "collection_title": "Aura Eyewear",
-            "collection_description": "",
-            "button_text": "EXPLORE",
-            "button_link": "shopify://collections/aura"
           }
         }
       },
@@ -103,8 +92,7 @@
         "collection_CH8Yai",
         "collection_6bqqpH",
         "collection_YTPMqB",
-        "collection_AtCGzD",
-        "collection_i7qLAy"
+        "collection_AtCGzD"
       ],
       "name": "Signature Styles",
       "settings": {
@@ -357,7 +345,7 @@
         "image_PBiidF": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/WhatsApp_Image_2024-08-21_at_10.50.58_AM.jpg",
+            "image": "shopify://shop_images/ConvertOut-Resized-DSC02905.jpg",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-center text-center",
@@ -383,7 +371,7 @@
         "image_bBrVa3": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/mt.jpg",
+            "image": "shopify://shop_images/ConvertOut-Resized-IZER319_4_eed2d068-608b-42cf-ac1c-5b4b31939dec.jpg",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-center text-center",
@@ -416,7 +404,7 @@
         "show_on": "mobile",
         "allow_transparent_header": true,
         "show_next_section_button": false,
-        "media_size": "md",
+        "media_size": "auto",
         "show_initial_transition": false,
         "autoplay": true,
         "autoplay_pause_on_video": true,
@@ -461,7 +449,7 @@
         "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "text_color": "#ffffff",
         "button_text": "READ OUR STORY",
-        "button_link": "shopify://pages/about-us",
+        "button_link": "",
         "button_bg_color": "#264b3b",
         "button_text_color": "#ffffff"
       }
@@ -524,7 +512,7 @@
         "heading_AGgLfF": {
           "type": "heading",
           "settings": {
-            "text": "",
+            "text": "Your Everyday Luxury",
             "heading_tag": "h1"
           }
         },
@@ -539,7 +527,7 @@
           "settings": {
             "style": "solid",
             "text": "Browse Everyday Pieces",
-            "url": "shopify://collections/hue",
+            "url": "",
             "background": "#264b3b",
             "text_color": "#ffffff"
           }
@@ -552,14 +540,14 @@
       ],
       "settings": {
         "color_scheme": "scheme-4",
-        "image_size": "xs",
-        "image": "shopify://shop_images/Untitled_1800_x_1200_px.jpg",
-        "mobile_image": "shopify://shop_images/Untitled_1800_x_1200_px.jpg",
+        "image_size": "auto",
+        "image": "shopify://shop_images/Frame_1122.png",
+        "mobile_image": "shopify://shop_images/Frame_1122.png",
         "allow_transparent_header": false,
         "reveal_on_scroll": true,
         "remove_vertical_spacing": true,
-        "content_width": "xs",
-        "mobile_text_position": "place-self-end-center text-center",
+        "content_width": "md",
+        "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "overlay_color": "#000000",
         "overlay_opacity": 30
