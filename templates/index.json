@@ -460,7 +460,7 @@
         "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "text_color": "#ffffff",
         "button_text": "READ OUR STORY",
-        "button_link": "",
+        "button_link": "shopify://pages/about-us",
         "button_bg_color": "#264b3b",
         "button_text_color": "#ffffff"
       }
