@@ -72,7 +72,7 @@
           "settings": {
             "collection_image": "shopify://shop_images/ConvertOut-Resized-05-11-23.7923_1_1.jpg",
             "collection_title": "La Joya",
-            "collection_description": "Pearls reinvented for the modern muse",
+            "collection_description": "",
             "button_text": "EXPLORE",
             "button_link": "shopify://collections/la-joya-1"
           }
@@ -82,7 +82,7 @@
           "settings": {
             "collection_image": "shopify://shop_images/IZR170_1.jpg",
             "collection_title": "Feral",
-            "collection_description": "Pearls reinvented for the modern muse",
+            "collection_description": "",
             "button_text": "EXPLORE",
             "button_link": "shopify://collections/feral"
           }
