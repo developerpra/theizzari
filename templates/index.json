@@ -538,7 +538,7 @@
           "settings": {
             "style": "solid",
             "text": "Browse Everyday Pieces",
-            "url": "",
+            "url": "shopify://collections/hue",
             "background": "#264b3b",
             "text_color": "#ffffff"
           }
