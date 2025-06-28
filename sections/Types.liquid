@@ -33,7 +33,7 @@
             <p class="collection-description" style="font-family: 'DM Sans', sans-serif;">{{ block.settings.collection_description }}</p>
             
             {% if block.settings.button_text != blank %}
-              <a href="{{ block.settings.button_link | default: '#' }}" class="collection-btn" style="font-family: 'DM Sans', sans-serif;">
+              <a href="{{ block.settings.button_link | default: '#' }}" class="button" style="font-family: 'DM Sans', sans-serif;">
                 {{ block.settings.button_text }}
               </a>
             {% endif %}
