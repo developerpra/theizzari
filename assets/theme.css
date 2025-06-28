@@ -571,6 +571,12 @@ height-observer {
   .features--button-transition .button--outline:not([disabled]):hover {
     color: rgb(var(--button-text-color));
   }
+
+  .features--button-transition .button.transparent:not([disabled]):hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+  }
 }
 
 .button-group {
