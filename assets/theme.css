@@ -1,7 +1,9 @@
 /* ==========================================================================
    UTILITY CLASSES - DRY CSS OPTIMIZATION
    ========================================================================== */
-
+.font-extrabold{
+  font-weight: 800;
+}
 /* Common Transitions */
 .transition-fast {
   transition: all 0.15s ease-in-out;
@@ -7719,9 +7721,7 @@ tfoot td {
 .place-self-end-center {
   place-self: end center;
 }
-.font-extrabold{
-  font-weight: 800;
-}
+
 @media screen and (min-width: 700px) {
   .sm\:text-start {
     text-align: start;
