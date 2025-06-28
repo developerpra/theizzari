@@ -75,8 +75,12 @@
           }
         }
       },
-      "block_order": ["image_RaYhCi", "image_6fqzHH"],
+      "block_order": [
+        "image_RaYhCi",
+        "image_6fqzHH"
+      ],
       "settings": {
+        "show_on": "both",
         "allow_transparent_header": false,
         "show_next_section_button": false,
         "media_size": "auto",
@@ -85,7 +89,10 @@
         "autoplay_pause_on_video": true,
         "cycle_speed": 5,
         "background": "#000000",
-        "controls_color": "#ffffff"
+        "controls_color": "#ffffff",
+        "subheading": "",
+        "title": "",
+        "content": ""
       }
     },
     "rich_text_rbjp8b": {
@@ -99,7 +106,9 @@
           }
         }
       },
-      "block_order": ["heading_BULhLX"],
+      "block_order": [
+        "heading_BULhLX"
+      ],
       "custom_css": [],
       "settings": {
         "color_scheme": "",
@@ -127,7 +136,10 @@
           }
         }
       },
-      "block_order": ["image_3V8iXA", "image_YLhxet"],
+      "block_order": [
+        "image_3V8iXA",
+        "image_YLhxet"
+      ],
       "settings": {
         "color_scheme": "",
         "reveal_on_scroll": true,
@@ -208,8 +220,13 @@
           }
         }
       },
-      "block_order": ["image_tdyNEY", "image_EQWd3k", "image_X7Amdb"],
+      "block_order": [
+        "image_tdyNEY",
+        "image_EQWd3k",
+        "image_X7Amdb"
+      ],
       "settings": {
+        "show_on": "both",
         "color_scheme": "",
         "separate_section_with_border": true,
         "desktop_row_height": 290,
@@ -297,7 +314,11 @@
           }
         }
       },
-      "block_order": ["logo_HhdzC7", "logo_DDPMKq", "logo_DiAEUU"],
+      "block_order": [
+        "logo_HhdzC7",
+        "logo_DDPMKq",
+        "logo_DiAEUU"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "separate_section_with_border": true,
@@ -335,7 +356,11 @@
           }
         }
       },
-      "block_order": ["heading_TkdYPh", "richtext_Kw3rjK", "button_z9xmWy"],
+      "block_order": [
+        "heading_TkdYPh",
+        "richtext_Kw3rjK",
+        "button_z9xmWy"
+      ],
       "settings": {
         "color_scheme": "",
         "image_size": "auto",
