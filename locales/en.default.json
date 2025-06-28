@@ -101,7 +101,7 @@
     "general": {
       "description": "Description",
       "view_details": "View details",
-      "add_to_cart_button": "Add to cart",
+      "add_to_cart_button": "Add to Cart",
       "buy_now_button": "Buy Now",
       "pre_order_button": "Pre-order",
       "sold_out_button": "Sold out",
@@ -554,7 +554,7 @@
         "unavailable": "Unavailable",
         "on_sale": "Sale",
         "quantity": "Quantity",
-        "add_to_cart": "Add to cart",
+        "add_to_cart": "Add to Cart",
         "back_to_collection": "Back to {{ title }}",
         "view_details": "View details"
       }
