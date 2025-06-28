@@ -528,8 +528,8 @@
             "style": "solid",
             "text": "Browse Everyday Pieces",
             "url": "",
-            "background": "",
-            "text_color": ""
+            "background": "#264b3b",
+            "text_color": "#ffffff"
           }
         }
       },
@@ -539,7 +539,7 @@
         "button_VVgrEa"
       ],
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-3",
         "image_size": "auto",
         "image": "shopify://shop_images/Frame_1122.png",
         "mobile_image": "shopify://shop_images/Frame_1122.png",
