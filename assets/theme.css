@@ -8480,7 +8480,7 @@ a.query__btn {
   transform: translateY(-5px);
 }
 
-.font-dm-sans {
+.font-dm-sans,button.font-dm-sans {
   font-family: "DM Sans", sans-serif !important;
 }
 .specification-heading {
