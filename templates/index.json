@@ -551,7 +551,7 @@
       ],
       "settings": {
         "color_scheme": "scheme-4",
-        "image_size": "auto",
+        "image_size": "sm",
         "image": "shopify://shop_images/Untitled_1800_x_1200_px.jpg",
         "mobile_image": "shopify://shop_images/Untitled_1800_x_1200_px.jpg",
         "allow_transparent_header": false,
