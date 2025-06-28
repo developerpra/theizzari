@@ -357,64 +357,77 @@
             
           {%- when 'specifications' -%}
             {%- if product != blank -%}
-              <div class="product-specifications">
-                <h3>{{ 'product.general.specifications' | t | default: 'Specifications' }}</h3>
-                <div class="specification-list">
-                  {%- if product.metafields.specifications.purity != blank -%}
-                    <div class="specification-item">
-                      <span class="specification-label">{{ 'product.specifications.purity' | t | default: 'Purity' }}:</span>
-                      <span class="specification-value">{{ product.metafields.specifications.purity }}</span>
-                    </div>
-                  {%- endif -%}
-                  
-                  {%- if product.metafields.specifications.net_weight != blank -%}
-                    <div class="specification-item">
-                      <span class="specification-label">{{ 'product.specifications.net_weight' | t | default: 'Net Weight' }}:</span>
-                      <span class="specification-value">{{ product.metafields.specifications.net_weight }}</span>
-                    </div>
-                  {%- endif -%}
-                  
-                  {%- if product.metafields.specifications.gross_weight != blank -%}
-                    <div class="specification-item">
-                      <span class="specification-label">{{ 'product.specifications.gross_weight' | t | default: 'Gross Weight' }}:</span>
-                      <span class="specification-value">{{ product.metafields.specifications.gross_weight }}</span>
-                    </div>
-                  {%- endif -%}
-                  
-                  {%- if product.metafields.specifications.stone_weight != blank -%}
-                    <div class="specification-item">
-                      <span class="specification-label">{{ 'product.specifications.stone_weight' | t | default: 'Stone Weight' }}:</span>
-                      <span class="specification-value">{{ product.metafields.specifications.stone_weight }}</span>
-                    </div>
-                  {%- endif -%}
-                  
-                  {%- if product.metafields.specifications.diamond_weight != blank -%}
-                    <div class="specification-item">
-                      <span class="specification-label">{{ 'product.specifications.diamond_weight' | t | default: 'Diamond Weight' }}:</span>
-                      <span class="specification-value">{{ product.metafields.specifications.diamond_weight }}</span>
-                    </div>
-                  {%- endif -%}
-                  
-                  {%- if product.vendor != blank -%}
-                    <div class="specification-item">
-                      <span class="specification-label">{{ 'product.specifications.brand' | t | default: 'Brand' }}:</span>
-                      <span class="specification-value">{{ product.vendor }}</span>
-                    </div>
-                  {%- endif -%}
-                  
-                  {%- if product.sku != blank -%}
-                    <div class="specification-item">
-                      <span class="specification-label">{{ 'product.specifications.sku' | t | default: 'SKU' }}:</span>
-                      <span class="specification-value">{{ product.sku }}</span>
-                    </div>
-                  {%- endif -%}
+              {%- assign has_specifications = false -%}
+              {%- if product.metafields.specifications.purity != blank or product.metafields.specifications.net_weight != blank or product.metafields.specifications.gross_weight != blank or product.metafields.specifications.stone_weight != blank or product.metafields.specifications.diamond_weight != blank or product.vendor != blank or product.sku != blank -%}
+                {%- assign has_specifications = true -%}
+              {%- endif -%}
+              
+              {%- if has_specifications -%}
+                <div class="product-specifications">
+                  <h3>{{ 'product.general.specifications' | t | default: 'Specifications' }}</h3>
+                  <div class="specification-list">
+                    {%- if product.metafields.specifications.purity != blank -%}
+                      <div class="specification-item">
+                        <span class="specification-label">{{ 'product.specifications.purity' | t | default: 'Purity' }}:</span>
+                        <span class="specification-value">{{ product.metafields.specifications.purity }}</span>
+                      </div>
+                    {%- endif -%}
+                    
+                    {%- if product.metafields.specifications.net_weight != blank -%}
+                      <div class="specification-item">
+                        <span class="specification-label">{{ 'product.specifications.net_weight' | t | default: 'Net Weight' }}:</span>
+                        <span class="specification-value">{{ product.metafields.specifications.net_weight }}</span>
+                      </div>
+                    {%- endif -%}
+                    
+                    {%- if product.metafields.specifications.gross_weight != blank -%}
+                      <div class="specification-item">
+                        <span class="specification-label">{{ 'product.specifications.gross_weight' | t | default: 'Gross Weight' }}:</span>
+                        <span class="specification-value">{{ product.metafields.specifications.gross_weight }}</span>
+                      </div>
+                    {%- endif -%}
+                    
+                    {%- if product.metafields.specifications.stone_weight != blank -%}
+                      <div class="specification-item">
+                        <span class="specification-label">{{ 'product.specifications.stone_weight' | t | default: 'Stone Weight' }}:</span>
+                        <span class="specification-value">{{ product.metafields.specifications.stone_weight }}</span>
+                      </div>
+                    {%- endif -%}
+                    
+                    {%- if product.metafields.specifications.diamond_weight != blank -%}
+                      <div class="specification-item">
+                        <span class="specification-label">{{ 'product.specifications.diamond_weight' | t | default: 'Diamond Weight' }}:</span>
+                        <span class="specification-value">{{ product.metafields.specifications.diamond_weight }}</span>
+                      </div>
+                    {%- endif -%}
+                    
+                    {%- if product.vendor != blank -%}
+                      <div class="specification-item">
+                        <span class="specification-label">{{ 'product.specifications.brand' | t | default: 'Brand' }}:</span>
+                        <span class="specification-value">{{ product.vendor }}</span>
+                      </div>
+                    {%- endif -%}
+                    
+                    {%- if product.sku != blank -%}
+                      <div class="specification-item">
+                        <span class="specification-label">{{ 'product.specifications.sku' | t | default: 'SKU' }}:</span>
+                        <span class="specification-value">{{ product.sku }}</span>
+                      </div>
+                    {%- endif -%}
+                  </div>
                 </div>
-              </div>
+              {%- endif -%}
             {%- endif -%}
 
           {%- when 'buy_buttons' -%}
 
             {%- if product.metafields.details -%}
+              {%- assign has_details_specifications = false -%}
+              {%- if product.metafields.details.purity.value != blank or product.metafields.details.nt_wt_gram.value != blank or product.metafields.details.g_wt_grm.value != blank or product.metafields.details.stn_wt.value != blank or product.metafields.details.dia_wt.value != blank -%}
+                {%- assign has_details_specifications = true -%}
+              {%- endif -%}
+              
+              {%- if has_details_specifications -%}
   <div class="specification-wrapper">
     <h4 
       class="font-dm-sans specification-heading" 
@@ -482,7 +495,8 @@
       button.classList.toggle('active');
     });
   </script>
-{%- endif -%}
+              {%- endif -%}
+            {%- endif -%}
 
           
             
