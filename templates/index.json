@@ -418,11 +418,40 @@
     },
     "trio_image_highlight_PNKWgw": {
       "type": "trio-image-highlight",
+      "disabled": true,
       "name": "Centered Story Section",
       "settings": {
         "image": "shopify://shop_images/mp1.jpg",
         "button_link": "shopify://pages/about-us",
         "button_text": "READ OUR STORY"
+      }
+    },
+    "video_AcpNeY": {
+      "type": "video",
+      "blocks": {
+        "heading_JfqYRj": {
+          "type": "heading",
+          "settings": {
+            "text": "Jewelry That Lives With You",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JfqYRj"
+      ],
+      "name": "t:sections.video.presets.video.name",
+      "settings": {
+        "autoplay": true,
+        "show_controls": true,
+        "video_size": "md",
+        "video": "shopify://files/videos/VID-20250626-WA0026(1).mp4",
+        "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "text_color": "#ffffff",
+        "button_text": "READ OUR STORY",
+        "button_link": "",
+        "button_bg_color": "#ffffff",
+        "button_text_color": "#264b3b"
       }
     },
     "text_with_icons_jBLdUy": {
@@ -959,6 +988,7 @@
     "media_grid_LKf9aG",
     "slideshow_wh6q94",
     "trio_image_highlight_PNKWgw",
+    "video_AcpNeY",
     "text_with_icons_jBLdUy",
     "image_with_text_overlay_3gP8mB",
     "multi-column",
