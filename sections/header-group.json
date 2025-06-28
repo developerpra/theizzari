@@ -135,10 +135,10 @@
         "forms_inline_kw6LMJ"
       ],
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-c05cdb1c-ac18-4ab6-b2b5-6c3ef577c9fc",
         "separate_section_with_border": true,
         "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false
+        "remove_horizontal_spacing": true
       }
     }
   },
