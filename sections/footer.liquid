@@ -75,9 +75,9 @@
 
                 {%- when 'text' -%}
                   {%- if block.settings.title != blank or block.settings.content != blank or shop.features.follow_on_shop? and block.settings.enable_follow_on_shop -%}
-                    <div class="v-stack gap-4 sm:gap-5 font-dm-sans">
+                    <div class="v-stack gap-4 sm:gap-5">
                       {%- if block.settings.title != blank -%}
-                        <p class="h6">{{ block.settings.title }}</p>
+                        <p class="h4 bold font-dm-sans">{{ block.settings.title }}</p>
                       {%- endif -%}
 
                       {%- if block.settings.content != blank -%}
@@ -98,12 +98,12 @@
                   {%- assign menu = block.settings.menu -%}
 
                   {%- if menu != blank and menu.links.size > 0 -%}
-                    <div class="v-stack gap-4 sm:gap-5 font-dm-sans">
+                    <div class="v-stack gap-4 sm:gap-5">
                       {%- if block.settings.show_menu_title != blank -%}
-                        <p class="h6">{{ block.settings.menu_title | default: menu.title }}</p>
+                        <p class="h4 bold font-dm-sans">{{ block.settings.menu_title | default: menu.title }}</p>
                       {%- endif -%}
 
-                      <ul class="v-stack gap-2.5 unstyled-list font-dm-sans" role="list">
+                      <ul class="v-stack gap-2.5 unstyled-list" role="list">
                         {%- for link in menu.links -%}
                           <li>
                             <a href="{{ link.url }}" class="link-faded">{{ link.title }}</a>
@@ -114,9 +114,9 @@
                   {%- endif -%}
 
                 {%- when 'social-icon' -%}
-                  <div class="v-stack gap-4 sm:gap-5 font-dm-sans">
+                  <div class="v-stack gap-4 sm:gap-5">
                     {%- if block.settings.Socialid != blank -%}
-                      <p class="h6">{{ block.settings.Socialid }}</p>
+                      <p class="h4 bold font-dm-sans">{{ block.settings.Socialid }}</p>
                     {%- endif -%}
 
                     {%- if section.settings.show_social_media -%}
@@ -124,9 +124,9 @@
       {%- endif -%}</div>
                     
                     {%- when 'newsletter' -%}
-                  <div class="v-stack gap-4 sm:gap-5 font-dm-sans">
+                  <div class="v-stack gap-4 sm:gap-5">
                     {%- if block.settings.title != blank -%}
-                      <p class="h6">{{ block.settings.title }}</p>
+                      <p class="h4 bold font-dm-sans">{{ block.settings.title }}</p>
                     {%- endif -%}
 
                     {%- if block.settings.content != blank -%}
