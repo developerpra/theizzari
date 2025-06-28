@@ -284,6 +284,7 @@
       ],
       "name": "t:sections.slideshow.presets.slideshow.name",
       "settings": {
+        "show_on": "both",
         "allow_transparent_header": true,
         "show_next_section_button": true,
         "media_size": "auto",
@@ -292,7 +293,10 @@
         "autoplay_pause_on_video": true,
         "cycle_speed": 5,
         "background": "#000000",
-        "controls_color": "#ffffff"
+        "controls_color": "#ffffff",
+        "subheading": "",
+        "title": "",
+        "content": ""
       }
     },
     "cta_banner_7VKQDJ": {
