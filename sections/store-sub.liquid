@@ -46,7 +46,7 @@
 
         {% if section.settings.button_text != blank %}
           <div class="button-wrapper">
-            <a href="{{ section.settings.button_link | default: '#' }}" class="btn btn-{{ section.settings.button_style }}">
+            <a href="{{ section.settings.button_link | default: '#' }}" class="button">
               {{ section.settings.button_text }}
             </a>
           </div>
@@ -216,55 +216,6 @@
     margin-top: 10px;
   }
 
-  .btn {
-    display: inline-block;
-    padding: 16px 32px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 0;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .btn-solid {
-    background-color: #000;
-    color: white;
-    border-color: #000;
-  }
-
-  .btn-solid:hover {
-    background-color: #333;
-    border-color: #333;
-    transform: translateY(-2px);
-  }
-
-  .btn-outline {
-    background-color: transparent;
-    color: #000;
-    border-color: #000;
-  }
-
-  .btn-outline:hover {
-    background-color: #000;
-    color: white;
-  }
-
-  .btn-link {
-    background-color: transparent;
-    color: #000;
-    border: none;
-    text-decoration: underline;
-    padding: 16px 0;
-  }
-
-  .btn-link:hover {
-    color: #333;
-    text-decoration: none;
-  }
-
   /* Desktop layout adjustments */
   @media screen and (min-width: 1000px) {
     .jewelry-showcase {
@@ -407,23 +358,6 @@
         "type": "url",
         "id": "button_link",
         "label": "Button Link"
-      }, {
-        "type": "select",
-        "id": "button_style",
-        "label": "Button Style",
-        "options": [
-          {
-            "value": "solid",
-            "label": "Solid"
-          }, {
-            "value": "outline",
-            "label": "Outline"
-          }, {
-            "value": "link",
-            "label": "Link"
-          }
-        ],
-        "default": "solid"
       }
     ],
     "blocks": [
