@@ -2,7 +2,7 @@
    UTILITY CLASSES - DRY CSS OPTIMIZATION
    ========================================================================== */
 .font-extrabold{
-  font-weight: 800;
+  font-weight: 800 !important;
 }
 /* Common Transitions */
 .transition-fast {
