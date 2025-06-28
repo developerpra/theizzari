@@ -22,7 +22,7 @@
         "richtext_6fnYi8": {
           "type": "richtext",
           "settings": {
-            "content": "<p>A celebration of modern femininity and unapologetic glamour.</p>"
+            "content": "<p>A celebration of modern femininity and unapologetic glamour. Crafted in the shape of a sculptural heart, this collection redefines statement jewellery with a bold fusion of colour, sparkle, and rhythm.</p>"
           }
         }
       },
@@ -151,7 +151,7 @@
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/vogue_logo.png",
-            "logo_width": 200,
+            "logo_width": 150,
             "link": ""
           }
         },
@@ -159,7 +159,7 @@
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/Frame_1369.png",
-            "logo_width": 250,
+            "logo_width": 150,
             "link": ""
           }
         },
@@ -167,7 +167,7 @@
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/Frame_1370.png",
-            "logo_width": 80,
+            "logo_width": 100,
             "link": ""
           }
         }
@@ -412,7 +412,7 @@
         "background": "#264b3b",
         "controls_color": "#ffffff",
         "subheading": "",
-        "title": "Worn by celebrities",
+        "title": "“Worn by” celebrities",
         "content": ""
       }
     },
@@ -517,7 +517,7 @@
         "allow_transparent_header": false,
         "reveal_on_scroll": true,
         "remove_vertical_spacing": true,
-        "content_width": "xl",
+        "content_width": "md",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "overlay_color": "#000000",
@@ -872,10 +872,10 @@
         "instafeed_app_block_cfmzWX": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
-            "title": "Check Us Out On Instagram",
+            "title": "@izzarijewellery",
             "title_color": "#000000",
             "title_size_v2": 31,
-            "alignment": "left",
+            "alignment": "center",
             "instafeed_margin_top": 69,
             "instafeed_margin_bottom": 0,
             "instafeed_margin_sides": 0,

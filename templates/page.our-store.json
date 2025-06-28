@@ -67,6 +67,21 @@
         "remove_vertical_spacing": true
       }
     },
+    "slideshow_d6taCD": {
+      "type": "slideshow",
+      "name": "t:sections.slideshow.presets.slideshow.name",
+      "settings": {
+        "allow_transparent_header": true,
+        "show_next_section_button": true,
+        "media_size": "sm",
+        "show_initial_transition": false,
+        "autoplay": true,
+        "autoplay_pause_on_video": true,
+        "cycle_speed": 5,
+        "background": "#000000",
+        "controls_color": "#ffffff"
+      }
+    },
     "hero_image_WGNfbH": {
       "type": "hero-image",
       "blocks": {
@@ -314,6 +329,7 @@
   "order": [
     "main",
     "image_with_text_hJtUjx",
+    "slideshow_d6taCD",
     "hero_image_WGNfbH",
     "store_sub_jW3jFC",
     "image_with_text_ciVALj",
