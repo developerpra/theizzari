@@ -151,7 +151,7 @@
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/vogue_logo.png",
-            "logo_width": 150,
+            "logo_width": 200,
             "link": ""
           }
         },
@@ -159,7 +159,7 @@
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/Frame_1369.png",
-            "logo_width": 150,
+            "logo_width": 250,
             "link": ""
           }
         },
@@ -167,7 +167,7 @@
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/Frame_1370.png",
-            "logo_width": 100,
+            "logo_width": 80,
             "link": ""
           }
         }
