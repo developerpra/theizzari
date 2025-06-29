@@ -2,7 +2,7 @@
   <div class="width" style="max-width: 1200px; margin: 0 auto;">
 
     {% if section.settings.heading != blank %}
-      <h2 class="section-heading" style="margin-bottom: 32px; font-size: 32px; font-weight: 700; text-align: center;">
+      <h2 class="section-heading shadow-heading" data-text="{{ section.settings.heading }}" style="margin-bottom: 32px; font-size: 2.5rem; font-weight: 300; text-align: center;">
         {{ section.settings.heading }}
       </h2>
     {% endif %}
@@ -12,7 +12,7 @@
         <div class="instagram-post-card" {{ block.shopify_attributes }}>
           {% if block.settings.image != blank %}
             <a href="{{ block.settings.post_link }}" target="_blank" class="post-image-link">
-              <img src="{{ block.settings.image | img_url: '600x600' }}" alt="Instagram Post" loading="lazy">
+              <img src="{{ block.settings.image | img_url: '600x600' }}" alt="Instagram Post" width="600" height="600" loading="lazy">
             </a>
           {% endif %}
 
