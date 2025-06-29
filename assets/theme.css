@@ -8614,7 +8614,7 @@ a.query__btn {
   text-align: center;
   line-height: 1.2;
 }
-.shadow-heading::before {
+.shadow-heading::before,#insta-feed h2::before {
   content: attr(data-text);
   display: block;
   line-height:1.2;
@@ -8631,8 +8631,7 @@ a.query__btn {
   .shopify-section--related-products h2 {
     font-size: 36px;
   }
-  .shadow-heading::before{
-   
+  .shadow-heading::before,#insta-feed h2::before{
     font-size:1.25em;
     transform: translate(-50%, -0.25em);
   }
