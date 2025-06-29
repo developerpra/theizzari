@@ -5,7 +5,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   
   {% if section.settings.heading != blank %}
-    <h2 class="section-heading" style="font-family: 'DM Serif Display', serif;">{{ section.settings.heading }}</h2>
+    <h2 class="section-heading shadow-heading" data-text="{{section.settings.heading}}" style="font-family: 'DM Serif Display', serif;">{{ section.settings.heading }}</h2>
   {% endif %}
 
   <div class="collections-wrapper">
@@ -56,14 +56,7 @@
   position: relative;
 }
 
-.section-heading {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #111;
-  margin: 0 0 48px 0;
-  letter-spacing: -0.02em;
-  text-align: center;
-}
+
 
 .collections-wrapper {
   position: relative;

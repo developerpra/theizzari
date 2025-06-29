@@ -6,7 +6,7 @@
   <div class="container">
 
     {% if section.settings.heading != blank %}
-      <h2 class="section-heading">{{ section.settings.heading }}</h2>
+      <h2 class="section-heading shadow-heading" data-text="{{section.settings.heading}}">{{ section.settings.heading }}</h2>
     {% endif %}
     {% if section.settings.subheading != blank %}
       <p class="section-subheading">{{ section.settings.subheading }}</p>

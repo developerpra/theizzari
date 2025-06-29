@@ -1,7 +1,7 @@
 {%- if section.blocks.size > 0 -%}
   <style>
     #shopify-section-{{ section.id }} {
-      --logo-list-items-per-row: {{ 2 | at_most: section.blocks.size }};
+      --logo-list-items-per-row: {{ 3 | at_most: section.blocks.size }};
       --logo-list-item-border-color: {{ section.settings.logo_item_border.rgb }};
       --logo-list-gap: {% if section.settings.logo_item_border == blank or section.settings.logo_item_border == 'rgba(0,0,0,0)' %}0px{% else %}1px{% endif %};
     }
@@ -25,7 +25,7 @@
     <div class="container container--xl" >
       <div class="section-stack" >
 {%- if section.settings.subheading != blank -%}
-            <p class="h6 text-center" style="font-size: 2.5rem; letter-spacing: -0.02em;">{{- section.settings.subheading -}}</p>
+            <p class="h6 text-center shadow-heading" data-text="{{section.settings.subheading}}" style="font-size: 2.5rem; letter-spacing: -0.02em;">{{- section.settings.subheading -}}</p>
           {%- endif -%}
         <div class="logo-list">
           {%- for block in section.blocks -%}

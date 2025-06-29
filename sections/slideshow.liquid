@@ -40,10 +40,10 @@ may have important consequence on the section itself.
   <div class="container">
     <div class="section-stack">
       {%- if section.settings.subheading != blank -%}
-        <p class="h6 text-center" style="font-size: 2.5rem; letter-spacing: -0.02em;">{{ section.settings.subheading }}</p>
+        <p class="h6 text-center shadow-heading" data-text="{{section.settings.subheading}}" style="font-size: 2.5rem; letter-spacing: -0.02em;">{{ section.settings.subheading }}</p>
       {%- endif -%}
       {%- if section.settings.title != blank -%}
-        <p class="h1 text-center" style="font-size: 2.2rem; letter-spacing: -0.01em;">{{ section.settings.title }}</p>
+        <p class="h1 text-center" style="font-size: 2.5rem;">{{ section.settings.title }}</p>
       {%- endif -%}
       {%- if section.settings.content != blank -%}
         <div class="rte text-center">{{ section.settings.content }}</div>
@@ -134,7 +134,7 @@ may have important consequence on the section itself.
               <div class="prose">
                 
                 {%- if block.settings.title != blank -%}
-                  <p class="h1"  style="font-size: 2.2rem; letter-spacing: -0.01em;">{{ block.settings.title }}</p>
+                  <p class="h1"  style="font-size: 2.5rem;">{{ block.settings.title }}</p>
                 {%- endif -%}
 
                 {%- if block.settings.subheading != blank -%}

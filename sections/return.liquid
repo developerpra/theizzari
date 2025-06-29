@@ -1,6 +1,6 @@
 <div class="how-to-return-section" style="padding: 50px 20px; max-width: 960px; margin: 0 auto;">
   {% if section.settings.heading != blank %}
-    <h2 class="section-heading">{{ section.settings.heading }}</h2>
+    <h2 class="section-heading shadow-heading" data-text="{{section.settings.heading}}">{{ section.settings.heading }}</h2>
   {% endif %}
 
   <div class="steps-container">
@@ -55,15 +55,6 @@
     , Arial
     , sans-serif;
     color: #222;
-  }
-
-  .section-heading {
-    font-size: 2.5rem;
-    font-weight: 300;
-    text-align: center;
-    margin-bottom: 48px;
-    color: #111;
-    line-height: 1.2;
   }
 
   .steps-container {

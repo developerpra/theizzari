@@ -24,7 +24,7 @@
             {%- when 'heading' -%}
               {%- if block.settings.text != blank -%}
                 {%- if block.settings.heading_tag == 'h1' -%}
-                  <h1 class="{{ block.settings.heading_tag }}" style="font-size: 2.2rem; letter-spacing: -0.01em;"{{ block.shopify_attributes }}>
+                  <h1 class="{{ block.settings.heading_tag }} shadow-heading" data-text="{{block.settings.text}}" style="font-size: 2.5rem;"{{ block.shopify_attributes }}>
                     {{ block.settings.text }}
                   </h1>
                   {%- elsif template == 'page.landing-page' and block.settings.heading_tag == 'h2' -%}

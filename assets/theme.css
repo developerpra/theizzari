@@ -8605,10 +8605,36 @@ a.query__btn {
   font-family: "DM Serif Display", serif;
   margin-bottom: 16px;
 }
+.section-heading {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #111;
+  margin: 0 0 48px 0;
+  letter-spacing: -0.02em;
+  text-align: center;
+  line-height: 1.2;
+}
+.shadow-heading::before {
+  content: attr(data-text);
+  display: block;
+  line-height:1.2;
+  color: #00000008;
+  position: absolute;
+  font-size: 2em;
+  left: 50%;
+  transform: translate(-50%, -0.25em);
+  word-wrap:break-word;
+  width:80%;
+}
 
 @media (max-width: 767px) {
   .shopify-section--related-products h2 {
     font-size: 36px;
+  }
+  .shadow-heading::before{
+   
+    font-size:1.25em;
+    transform: translate(-50%, -0.25em);
   }
 }
 

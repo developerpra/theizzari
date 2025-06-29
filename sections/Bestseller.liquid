@@ -27,7 +27,7 @@
       <div class="section-stack">
         <div class="v-stack justify-self-center gap-4 text-center sm:gap-5">
           {%- if section.settings.subheading != blank -%}
-            <p class="h6 text-center">{{- section.settings.subheading -}}</p>
+            <h6 class="h6 text-center shadow-heading" data-text="{{section.settings.subheading}}">{{- section.settings.subheading -}}</h6>
           {%- endif -%}
 
           {%- if section.blocks.size > 1 -%}
@@ -39,7 +39,9 @@
               {%- endfor -%}
             </carousel-navigation>
           {%- else -%}
-            <h2 class="section-heading" style="text-align: center; font-family: 'DM Serif Display', serif; font-size: 2.5rem; font-weight: 700; color: #111; margin-bottom: 40px;">
+            <h2 class="section-heading shadow-heading" 
+            data-text={{ section.blocks.first.settings.title | default: section.blocks.first.settings.collection.title | default: 'Collection' }}
+            style="text-align: center; font-family: 'DM Serif Display', serif; font-size: 2.5rem; font-weight: 700; color: #111; margin-bottom: 40px;">
               {{ section.blocks.first.settings.title | default: section.blocks.first.settings.collection.title | default: 'Collection' }}
             </h2>
           {%- endif -%}
