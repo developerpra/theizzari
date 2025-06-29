@@ -8626,7 +8626,13 @@ a.query__btn {
   word-wrap:break-word;
   width:80%;
 }
-
+#insta-feed h2{
+  font-size:2.5rem;
+  font-weight:300;
+}
+#insta-feed h2::before{
+  content:"Check Us Out On Social Media" !important;
+}
 @media (max-width: 767px) {
   .shopify-section--related-products h2 {
     font-size: 36px;
