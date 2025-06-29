@@ -556,10 +556,26 @@
     "creative_slider_hBKi4c": {
       "type": "creative-slider",
       "blocks": {
+        "media_slide_DEHDJn": {
+          "type": "media_slide",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IZR170_1_517f5e26-79f4-4237-a047-e865bc1fc8b0.jpg",
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": true,
+            "controls": false,
+            "play_button": true,
+            "caption": "",
+            "description": ""
+          }
+        },
         "media_slide_CXX7tR": {
           "type": "media_slide",
           "settings": {
             "media_type": "image",
+            "image": "shopify://shop_images/IZR235_1_13f17f1a-6c5a-4be6-9d04-b76d0c656ba0.jpg",
             "video_url": "",
             "autoplay": false,
             "loop": false,
@@ -574,6 +590,7 @@
           "type": "media_slide",
           "settings": {
             "media_type": "image",
+            "image": "shopify://shop_images/IZR190_1_cedcae70-75ab-4ded-8b3c-ca2397eeebd5.jpg",
             "video_url": "",
             "autoplay": false,
             "loop": false,
@@ -584,10 +601,26 @@
             "description": "Every detail carefully crafted to perfection"
           }
         },
+        "media_slide_FGJkMA": {
+          "type": "media_slide",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IZR192_1_fd05f567-f9fd-4ef3-942f-41ef15714519.jpg",
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": true,
+            "controls": false,
+            "play_button": true,
+            "caption": "",
+            "description": ""
+          }
+        },
         "media_slide_afjzmL": {
           "type": "media_slide",
           "settings": {
             "media_type": "image",
+            "image": "shopify://shop_images/IZR163_1_2d7d5db4-5ffe-42cd-b630-bc28c8b2d53a.jpg",
             "video_url": "",
             "autoplay": false,
             "loop": false,
@@ -600,8 +633,10 @@
         }
       },
       "block_order": [
+        "media_slide_DEHDJn",
         "media_slide_CXX7tR",
         "media_slide_JAxYyY",
+        "media_slide_FGJkMA",
         "media_slide_afjzmL"
       ],
       "name": "Creative Slider",
