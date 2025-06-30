@@ -339,6 +339,117 @@
         "content": ""
       }
     },
+    "creative_slider_hBKi4c": {
+      "type": "creative-slider",
+      "blocks": {
+        "media_slide_DEHDJn": {
+          "type": "media_slide",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IZR170_1_517f5e26-79f4-4237-a047-e865bc1fc8b0.jpg",
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": true,
+            "controls": false,
+            "play_button": true,
+            "caption": "",
+            "description": ""
+          }
+        },
+        "media_slide_CXX7tR": {
+          "type": "media_slide",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IZR235_1_13f17f1a-6c5a-4be6-9d04-b76d0c656ba0.jpg",
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": true,
+            "controls": false,
+            "play_button": true,
+            "caption": "Elegant Design",
+            "description": "Timeless pieces that define modern luxury"
+          }
+        },
+        "media_slide_JAxYyY": {
+          "type": "media_slide",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IZR190_1_cedcae70-75ab-4ded-8b3c-ca2397eeebd5.jpg",
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": true,
+            "controls": false,
+            "play_button": true,
+            "caption": "Craftsmanship",
+            "description": "Every detail carefully crafted to perfection"
+          }
+        },
+        "media_slide_FGJkMA": {
+          "type": "media_slide",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IZR192_1_fd05f567-f9fd-4ef3-942f-41ef15714519.jpg",
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": true,
+            "controls": false,
+            "play_button": true,
+            "caption": "",
+            "description": ""
+          }
+        },
+        "media_slide_afjzmL": {
+          "type": "media_slide",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IZR163_1_2d7d5db4-5ffe-42cd-b630-bc28c8b2d53a.jpg",
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": true,
+            "controls": false,
+            "play_button": true,
+            "caption": "Versatile Style",
+            "description": "From day to night, every occasion covered"
+          }
+        }
+      },
+      "block_order": [
+        "media_slide_DEHDJn",
+        "media_slide_CXX7tR",
+        "media_slide_JAxYyY",
+        "media_slide_FGJkMA",
+        "media_slide_afjzmL"
+      ],
+      "name": "Creative Slider",
+      "settings": {
+        "heading": "Creative Showcase",
+        "subtitle": "Discover our latest collection through this immersive experience",
+        "background_color": "#ffffff",
+        "heading_color": "#1a1a1a",
+        "subtitle_color": "#666666",
+        "slide_width": 400,
+        "slide_height": 300,
+        "border_radius": 20,
+        "centered_slides": true,
+        "enable_loop": false,
+        "slide_speed": 600,
+        "coverflow_rotate": 0,
+        "coverflow_stretch": 150,
+        "coverflow_depth": 500,
+        "coverflow_modifier": 1,
+        "slide_shadows": true,
+        "enable_autoplay": false,
+        "autoplay_delay": 5000,
+        "show_pagination": true,
+        "pagination_color": "#cccccc",
+        "pagination_active_color": "#333333"
+      }
+    },
     "slideshow_wh6q94": {
       "type": "slideshow",
       "blocks": {
@@ -551,117 +662,6 @@
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "overlay_color": "#000000",
         "overlay_opacity": 30
-      }
-    },
-    "creative_slider_hBKi4c": {
-      "type": "creative-slider",
-      "blocks": {
-        "media_slide_DEHDJn": {
-          "type": "media_slide",
-          "settings": {
-            "media_type": "image",
-            "image": "shopify://shop_images/IZR170_1_517f5e26-79f4-4237-a047-e865bc1fc8b0.jpg",
-            "video_url": "",
-            "autoplay": false,
-            "loop": false,
-            "muted": true,
-            "controls": false,
-            "play_button": true,
-            "caption": "",
-            "description": ""
-          }
-        },
-        "media_slide_CXX7tR": {
-          "type": "media_slide",
-          "settings": {
-            "media_type": "image",
-            "image": "shopify://shop_images/IZR235_1_13f17f1a-6c5a-4be6-9d04-b76d0c656ba0.jpg",
-            "video_url": "",
-            "autoplay": false,
-            "loop": false,
-            "muted": true,
-            "controls": false,
-            "play_button": true,
-            "caption": "Elegant Design",
-            "description": "Timeless pieces that define modern luxury"
-          }
-        },
-        "media_slide_JAxYyY": {
-          "type": "media_slide",
-          "settings": {
-            "media_type": "image",
-            "image": "shopify://shop_images/IZR190_1_cedcae70-75ab-4ded-8b3c-ca2397eeebd5.jpg",
-            "video_url": "",
-            "autoplay": false,
-            "loop": false,
-            "muted": true,
-            "controls": false,
-            "play_button": true,
-            "caption": "Craftsmanship",
-            "description": "Every detail carefully crafted to perfection"
-          }
-        },
-        "media_slide_FGJkMA": {
-          "type": "media_slide",
-          "settings": {
-            "media_type": "image",
-            "image": "shopify://shop_images/IZR192_1_fd05f567-f9fd-4ef3-942f-41ef15714519.jpg",
-            "video_url": "",
-            "autoplay": false,
-            "loop": false,
-            "muted": true,
-            "controls": false,
-            "play_button": true,
-            "caption": "",
-            "description": ""
-          }
-        },
-        "media_slide_afjzmL": {
-          "type": "media_slide",
-          "settings": {
-            "media_type": "image",
-            "image": "shopify://shop_images/IZR163_1_2d7d5db4-5ffe-42cd-b630-bc28c8b2d53a.jpg",
-            "video_url": "",
-            "autoplay": false,
-            "loop": false,
-            "muted": true,
-            "controls": false,
-            "play_button": true,
-            "caption": "Versatile Style",
-            "description": "From day to night, every occasion covered"
-          }
-        }
-      },
-      "block_order": [
-        "media_slide_DEHDJn",
-        "media_slide_CXX7tR",
-        "media_slide_JAxYyY",
-        "media_slide_FGJkMA",
-        "media_slide_afjzmL"
-      ],
-      "name": "Creative Slider",
-      "settings": {
-        "heading": "Creative Showcase",
-        "subtitle": "Discover our latest collection through this immersive experience",
-        "background_color": "#ffffff",
-        "heading_color": "#1a1a1a",
-        "subtitle_color": "#666666",
-        "slide_width": 400,
-        "slide_height": 300,
-        "border_radius": 20,
-        "centered_slides": true,
-        "enable_loop": false,
-        "slide_speed": 600,
-        "coverflow_rotate": 0,
-        "coverflow_stretch": 150,
-        "coverflow_depth": 500,
-        "coverflow_modifier": 1,
-        "slide_shadows": true,
-        "enable_autoplay": false,
-        "autoplay_delay": 5000,
-        "show_pagination": true,
-        "pagination_color": "#cccccc",
-        "pagination_active_color": "#333333"
       }
     },
     "multi-column": {
@@ -1100,6 +1100,7 @@
     "types_hrU9fX",
     "bestseller_xYByWN",
     "featured_collections_Btdcyx",
+    "creative_slider_hBKi4c",
     "logo_list_9YbApe",
     "media_grid_LKf9aG",
     "slideshow_wh6q94",
@@ -1107,7 +1108,6 @@
     "video_AcpNeY",
     "text_with_icons_jBLdUy",
     "image_with_text_overlay_3gP8mB",
-    "creative_slider_hBKi4c",
     "multi-column",
     "collection-list",
     "before-after",
