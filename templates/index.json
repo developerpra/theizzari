@@ -653,7 +653,7 @@
         "enable_loop": false,
         "slide_speed": 600,
         "coverflow_rotate": 0,
-        "coverflow_stretch": 400,
+        "coverflow_stretch": 150,
         "coverflow_depth": 500,
         "coverflow_modifier": 1,
         "slide_shadows": true,
