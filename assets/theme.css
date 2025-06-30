@@ -889,6 +889,12 @@ height-observer {
   }
 }
 
+@media screen and (max-width: 699px) {
+  .content-over-media {
+    min-height: 300px;
+  }
+}
+
 @media screen and (min-width: 700px) {
   .content-over-media {
     --content-over-media-gap: 2rem;
