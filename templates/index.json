@@ -214,7 +214,7 @@
         "enable_loop": false,
         "slide_speed": 600,
         "coverflow_rotate": 0,
-        "coverflow_stretch": 300,
+        "coverflow_stretch": 100,
         "coverflow_depth": 500,
         "slide_shadows": true,
         "enable_autoplay": false,
