@@ -10,63 +10,77 @@
     {% endif %}
 
     <!-- Swiper Container -->
-    <div class="swiper mySwiper creative-swiper-{{ section.id }}">
-      <div class="swiper-wrapper">
-        {% for block in section.blocks %}
-          <div class="swiper-slide creative-slide" {{ block.shopify_attributes }}>
-            {% if block.settings.media_type == 'video' %}
-              {% if block.settings.video_url != blank %}
-                <div class="creative-video-wrapper">
-                  <video 
-                    class="creative-video" 
-                    {% if block.settings.autoplay %}autoplay{% endif %}
-                    {% if block.settings.loop %}loop{% endif %}
-                    {% if block.settings.muted %}muted{% endif %}
-                    {% if block.settings.controls %}controls{% endif %}
-                    playsinline>
-                    <source src="{{ block.settings.video_url }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                  {% if block.settings.play_button %}
-                    <div class="video-play-button">
-                      <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                        <circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.9)"/>
-                        <path d="M25 20L40 30L25 40V20Z" fill="#333"/>
-                      </svg>
-                    </div>
+    <div class="creative-slider-wrapper">
+      <div class="swiper mySwiper creative-swiper-{{ section.id }}">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide creative-slide" {{ block.shopify_attributes }}>
+              {% if block.settings.media_type == 'video' %}
+                {% if block.settings.video_url != blank %}
+                  <div class="creative-video-wrapper">
+                    <video 
+                      class="creative-video" 
+                      {% if block.settings.autoplay %}autoplay{% endif %}
+                      {% if block.settings.loop %}loop{% endif %}
+                      {% if block.settings.muted %}muted{% endif %}
+                      {% if block.settings.controls %}controls{% endif %}
+                      playsinline>
+                      <source src="{{ block.settings.video_url }}" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                    {% if block.settings.play_button %}
+                      <div class="video-play-button">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                          <circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.9)"/>
+                          <path d="M25 20L40 30L25 40V20Z" fill="#333"/>
+                        </svg>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% else %}
+                {% if block.settings.image != blank %}
+                  <div class="creative-image-wrapper">
+                    <img 
+                      src="{{ block.settings.image | img_url: '800x600' }}" 
+                      alt="{{ block.settings.image.alt | escape }}"
+                      class="creative-image"
+                      width="800"
+                      height="600"
+                      loading="lazy">
+                  </div>
+                {% endif %}
+              {% endif %}
+              
+              {% if block.settings.caption != blank %}
+                <div class="creative-caption">
+                  <h3 class="caption-title">{{ block.settings.caption }}</h3>
+                  {% if block.settings.description != blank %}
+                    <p class="caption-description">{{ block.settings.description }}</p>
                   {% endif %}
                 </div>
               {% endif %}
-            {% else %}
-              {% if block.settings.image != blank %}
-                <div class="creative-image-wrapper">
-                  <img 
-                    src="{{ block.settings.image | img_url: '800x600' }}" 
-                    alt="{{ block.settings.image.alt | escape }}"
-                    class="creative-image"
-                    width="800"
-                    height="600"
-                    loading="lazy">
-                </div>
-              {% endif %}
-            {% endif %}
-            
-            {% if block.settings.caption != blank %}
-              <div class="creative-caption">
-                <h3 class="caption-title">{{ block.settings.caption }}</h3>
-                {% if block.settings.description != blank %}
-                  <p class="caption-description">{{ block.settings.description }}</p>
-                {% endif %}
-              </div>
-            {% endif %}
-          </div>
-        {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+        
+        <!-- Pagination for Mobile -->
+        {% if section.settings.show_pagination %}
+          <div class="swiper-pagination creative-pagination"></div>
+        {% endif %}
       </div>
       
-      <!-- Pagination -->
-      {% if section.settings.show_pagination %}
-        <div class="swiper-pagination creative-pagination"></div>
-      {% endif %}
+      <!-- Navigation Arrows for Desktop -->
+      <div class="creative-nav-prev">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="creative-nav-next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
     </div>
   </div>
 </section>
@@ -217,6 +231,75 @@
     border-radius: 6px;
   }
 
+  /* Navigation Wrapper */
+  .creative-slider-wrapper {
+    position: relative;
+    padding: 0 60px;
+  }
+
+  /* Navigation Arrows */
+  .creative-nav-prev,
+  .creative-nav-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    color: #333;
+  }
+
+  .creative-nav-prev {
+    left: 10px;
+  }
+
+  .creative-nav-next {
+    right: 10px;
+  }
+
+  .creative-nav-prev:hover,
+  .creative-nav-next:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Hide arrows on mobile, show pagination */
+  @media (max-width: 1024px) {
+    .creative-nav-prev,
+    .creative-nav-next {
+      display: none;
+    }
+    
+    .creative-slider-wrapper {
+      padding: 0;
+    }
+    
+    .creative-pagination {
+      display: block;
+    }
+  }
+
+  /* Hide pagination on desktop, show arrows */
+  @media (min-width: 1025px) {
+    .creative-pagination {
+      display: none;
+    }
+    
+    .creative-nav-prev,
+    .creative-nav-next {
+      display: flex;
+    }
+  }
+
   /* Responsive Design */
   @media (max-width: 1024px) {
     .creative-slider-section {
@@ -314,6 +397,11 @@
         clickable: true,
       },
       {% endif %}
+      
+      navigation: {
+        nextEl: '.creative-nav-next',
+        prevEl: '.creative-nav-prev',
+      },
       
       {% if section.settings.enable_autoplay %}
       autoplay: {

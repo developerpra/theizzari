@@ -32,10 +32,6 @@
 
         <!-- Swiper Container -->
     <div class="swiper-container-wrapper">
-      <!-- Navigation buttons outside swiper container -->
-      <div class="swiper-button-prev reviews-nav-prev"></div>
-      <div class="swiper-button-next reviews-nav-next"></div>
-      
       <div class="swiper reviews-swiper">
         <div class="swiper-wrapper">
           {% for block in section.blocks %}
@@ -55,10 +51,22 @@
           {% endfor %}
         </div>
         
-        <!-- Pagination -->
+        <!-- Pagination for Mobile -->
         {% if section.settings.show_pagination %}
           <div class="swiper-pagination reviews-pagination"></div>
         {% endif %}
+      </div>
+      
+      <!-- Navigation Arrows for Desktop -->
+      <div class="reviews-nav-prev">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="reviews-nav-next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
     </div>
   </div>
@@ -101,8 +109,71 @@
   .swiper-container-wrapper {
     position: relative;
     width: 100%;
-    padding: 0 30px;
+    padding: 0 80px;
     overflow: visible;
+  }
+
+  /* Navigation Arrows */
+  .reviews-nav-prev,
+  .reviews-nav-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    color: #333;
+  }
+
+  .reviews-nav-prev {
+    left: 15px;
+  }
+
+  .reviews-nav-next {
+    right: 15px;
+  }
+
+  .reviews-nav-prev:hover,
+  .reviews-nav-next:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Hide arrows on mobile, show pagination */
+  @media (max-width: 1024px) {
+    .reviews-nav-prev,
+    .reviews-nav-next {
+      display: none;
+    }
+    
+    .swiper-container-wrapper {
+      padding: 0 20px;
+    }
+    
+    .reviews-pagination {
+      display: block;
+    }
+  }
+
+  /* Hide pagination on desktop, show arrows */
+  @media (min-width: 1025px) {
+    .reviews-pagination {
+      display: none;
+    }
+    
+    .reviews-nav-prev,
+    .reviews-nav-next {
+      display: flex;
+    }
   }
 
   .reviews-swiper {
