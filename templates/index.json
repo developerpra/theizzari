@@ -114,6 +114,116 @@
         "subheading": "Featured collection"
       }
     },
+    "creative_slider_PxaExH": {
+      "type": "creative-slider",
+      "blocks": {
+        "media_slide_dechY8": {
+          "type": "media_slide",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/ConvertOut-Resized-IZR61-2_3819fcc2-ed18-4527-a69c-045c160d64b3.jpg",
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": true,
+            "controls": false,
+            "play_button": true,
+            "caption": "Elegant Design",
+            "description": "Timeless pieces that define modern luxury"
+          }
+        },
+        "media_slide_AMiyWr": {
+          "type": "media_slide",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IZR232_1_d154d33a-9d61-4619-8c47-64dc133e24fd.jpg",
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": true,
+            "controls": false,
+            "play_button": true,
+            "caption": "Craftsmanship",
+            "description": "Every detail carefully crafted to perfection"
+          }
+        },
+        "media_slide_hXD88z": {
+          "type": "media_slide",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IZR226_1_f29a8565-d2a5-42e0-bd6b-3455063f131f.jpg",
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": true,
+            "controls": false,
+            "play_button": true,
+            "caption": "Versatile Style",
+            "description": "From day to night, every occasion covered"
+          }
+        },
+        "media_slide_p6eENP": {
+          "type": "media_slide",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IZR235_1_13f17f1a-6c5a-4be6-9d04-b76d0c656ba0.jpg",
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": true,
+            "controls": false,
+            "play_button": true,
+            "caption": "",
+            "description": ""
+          }
+        },
+        "media_slide_fyDtXN": {
+          "type": "media_slide",
+          "settings": {
+            "media_type": "image",
+            "image": "shopify://shop_images/IZR225_1_5a5f701e-ea3c-4196-b068-3c1f28980ce5.jpg",
+            "video_url": "",
+            "autoplay": false,
+            "loop": false,
+            "muted": true,
+            "controls": false,
+            "play_button": true,
+            "caption": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "media_slide_dechY8",
+        "media_slide_AMiyWr",
+        "media_slide_hXD88z",
+        "media_slide_p6eENP",
+        "media_slide_fyDtXN"
+      ],
+      "name": "Creative Slider",
+      "settings": {
+        "heading": "Creative Showcase",
+        "subtitle": "Discover our latest collection through this immersive experience",
+        "background_color": "#ffffff",
+        "heading_color": "#1a1a1a",
+        "subtitle_color": "#666666",
+        "slide_width": 400,
+        "slide_height": 300,
+        "border_radius": 20,
+        "centered_slides": true,
+        "enable_loop": false,
+        "slide_speed": 600,
+        "coverflow_rotate": 0,
+        "coverflow_stretch": 300,
+        "coverflow_depth": 500,
+        "slide_shadows": true,
+        "enable_autoplay": false,
+        "autoplay_delay": 5000,
+        "show_pagination": true,
+        "pagination_color": "#cccccc",
+        "pagination_active_color": "#333333"
+      }
+    },
     "featured_collections_Btdcyx": {
       "type": "featured-collections",
       "blocks": {
@@ -975,7 +1085,12 @@
       ],
       "name": "Reviews",
       "settings": {
-        "heading": "What Our Customers Say"
+        "heading": "What Our Customers Say",
+        "show_pagination": true,
+        "enable_loop": false,
+        "enable_autoplay": false,
+        "autoplay_delay": "5000",
+        "slide_speed": "400"
       }
     }
   },
@@ -983,6 +1098,7 @@
     "video_yxTL7E",
     "types_hrU9fX",
     "bestseller_xYByWN",
+    "creative_slider_PxaExH",
     "featured_collections_Btdcyx",
     "logo_list_9YbApe",
     "media_grid_LKf9aG",
