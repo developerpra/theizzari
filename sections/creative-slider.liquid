@@ -286,18 +286,21 @@
     }
   }
 </style>
-
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    const swiperContainer = document.querySelector('.creative-swiper-{{ section.id }}');
+    const slideSelector = swiperContainer?.querySelectorAll('.swiper-slide') || [];
+    const middleIndex = Math.floor(slideSelector.length / 2);
+
     // Initialize Creative Slider
     var creativeSwiper{{ section.id | remove: '-' }} = new Swiper('.creative-swiper-{{ section.id }}', {
       effect: "coverflow",
       grabCursor: true,
       centeredSlides: {{ section.settings.centered_slides | default: true }},
-      initialSlide: Math.floor(document.querySelectorAll(".swiper-slide").length / 2),
       slidesPerView: "auto",
       loop: {{ section.settings.enable_loop | default: false }},
       speed: {{ section.settings.slide_speed | default: 600 }},
+      initialSlide: {{ section.settings.centered_slides | default: true }} ? middleIndex : 0,
       coverflowEffect: {
         rotate: {{ section.settings.coverflow_rotate | default: 0 }},
         stretch: {{ section.settings.coverflow_stretch | default: 300 }},
@@ -351,6 +354,7 @@
     });
   });
 </script>
+
 
 {% schema %}
 {
