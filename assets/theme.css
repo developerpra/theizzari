@@ -8627,7 +8627,7 @@ a.query__btn {
   width:80%;
 }
 #insta-feed h2{
-  font-size:2.5rem;
+  font-size:2.5rem !important;
   font-weight:300;
 }
 #insta-feed h2::before{
@@ -8663,4 +8663,22 @@ a.query__btn {
   .md\:hidden {
     display: none !important;
   }
+}
+
+/* Wishlist login-required styles */
+.wishlist-button.login-required {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.wishlist-button.login-required:hover {
+  opacity: 0.8;
+}
+
+.wishlist-button.login-required svg {
+  stroke: #999;
+}
+
+.wishlist-button.login-required:hover svg {
+  stroke: #666;
 }

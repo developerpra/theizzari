@@ -220,7 +220,17 @@
   document.addEventListener('DOMContentLoaded', function() {
     const wishlistButton = document.querySelector('.wishlist-button');
     if (wishlistButton) {
-      // Check if product is in wishlist
+      // Check if this is a login-required button
+      if (wishlistButton.classList.contains('login-required')) {
+        wishlistButton.addEventListener('click', function() {
+          const loginUrl = this.dataset.loginUrl;
+          const currentUrl = encodeURIComponent(window.location.href);
+          window.location.href = loginUrl + '?return_url=' + currentUrl;
+        });
+        return; // Exit early for non-logged-in users
+      }
+      
+      // For logged-in users, proceed with normal wishlist functionality
       const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
       const productId = wishlistButton.dataset.productId;
       
@@ -235,13 +245,53 @@
         if (index > -1) {
           wishlist.splice(index, 1);
           this.classList.remove('active');
+          showWishlistMessage('Product removed from wishlist');
         } else {
           wishlist.push(productId);
           this.classList.add('active');
+          showWishlistMessage('Product added to wishlist');
         }
         
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
       });
     }
   });
+  
+  // Show wishlist message
+  function showWishlistMessage(message) {
+    // Create a simple toast notification
+    const toast = document.createElement('div');
+    toast.className = 'wishlist-toast';
+    toast.textContent = message;
+    toast.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #333;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 6px;
+      z-index: 9999;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Animate in
+    setTimeout(() => {
+      toast.style.opacity = '1';
+    }, 100);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => {
+        if (toast.parentNode) {
+          document.body.removeChild(toast);
+        }
+      }, 300);
+    }, 3000);
+  }
 </script>
