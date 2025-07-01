@@ -120,9 +120,9 @@
         "media_slide_dechY8": {
           "type": "media_slide",
           "settings": {
-            "media_type": "image",
+            "media_type": "video",
             "image": "shopify://shop_images/ConvertOut-Resized-IZR61-2_3819fcc2-ed18-4527-a69c-045c160d64b3.jpg",
-            "video_url": "",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/43285400831741e284037a2e0abc4a22.mp4",
             "autoplay": false,
             "loop": false,
             "muted": true,
@@ -135,9 +135,9 @@
         "media_slide_AMiyWr": {
           "type": "media_slide",
           "settings": {
-            "media_type": "image",
+            "media_type": "video",
             "image": "shopify://shop_images/IZR232_1_d154d33a-9d61-4619-8c47-64dc133e24fd.jpg",
-            "video_url": "",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/bf1ede40b07b4e3e8ea9c285103a5052.mp4",
             "autoplay": false,
             "loop": false,
             "muted": true,
@@ -150,9 +150,9 @@
         "media_slide_hXD88z": {
           "type": "media_slide",
           "settings": {
-            "media_type": "image",
+            "media_type": "video",
             "image": "shopify://shop_images/ConvertOut-Resized-IZR328_3_ae2ca036-bf8f-4f61-85b5-3a4186b496e2.jpg",
-            "video_url": "",
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/0334494de6664ff682e1da2c1eb64aaf.mp4",
             "autoplay": false,
             "loop": false,
             "muted": true,
