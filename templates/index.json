@@ -1085,7 +1085,7 @@
       ],
       "name": "Reviews",
       "settings": {
-        "heading": "What Our Customers Say",
+        "heading": "What Our Clients Say",
         "show_pagination": true,
         "enable_loop": false,
         "enable_autoplay": false,
