@@ -31,7 +31,7 @@
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center sm:text-center",
             "content_max_width": 960,
-            "button_1_text": "Explore our craft",
+            "button_1_text": "Explore Our Craft",
             "button_1_link": "shopify://collections",
             "button_1_style": "solid",
             "button_1_background": "#ffffff",
@@ -52,6 +52,7 @@
           "type": "image",
           "disabled": true,
           "settings": {
+            "mobile_image": "shopify://shop_images/ConvertOut-Resized-IZR61-1_67c9738c-028f-4427-944e-31d52c0ef9bf.jpg",
             "subheading": "Tell your story",
             "title": "Slide 2",
             "mobile_text_position": "place-self-center text-center",
