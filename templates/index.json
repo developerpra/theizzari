@@ -542,7 +542,7 @@
         "heading_JfqYRj": {
           "type": "heading",
           "settings": {
-            "text": "Jewelry That Lives With You",
+            "text": "Jewelry That Lives With You.",
             "heading_tag": "h1"
           }
         }
@@ -558,7 +558,7 @@
         "video": "shopify://files/videos/Eternal Rose Reel 2.mp4",
         "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "text_color": "#ffffff",
-        "button_text": "READ OUR STORY",
+        "button_text": "Read Our Story",
         "button_link": "",
         "button_bg_color": "#264b3b",
         "button_text_color": "#ffffff"
