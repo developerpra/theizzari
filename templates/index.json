@@ -44,27 +44,33 @@
         "button_text_color": "#ffffff"
       }
     },
-    "rich_text_DrL4Gn": {
-      "type": "rich-text",
+    "image_with_text_overlay_jqhbYP": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "heading_yyBkrf": {
+        "heading_Dfk3CX": {
           "type": "heading",
           "settings": {
-            "text": "IZZARI Re-Imagined",
+            "text": "IZZARI REIMAGINED",
             "heading_tag": "h1"
           }
         }
       },
       "block_order": [
-        "heading_yyBkrf"
+        "heading_Dfk3CX"
       ],
-      "name": "t:sections.rich_text.presets.rich_text.name",
+      "name": "t:sections.image_with_text_overlay.presets.image_with_text_overlay.name",
       "settings": {
         "color_scheme": "",
-        "separate_section_with_border": true,
-        "content_width": "sm",
-        "text_position": "center",
-        "remove_vertical_spacing": false
+        "image_size": "auto",
+        "image": "shopify://shop_images/EYEWEAR_HOMEPAGE_DUO_SOLAIRE_PANTHERE_C_2560x996_9600b5aa-007d-4922-991d-de8b4ea148ff.png",
+        "allow_transparent_header": false,
+        "reveal_on_scroll": true,
+        "remove_vertical_spacing": true,
+        "content_width": "md",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
       }
     },
     "types_hrU9fX": {
@@ -1119,7 +1125,7 @@
   },
   "order": [
     "video_yxTL7E",
-    "rich_text_DrL4Gn",
+    "image_with_text_overlay_jqhbYP",
     "types_hrU9fX",
     "bestseller_xYByWN",
     "creative_slider_PxaExH",
