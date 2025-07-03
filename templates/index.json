@@ -46,23 +46,11 @@
     },
     "image_with_text_overlay_jqhbYP": {
       "type": "image-with-text-overlay",
-      "blocks": {
-        "heading_Dfk3CX": {
-          "type": "heading",
-          "settings": {
-            "text": "IZZARI REIMAGINED",
-            "heading_tag": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "heading_Dfk3CX"
-      ],
       "name": "t:sections.image_with_text_overlay.presets.image_with_text_overlay.name",
       "settings": {
         "color_scheme": "",
         "image_size": "auto",
-        "image": "shopify://shop_images/EYEWEAR_HOMEPAGE_DUO_SOLAIRE_PANTHERE_C_2560x996_9600b5aa-007d-4922-991d-de8b4ea148ff.png",
+        "image": "shopify://shop_images/WhatsApp_Image_2025-07-03_at_13.44.11_004e073b.jpg",
         "allow_transparent_header": false,
         "reveal_on_scroll": true,
         "remove_vertical_spacing": true,
