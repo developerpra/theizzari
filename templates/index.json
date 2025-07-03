@@ -44,6 +44,29 @@
         "button_text_color": "#ffffff"
       }
     },
+    "rich_text_DrL4Gn": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_yyBkrf": {
+          "type": "heading",
+          "settings": {
+            "text": "IZZARI Re-Imagined",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_yyBkrf"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "content_width": "sm",
+        "text_position": "center",
+        "remove_vertical_spacing": false
+      }
+    },
     "types_hrU9fX": {
       "type": "Types",
       "blocks": {
@@ -1096,6 +1119,7 @@
   },
   "order": [
     "video_yxTL7E",
+    "rich_text_DrL4Gn",
     "types_hrU9fX",
     "bestseller_xYByWN",
     "creative_slider_PxaExH",
